@@ -1,0 +1,26 @@
+{
+  "name": "stfc-space-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "load": "tsc; node ./build/stfc.space/src/index.js",
+    "export": "tsc; node ./build/stfc.space/src/export.js",
+    "research": "tsc; node ./build/stfc.space/src/research.js",
+    "pretty": "prettier --write src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^14.14.7",
+    "@types/node-fetch": "^2.5.11",
+    "json-stringify-pretty-compact": "^3.0.0",
+    "node-fetch": "^2.6.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "prettier": "2.3.2"
+  }
+}

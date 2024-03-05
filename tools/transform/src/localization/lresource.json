@@ -1,0 +1,6802 @@
+[
+  {
+    "id": 908921776,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_ShipXP",
+    "art_id": 120,
+    "sorting_index": 101
+  },
+  {
+    "id": 2268080862,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Intel",
+    "art_id": 10,
+    "sorting_index": 102
+  },
+  {
+    "id": 1570359377,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_TransporterDust",
+    "art_id": 80,
+    "sorting_index": 104
+  },
+  {
+    "id": 2325683920,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Parsteel",
+    "art_id": 1,
+    "sorting_index": 1
+  },
+  {
+    "id": 743985951,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Tritanium",
+    "art_id": 2,
+    "sorting_index": 2
+  },
+  {
+    "id": 2614028847,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Dilithium",
+    "art_id": 3,
+    "sorting_index": 3
+  },
+  {
+    "id": 4272690020,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Latinum",
+    "art_id": 4,
+    "sorting_index": 4
+  },
+  {
+    "id": 1403917724,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha1",
+    "art_id": 5,
+    "sorting_index": 105
+  },
+  {
+    "id": 2858960861,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha2",
+    "art_id": 6,
+    "sorting_index": 106
+  },
+  {
+    "id": 1638723607,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_RelocationToken",
+    "art_id": 75,
+    "sorting_index": 2005
+  },
+  {
+    "id": 1667763560,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Federation",
+    "art_id": 78,
+    "sorting_index": 2001
+  },
+  {
+    "id": 1002911149,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Klingon",
+    "art_id": 79,
+    "sorting_index": 2002
+  },
+  {
+    "id": 2049412687,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Romulan",
+    "art_id": 82,
+    "sorting_index": 2003
+  },
+  {
+    "id": 3342649851,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Independent",
+    "art_id": 74,
+    "sorting_index": 2004
+  },
+  {
+    "id": 1310992340,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Khan",
+    "art_id": 83,
+    "sorting_index": 2005
+  },
+  {
+    "id": 371247497,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Destroyer",
+    "art_id": 15,
+    "sorting_index": 1015
+  },
+  {
+    "id": 4225214363,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Explorer",
+    "art_id": 16,
+    "sorting_index": 1016
+  },
+  {
+    "id": 4219433602,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Battleship",
+    "art_id": 17,
+    "sorting_index": 1017
+  },
+  {
+    "id": 2035545973,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Survey",
+    "art_id": 18,
+    "sorting_index": 1018
+  },
+  {
+    "id": 1525145915,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Destroyer_G2",
+    "art_id": 15,
+    "sorting_index": 1015
+  },
+  {
+    "id": 1427442408,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Explorer_G2",
+    "art_id": 16,
+    "sorting_index": 1016
+  },
+  {
+    "id": 1685503641,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Battleship_G2",
+    "art_id": 17,
+    "sorting_index": 1017
+  },
+  {
+    "id": 3144170210,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Survey_G2",
+    "art_id": 18,
+    "sorting_index": 1018
+  },
+  {
+    "id": 2127419737,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Destroyer_G3",
+    "art_id": 15,
+    "sorting_index": 1015
+  },
+  {
+    "id": 1767946412,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Explorer_G3",
+    "art_id": 16,
+    "sorting_index": 1016
+  },
+  {
+    "id": 1779580172,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Battleship_G3",
+    "art_id": 17,
+    "sorting_index": 1017
+  },
+  {
+    "id": 3904185676,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Survey_G3",
+    "art_id": 18,
+    "sorting_index": 1018
+  },
+  {
+    "id": 3800357078,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Destroyer_G4_Raw",
+    "art_id": 215,
+    "sorting_index": 1015
+  },
+  {
+    "id": 1586334499,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Explorer_G4_Raw",
+    "art_id": 216,
+    "sorting_index": 1019
+  },
+  {
+    "id": 3852104441,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Battleship_G4_Raw",
+    "art_id": 217,
+    "sorting_index": 1023
+  },
+  {
+    "id": 1376287041,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Survey_G4_Raw",
+    "art_id": 218,
+    "sorting_index": 1027
+  },
+  {
+    "id": 4286021512,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Destroyer_G4_R1",
+    "art_id": 15,
+    "sorting_index": 1016
+  },
+  {
+    "id": 2583461402,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_Parts_Destroyer_G4_R2",
+    "art_id": 15,
+    "sorting_index": 1017
+  },
+  {
+    "id": 2101832391,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_Parts_Destroyer_G4_R3",
+    "art_id": 15,
+    "sorting_index": 1018
+  },
+  {
+    "id": 2671851270,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Explorer_G4_R1",
+    "art_id": 16,
+    "sorting_index": 1020
+  },
+  {
+    "id": 959300758,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_Parts_Explorer_G4_R2",
+    "art_id": 16,
+    "sorting_index": 1021
+  },
+  {
+    "id": 2869949262,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_Parts_Explorer_G4_R3",
+    "art_id": 16,
+    "sorting_index": 1022
+  },
+  {
+    "id": 3308963917,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Battleship_G4_R1",
+    "art_id": 17,
+    "sorting_index": 1024
+  },
+  {
+    "id": 2717172741,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_Parts_Battleship_G4_R2",
+    "art_id": 17,
+    "sorting_index": 1025
+  },
+  {
+    "id": 3552532055,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_Parts_Battleship_G4_R3",
+    "art_id": 17,
+    "sorting_index": 1026
+  },
+  {
+    "id": 1862532419,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Parts_Survey_G4_R1",
+    "art_id": 18,
+    "sorting_index": 1028
+  },
+  {
+    "id": 2468896243,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_Parts_Survey_G4_R2",
+    "art_id": 18,
+    "sorting_index": 1029
+  },
+  {
+    "id": 819437933,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_Parts_Survey_G4_R3",
+    "art_id": 18,
+    "sorting_index": 1030
+  },
+  {
+    "id": 157246619,
+    "grade": 3,
+    "rarity": 4,
+    "resource_id": "Resource_Parts_Nagus",
+    "art_id": 143,
+    "sorting_index": 1031
+  },
+  {
+    "id": 1908242242,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Ore_Raw",
+    "art_id": 21,
+    "sorting_index": 1032
+  },
+  {
+    "id": 96209859,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Hydrocarbon_Raw",
+    "art_id": 26,
+    "sorting_index": 1033
+  },
+  {
+    "id": 1371898528,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Crystal_Raw",
+    "art_id": 31,
+    "sorting_index": 1034
+  },
+  {
+    "id": 84292608,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Ore_Raw",
+    "art_id": 21,
+    "sorting_index": 1035
+  },
+  {
+    "id": 1779416627,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Hydrocarbon_Raw",
+    "art_id": 26,
+    "sorting_index": 1036
+  },
+  {
+    "id": 680796905,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Crystal_Raw",
+    "art_id": 31,
+    "sorting_index": 1037
+  },
+  {
+    "id": 802509572,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Ore_Raw",
+    "art_id": 21,
+    "sorting_index": 1038
+  },
+  {
+    "id": 2964093937,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Hydrocarbon_Raw",
+    "art_id": 26,
+    "sorting_index": 1039
+  },
+  {
+    "id": 3735331456,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Crystal_Raw",
+    "art_id": 31,
+    "sorting_index": 1040
+  },
+  {
+    "id": 1478791698,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Ore_R1",
+    "art_id": 51,
+    "sorting_index": 1041
+  },
+  {
+    "id": 4164002186,
+    "grade": 2,
+    "rarity": 2,
+    "resource_id": "Resource_G2_Ore_R2",
+    "art_id": 51,
+    "sorting_index": 1042
+  },
+  {
+    "id": 796037847,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Hydrocarbon_R1",
+    "art_id": 56,
+    "sorting_index": 1043
+  },
+  {
+    "id": 2922651471,
+    "grade": 2,
+    "rarity": 2,
+    "resource_id": "Resource_G2_Hydrocarbon_R2",
+    "art_id": 56,
+    "sorting_index": 1044
+  },
+  {
+    "id": 551546104,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Crystal_R1",
+    "art_id": 61,
+    "sorting_index": 1045
+  },
+  {
+    "id": 229186523,
+    "grade": 2,
+    "rarity": 2,
+    "resource_id": "Resource_G2_Crystal_R2",
+    "art_id": 61,
+    "sorting_index": 1046
+  },
+  {
+    "id": 813886518,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Ore_R1",
+    "art_id": 51,
+    "sorting_index": 1047
+  },
+  {
+    "id": 2453327618,
+    "grade": 3,
+    "rarity": 2,
+    "resource_id": "Resource_G3_Ore_R2",
+    "art_id": 51,
+    "sorting_index": 1048
+  },
+  {
+    "id": 3337738024,
+    "grade": 3,
+    "rarity": 3,
+    "resource_id": "Resource_G3_Ore_R3",
+    "art_id": 51,
+    "sorting_index": 1049
+  },
+  {
+    "id": 3215442881,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Hydrocarbon_R1",
+    "art_id": 56,
+    "sorting_index": 1050
+  },
+  {
+    "id": 2599869530,
+    "grade": 3,
+    "rarity": 2,
+    "resource_id": "Resource_G3_Hydrocarbon_R2",
+    "art_id": 56,
+    "sorting_index": 1051
+  },
+  {
+    "id": 3371789218,
+    "grade": 3,
+    "rarity": 3,
+    "resource_id": "Resource_G3_Hydrocarbon_R3",
+    "art_id": 56,
+    "sorting_index": 1052
+  },
+  {
+    "id": 67391873,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Crystal_R1",
+    "art_id": 61,
+    "sorting_index": 1053
+  },
+  {
+    "id": 2367328925,
+    "grade": 3,
+    "rarity": 2,
+    "resource_id": "Resource_G3_Crystal_R2",
+    "art_id": 61,
+    "sorting_index": 1054
+  },
+  {
+    "id": 1787682553,
+    "grade": 3,
+    "rarity": 3,
+    "resource_id": "Resource_G3_Crystal_R3",
+    "art_id": 61,
+    "sorting_index": 1055
+  },
+  {
+    "id": 3452257709,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Ore_R1",
+    "art_id": 51,
+    "sorting_index": 1056
+  },
+  {
+    "id": 1904955588,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_G4_Ore_R2",
+    "art_id": 51,
+    "sorting_index": 1057
+  },
+  {
+    "id": 920308245,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_G4_Ore_R3",
+    "art_id": 51,
+    "sorting_index": 1058
+  },
+  {
+    "id": 4027233615,
+    "grade": 4,
+    "rarity": 4,
+    "resource_id": "Resource_G4_Ore_R4",
+    "art_id": 51,
+    "sorting_index": 1059
+  },
+  {
+    "id": 309421080,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Hydrocarbon_R1",
+    "art_id": 56,
+    "sorting_index": 1060
+  },
+  {
+    "id": 3628066968,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_G4_Hydrocarbon_R2",
+    "art_id": 56,
+    "sorting_index": 1061
+  },
+  {
+    "id": 810120542,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_G4_Hydrocarbon_R3",
+    "art_id": 56,
+    "sorting_index": 1062
+  },
+  {
+    "id": 2290570913,
+    "grade": 4,
+    "rarity": 4,
+    "resource_id": "Resource_G4_Hydrocarbon_R4",
+    "art_id": 56,
+    "sorting_index": 1063
+  },
+  {
+    "id": 3919958966,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Crystal_R1",
+    "art_id": 61,
+    "sorting_index": 1064
+  },
+  {
+    "id": 3909684597,
+    "grade": 4,
+    "rarity": 2,
+    "resource_id": "Resource_G4_Crystal_R2",
+    "art_id": 61,
+    "sorting_index": 1065
+  },
+  {
+    "id": 3965052272,
+    "grade": 4,
+    "rarity": 3,
+    "resource_id": "Resource_G4_Crystal_R3",
+    "art_id": 61,
+    "sorting_index": 1066
+  },
+  {
+    "id": 292446021,
+    "grade": 4,
+    "rarity": 4,
+    "resource_id": "Resource_G4_Crystal_R4",
+    "art_id": 61,
+    "sorting_index": 1067
+  },
+  {
+    "id": 2905009151,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Ore_Raw",
+    "art_id": 21,
+    "sorting_index": 1068
+  },
+  {
+    "id": 1349464922,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Hydrocarbon_Raw",
+    "art_id": 26,
+    "sorting_index": 1069
+  },
+  {
+    "id": 3598797204,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Crystal_Raw",
+    "art_id": 31,
+    "sorting_index": 1070
+  },
+  {
+    "id": 2893480370,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Ore_R1",
+    "art_id": 51,
+    "sorting_index": 1071
+  },
+  {
+    "id": 2258174662,
+    "grade": 5,
+    "rarity": 2,
+    "resource_id": "Resource_G5_Ore_R2",
+    "art_id": 51,
+    "sorting_index": 1072
+  },
+  {
+    "id": 4109746240,
+    "grade": 5,
+    "rarity": 3,
+    "resource_id": "Resource_G5_Ore_R3",
+    "art_id": 51,
+    "sorting_index": 1073
+  },
+  {
+    "id": 3491022712,
+    "grade": 5,
+    "rarity": 4,
+    "resource_id": "Resource_G5_Ore_R4",
+    "art_id": 51,
+    "sorting_index": 1074
+  },
+  {
+    "id": 1499705342,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Hydrocarbon_R1",
+    "art_id": 56,
+    "sorting_index": 1075
+  },
+  {
+    "id": 3329003172,
+    "grade": 5,
+    "rarity": 2,
+    "resource_id": "Resource_G5_Hydrocarbon_R2",
+    "art_id": 56,
+    "sorting_index": 1076
+  },
+  {
+    "id": 768674708,
+    "grade": 5,
+    "rarity": 3,
+    "resource_id": "Resource_G5_Hydrocarbon_R3",
+    "art_id": 56,
+    "sorting_index": 1077
+  },
+  {
+    "id": 2859248631,
+    "grade": 5,
+    "rarity": 4,
+    "resource_id": "Resource_G5_Hydrocarbon_R4",
+    "art_id": 56,
+    "sorting_index": 1078
+  },
+  {
+    "id": 3301222353,
+    "grade": 5,
+    "rarity": 1,
+    "resource_id": "Resource_G5_Crystal_R1",
+    "art_id": 61,
+    "sorting_index": 1079
+  },
+  {
+    "id": 1371250883,
+    "grade": 5,
+    "rarity": 2,
+    "resource_id": "Resource_G5_Crystal_R2",
+    "art_id": 61,
+    "sorting_index": 1080
+  },
+  {
+    "id": 3053746170,
+    "grade": 5,
+    "rarity": 3,
+    "resource_id": "Resource_G5_Crystal_R3",
+    "art_id": 61,
+    "sorting_index": 1081
+  },
+  {
+    "id": 3939844739,
+    "grade": 5,
+    "rarity": 4,
+    "resource_id": "Resource_G5_Crystal_R4",
+    "art_id": 61,
+    "sorting_index": 1082
+  },
+  {
+    "id": 1600760006,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Data_Raw_Corrupt",
+    "art_id": 22,
+    "sorting_index": 1068
+  },
+  {
+    "id": 2166628666,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Data_Raw_Optimized",
+    "art_id": 23,
+    "sorting_index": 1069
+  },
+  {
+    "id": 928786211,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Plutonium_R1",
+    "art_id": 32,
+    "sorting_index": 1070
+  },
+  {
+    "id": 482274936,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_G3_Plutonium_R2",
+    "art_id": 33,
+    "sorting_index": 1071
+  },
+  {
+    "id": 3862676886,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_G3_Plutonium_R3",
+    "art_id": 34,
+    "sorting_index": 1072
+  },
+  {
+    "id": 1957060718,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Latinum_Raw",
+    "art_id": 142,
+    "sorting_index": 5035
+  },
+  {
+    "id": 2991010408,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_G1_Isogen_Raw",
+    "art_id": 4001,
+    "sorting_index": 9001
+  },
+  {
+    "id": 2705205969,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Isogen_Raw",
+    "art_id": 4001,
+    "sorting_index": 9002
+  },
+  {
+    "id": 563579678,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Isogen_Raw",
+    "art_id": 4001,
+    "sorting_index": 9003
+  },
+  {
+    "id": 2910180549,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "Resource_G1_Isogen",
+    "art_id": 4002,
+    "sorting_index": 9004
+  },
+  {
+    "id": 3632155109,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Isogen",
+    "art_id": 4002,
+    "sorting_index": 9005
+  },
+  {
+    "id": 405275536,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Isogen",
+    "art_id": 4002,
+    "sorting_index": 9006
+  },
+  {
+    "id": 1410073648,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_G1_Iso-Emulsion",
+    "art_id": 4003,
+    "sorting_index": 9007
+  },
+  {
+    "id": 788634624,
+    "grade": 2,
+    "rarity": 1,
+    "resource_id": "Resource_G2_Iso-Emulsion",
+    "art_id": 4003,
+    "sorting_index": 9008
+  },
+  {
+    "id": 1753437184,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_G3_Iso-Emulsion",
+    "art_id": 4003,
+    "sorting_index": 9009
+  },
+  {
+    "id": 101546922,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Alloy",
+    "art_id": 4004,
+    "sorting_index": 9010
+  },
+  {
+    "id": 183293177,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Core",
+    "art_id": 4007,
+    "sorting_index": 9011
+  },
+  {
+    "id": 3446322746,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Diode",
+    "art_id": 4006,
+    "sorting_index": 9012
+  },
+  {
+    "id": 2234127593,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Emitter",
+    "art_id": 4005,
+    "sorting_index": 9013
+  },
+  {
+    "id": 3794975788,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Laser",
+    "art_id": 4008,
+    "sorting_index": 9014
+  },
+  {
+    "id": 1596488909,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Nexus",
+    "art_id": 4009,
+    "sorting_index": 9015
+  },
+  {
+    "id": 1384959993,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Progenitor_Reactor",
+    "art_id": 4010,
+    "sorting_index": 9016
+  },
+  {
+    "id": 1462889620,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Phantom_Particle",
+    "art_id": 4012,
+    "sorting_index": 9018
+  },
+  {
+    "id": 1959666401,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Quantum_Particle",
+    "art_id": 4014,
+    "sorting_index": 9019
+  },
+  {
+    "id": 945821429,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Surax_Particle",
+    "art_id": 4015,
+    "sorting_index": 9020
+  },
+  {
+    "id": 199125940,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Omega_Particle",
+    "art_id": 4011,
+    "sorting_index": 9021
+  },
+  {
+    "id": 685453003,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_Challenger_Token_I",
+    "art_id": 4019,
+    "sorting_index": 9022
+  },
+  {
+    "id": 1429318062,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_TC_Challenger_Token_II",
+    "art_id": 4019,
+    "sorting_index": 9023
+  },
+  {
+    "id": 1954643731,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_Conqueror_Token_I",
+    "art_id": 4020,
+    "sorting_index": 9024
+  },
+  {
+    "id": 77120777,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_TC_Conqueror_Token_II",
+    "art_id": 4020,
+    "sorting_index": 9025
+  },
+  {
+    "id": 237886430,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Prime_TC_Token",
+    "art_id": 4013,
+    "sorting_index": 9026
+  },
+  {
+    "id": 2156595399,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Unlock_Prime_Alloy",
+    "art_id": 6000,
+    "sorting_index": 9026
+  },
+  {
+    "id": 3721265614,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_Event_Prime_Token",
+    "art_id": 4016,
+    "sorting_index": 9026
+  },
+  {
+    "id": 2809275111,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_Research_Mission_Token",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 4246560089,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_Tutorial_Takeover",
+    "art_id": 4018,
+    "sorting_index": 1000
+  },
+  {
+    "id": 970475396,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Federation",
+    "art_id": 100,
+    "sorting_index": 1075
+  },
+  {
+    "id": 156323681,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Klingon",
+    "art_id": 101,
+    "sorting_index": 1076
+  },
+  {
+    "id": 4135751670,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Romulan",
+    "art_id": 102,
+    "sorting_index": 1077
+  },
+  {
+    "id": 1520778986,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Andorian",
+    "art_id": 103,
+    "sorting_index": 1078
+  },
+  {
+    "id": 715268076,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Vulcan",
+    "art_id": 104,
+    "sorting_index": 1079
+  },
+  {
+    "id": 2033427427,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Gorn",
+    "art_id": 105,
+    "sorting_index": 1080
+  },
+  {
+    "id": 3068125837,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Arkonian",
+    "art_id": 106,
+    "sorting_index": 1081
+  },
+  {
+    "id": 2508063495,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Suliban",
+    "art_id": 107,
+    "sorting_index": 1082
+  },
+  {
+    "id": 2904050760,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Corvallen",
+    "art_id": 108,
+    "sorting_index": 1083
+  },
+  {
+    "id": 1411273557,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Orion",
+    "art_id": 109,
+    "sorting_index": 1084
+  },
+  {
+    "id": 598150761,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Khan",
+    "art_id": 110,
+    "sorting_index": 1085
+  },
+  {
+    "id": 1431344334,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_CdrBriefing",
+    "art_id": 7,
+    "sorting_index": 3001
+  },
+  {
+    "id": 420082937,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SciBriefing",
+    "art_id": 8,
+    "sorting_index": 3002
+  },
+  {
+    "id": 2424843299,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EngBriefing",
+    "art_id": 9,
+    "sorting_index": 3003
+  },
+  {
+    "id": 774214561,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha3",
+    "art_id": 125,
+    "sorting_index": 107
+  },
+  {
+    "id": 3078590262,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha4",
+    "art_id": 126,
+    "sorting_index": 108
+  },
+  {
+    "id": 1868235820,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha5",
+    "art_id": 127,
+    "sorting_index": 109
+  },
+  {
+    "id": 2477840025,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha6",
+    "art_id": 128,
+    "sorting_index": 110
+  },
+  {
+    "id": 4284516404,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha_Augment",
+    "art_id": 130,
+    "sorting_index": 111
+  },
+  {
+    "id": 4046559430,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Franklin_Blueprint_Token",
+    "art_id": 7390,
+    "sorting_index": 1030
+  },
+  {
+    "id": 1268963073,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SwarmToken",
+    "art_id": 84,
+    "sorting_index": 1031
+  },
+  {
+    "id": 1412484613,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_SwarmToken2",
+    "art_id": 7391,
+    "sorting_index": 1032
+  },
+  {
+    "id": 70012079,
+    "grade": 3,
+    "rarity": 1,
+    "resource_id": "Resource_FranklinPart",
+    "art_id": 85,
+    "sorting_index": 1033
+  },
+  {
+    "id": 3124260923,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FranklinComponent_T2",
+    "art_id": 86,
+    "sorting_index": 5031
+  },
+  {
+    "id": 2096247727,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FranklinComponent_T3",
+    "art_id": 87,
+    "sorting_index": 5032
+  },
+  {
+    "id": 3026464210,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FranklinComponent_T4",
+    "art_id": 88,
+    "sorting_index": 5033
+  },
+  {
+    "id": 963659504,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_FranklinComponent_T5",
+    "art_id": 89,
+    "sorting_index": 5034
+  },
+  {
+    "id": 859608761,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_FranklinComponent_T6",
+    "art_id": 90,
+    "sorting_index": 5035
+  },
+  {
+    "id": 1173344418,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_FranklinComponent_T7",
+    "art_id": 91,
+    "sorting_index": 5036
+  },
+  {
+    "id": 2997183666,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_FranklinComponent_T8",
+    "art_id": 92,
+    "sorting_index": 5037
+  },
+  {
+    "id": 2378673725,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_FranklinComponent_T9",
+    "art_id": 93,
+    "sorting_index": 5038
+  },
+  {
+    "id": 2942850426,
+    "grade": 4,
+    "rarity": 1,
+    "resource_id": "Resource_Franklin2Part",
+    "art_id": 7394,
+    "sorting_index": 10000
+  },
+  {
+    "id": 1569882253,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Franklin2Component_T2",
+    "art_id": 7397,
+    "sorting_index": 10001
+  },
+  {
+    "id": 2088923572,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Franklin2Component_T3",
+    "art_id": 7398,
+    "sorting_index": 10002
+  },
+  {
+    "id": 4203799593,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Franklin2Component_T4",
+    "art_id": 7399,
+    "sorting_index": 10003
+  },
+  {
+    "id": 3464053350,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Franklin2Component_T5",
+    "art_id": 7400,
+    "sorting_index": 10004
+  },
+  {
+    "id": 4226600912,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Franklin2Component_T6",
+    "art_id": 7401,
+    "sorting_index": 10005
+  },
+  {
+    "id": 665955443,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Franklin2Component_T7",
+    "art_id": 7402,
+    "sorting_index": 10006
+  },
+  {
+    "id": 492316787,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Franklin2Component_T8",
+    "art_id": 7403,
+    "sorting_index": 10007
+  },
+  {
+    "id": 1286698611,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Franklin2Component_T9",
+    "art_id": 7404,
+    "sorting_index": 10008
+  },
+  {
+    "id": 3868910277,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Franklin2Component_T10",
+    "art_id": 7405,
+    "sorting_index": 10009
+  },
+  {
+    "id": 3743524635,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Franklin2Component_T11",
+    "art_id": 7406,
+    "sorting_index": 10010
+  },
+  {
+    "id": 1014280816,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Franklin2Component_T12",
+    "art_id": 7407,
+    "sorting_index": 10011
+  },
+  {
+    "id": 3571527951,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject_Beyond1",
+    "art_id": 94,
+    "sorting_index": 5029
+  },
+  {
+    "id": 2342217888,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject_Beyond2",
+    "art_id": 95,
+    "sorting_index": 5030
+  },
+  {
+    "id": 3762160003,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventSwarm_Bronze",
+    "art_id": 6154,
+    "sorting_index": 5031
+  },
+  {
+    "id": 3426585455,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventSwarm_Silver",
+    "art_id": 6155,
+    "sorting_index": 5032
+  },
+  {
+    "id": 236161023,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventSwarm_Gold",
+    "art_id": 6156,
+    "sorting_index": 5033
+  },
+  {
+    "id": 2873869399,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventSwarm_Platinum",
+    "art_id": 6157,
+    "sorting_index": 5034
+  },
+  {
+    "id": 1456566387,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject1",
+    "art_id": 400,
+    "sorting_index": 5001
+  },
+  {
+    "id": 1413626516,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject2",
+    "art_id": 401,
+    "sorting_index": 5002
+  },
+  {
+    "id": 532846447,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject3",
+    "art_id": 402,
+    "sorting_index": 5003
+  },
+  {
+    "id": 3936730693,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject4",
+    "art_id": 403,
+    "sorting_index": 5004
+  },
+  {
+    "id": 771162645,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject5",
+    "art_id": 404,
+    "sorting_index": 5005
+  },
+  {
+    "id": 2340841733,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject6",
+    "art_id": 405,
+    "sorting_index": 5006
+  },
+  {
+    "id": 4079786271,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject7",
+    "art_id": 406,
+    "sorting_index": 5007
+  },
+  {
+    "id": 1381963987,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject8",
+    "art_id": 407,
+    "sorting_index": 5008
+  },
+  {
+    "id": 3496885012,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject9",
+    "art_id": 408,
+    "sorting_index": 5009
+  },
+  {
+    "id": 1359748937,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject10",
+    "art_id": 409,
+    "sorting_index": 5010
+  },
+  {
+    "id": 2687216246,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject11",
+    "art_id": 410,
+    "sorting_index": 5011
+  },
+  {
+    "id": 3613140465,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject12",
+    "art_id": 411,
+    "sorting_index": 5012
+  },
+  {
+    "id": 786120177,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject13",
+    "art_id": 412,
+    "sorting_index": 5013
+  },
+  {
+    "id": 3767469816,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject14",
+    "art_id": 413,
+    "sorting_index": 5014
+  },
+  {
+    "id": 1533771962,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject15",
+    "art_id": 414,
+    "sorting_index": 5015
+  },
+  {
+    "id": 436415589,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject16",
+    "art_id": 415,
+    "sorting_index": 5016
+  },
+  {
+    "id": 288522136,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject17",
+    "art_id": 416,
+    "sorting_index": 5017
+  },
+  {
+    "id": 1922061798,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject18",
+    "art_id": 417,
+    "sorting_index": 5018
+  },
+  {
+    "id": 1837668818,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject19",
+    "art_id": 418,
+    "sorting_index": 5019
+  },
+  {
+    "id": 1692987719,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject20",
+    "art_id": 7133,
+    "sorting_index": 5020
+  },
+  {
+    "id": 793588756,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject21",
+    "art_id": 420,
+    "sorting_index": 5021
+  },
+  {
+    "id": 3377554550,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject22",
+    "art_id": 421,
+    "sorting_index": 5022
+  },
+  {
+    "id": 1536308044,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject23",
+    "art_id": 422,
+    "sorting_index": 5023
+  },
+  {
+    "id": 1314177008,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject24",
+    "art_id": 423,
+    "sorting_index": 5024
+  },
+  {
+    "id": 2172634646,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject25",
+    "art_id": 424,
+    "sorting_index": 5025
+  },
+  {
+    "id": 2730719358,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject26",
+    "art_id": 425,
+    "sorting_index": 5026
+  },
+  {
+    "id": 3800113329,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject27",
+    "art_id": 426,
+    "sorting_index": 5027
+  },
+  {
+    "id": 81977920,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject28",
+    "art_id": 428,
+    "sorting_index": 5028
+  },
+  {
+    "id": 1169191470,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MissionObject_DarkMatter",
+    "art_id": 427,
+    "sorting_index": 5028
+  },
+  {
+    "id": 3787727723,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Klingon_Death_Mask",
+    "art_id": 7103,
+    "sorting_index": 5030
+  },
+  {
+    "id": 200457386,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Klingon_Death_Mask",
+    "art_id": 7134,
+    "sorting_index": 5028
+  },
+  {
+    "id": 180258228,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Starfleet_Service_Ribbon",
+    "art_id": 7102,
+    "sorting_index": 5029
+  },
+  {
+    "id": 3063387094,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Romulan_Seal_Of_Loyalty",
+    "art_id": 7104,
+    "sorting_index": 5031
+  },
+  {
+    "id": 3000937720,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank2",
+    "art_id": 7002,
+    "sorting_index": 4001
+  },
+  {
+    "id": 1775872653,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank3",
+    "art_id": 7003,
+    "sorting_index": 4002
+  },
+  {
+    "id": 989219045,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank4",
+    "art_id": 7004,
+    "sorting_index": 4003
+  },
+  {
+    "id": 2966246916,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank5",
+    "art_id": 7005,
+    "sorting_index": 4004
+  },
+  {
+    "id": 350891529,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank6",
+    "art_id": 7006,
+    "sorting_index": 4005
+  },
+  {
+    "id": 3391530608,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank7",
+    "art_id": 7007,
+    "sorting_index": 4006
+  },
+  {
+    "id": 2647503746,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank8",
+    "art_id": 7008,
+    "sorting_index": 4007
+  },
+  {
+    "id": 3442224252,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank9",
+    "art_id": 7009,
+    "sorting_index": 4008
+  },
+  {
+    "id": 1705031457,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Commendation_Rank10",
+    "art_id": 7010,
+    "sorting_index": 4009
+  },
+  {
+    "id": 3900063590,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AllianceCurrency",
+    "art_id": 140,
+    "sorting_index": 120
+  },
+  {
+    "id": 982245154,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_ParsteelPack1",
+    "art_id": 2001,
+    "sorting_index": 0
+  },
+  {
+    "id": 3210808636,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1m",
+    "art_id": 1001,
+    "sorting_index": 1501
+  },
+  {
+    "id": 1219702667,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3m",
+    "art_id": 1001,
+    "sorting_index": 1502
+  },
+  {
+    "id": 1823786753,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp5m",
+    "art_id": 1001,
+    "sorting_index": 1503
+  },
+  {
+    "id": 2979494228,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp10m",
+    "art_id": 1001,
+    "sorting_index": 1504
+  },
+  {
+    "id": 1673229764,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp15m",
+    "art_id": 1001,
+    "sorting_index": 1505
+  },
+  {
+    "id": 2932133341,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp30m",
+    "art_id": 1001,
+    "sorting_index": 1506
+  },
+  {
+    "id": 24469225,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1h",
+    "art_id": 1002,
+    "sorting_index": 1507
+  },
+  {
+    "id": 3163488617,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3h",
+    "art_id": 1002,
+    "sorting_index": 1508
+  },
+  {
+    "id": 4294695258,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp5h",
+    "art_id": 1002,
+    "sorting_index": 1509
+  },
+  {
+    "id": 2751958969,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp8h",
+    "art_id": 1002,
+    "sorting_index": 1510
+  },
+  {
+    "id": 2119097482,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp12h",
+    "art_id": 1002,
+    "sorting_index": 1511
+  },
+  {
+    "id": 3307144088,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp15h",
+    "art_id": 1002,
+    "sorting_index": 1512
+  },
+  {
+    "id": 1849895942,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1d",
+    "art_id": 1003,
+    "sorting_index": 1513
+  },
+  {
+    "id": 276120137,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp2d",
+    "art_id": 1003,
+    "sorting_index": 1514
+  },
+  {
+    "id": 20530098,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3d",
+    "art_id": 1003,
+    "sorting_index": 1515
+  },
+  {
+    "id": 3331085267,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp10d",
+    "art_id": 1003,
+    "sorting_index": 1515
+  },
+  {
+    "id": 1445265330,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1m_Repair",
+    "art_id": 1201,
+    "sorting_index": 1516
+  },
+  {
+    "id": 3019850922,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3m_Repair",
+    "art_id": 1201,
+    "sorting_index": 1517
+  },
+  {
+    "id": 1827073923,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp5m_Repair",
+    "art_id": 1201,
+    "sorting_index": 1518
+  },
+  {
+    "id": 2292020744,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp10m_Repair",
+    "art_id": 1201,
+    "sorting_index": 1519
+  },
+  {
+    "id": 821696896,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp15m_Repair",
+    "art_id": 1201,
+    "sorting_index": 1520
+  },
+  {
+    "id": 3097592274,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp30m_Repair",
+    "art_id": 1202,
+    "sorting_index": 1521
+  },
+  {
+    "id": 3586919025,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1h_Repair",
+    "art_id": 1202,
+    "sorting_index": 1522
+  },
+  {
+    "id": 1108300794,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3h_Repair",
+    "art_id": 1202,
+    "sorting_index": 1523
+  },
+  {
+    "id": 245448950,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp5h_Repair",
+    "art_id": 1202,
+    "sorting_index": 1524
+  },
+  {
+    "id": 2068955771,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp8h_Repair",
+    "art_id": 1203,
+    "sorting_index": 1525
+  },
+  {
+    "id": 550116232,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp12h_Repair",
+    "art_id": 1203,
+    "sorting_index": 1526
+  },
+  {
+    "id": 2473702844,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp15h_Repair",
+    "art_id": 1203,
+    "sorting_index": 1527
+  },
+  {
+    "id": 4226126569,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1d_Repair",
+    "art_id": 1204,
+    "sorting_index": 1528
+  },
+  {
+    "id": 2087066169,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp2d_Repair",
+    "art_id": 1204,
+    "sorting_index": 1529
+  },
+  {
+    "id": 1546073787,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp3d_Repair",
+    "art_id": 1204,
+    "sorting_index": 1530
+  },
+  {
+    "id": 2098536749,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1m_AwayAssignment",
+    "art_id": 7412,
+    "sorting_index": 1531
+  },
+  {
+    "id": 1047365587,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp5m_AwayAssignment",
+    "art_id": 7412,
+    "sorting_index": 1532
+  },
+  {
+    "id": 1665666422,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp15m_AwayAssignment",
+    "art_id": 7413,
+    "sorting_index": 1533
+  },
+  {
+    "id": 3400834482,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1h_AwayAssignment",
+    "art_id": 7413,
+    "sorting_index": 1534
+  },
+  {
+    "id": 2430015861,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp4h_AwayAssignment",
+    "art_id": 7414,
+    "sorting_index": 1535
+  },
+  {
+    "id": 3629750938,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp12h_AwayAssignment",
+    "art_id": 7414,
+    "sorting_index": 1536
+  },
+  {
+    "id": 1195082385,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_SpeedUp1d_AwayAssignment",
+    "art_id": 7415,
+    "sorting_index": 1537
+  },
+  {
+    "id": 380140048,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Shard_Spock",
+    "art_id": 129,
+    "sorting_index": 6001
+  },
+  {
+    "id": 2288993197,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventAlliance_Bronze",
+    "art_id": 6001,
+    "sorting_index": 6002
+  },
+  {
+    "id": 2470625997,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventAlliance_Silver",
+    "art_id": 6002,
+    "sorting_index": 6003
+  },
+  {
+    "id": 3894813924,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventAlliance_Gold",
+    "art_id": 6003,
+    "sorting_index": 6004
+  },
+  {
+    "id": 2772743986,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventAlliance_Platinum",
+    "art_id": 6008,
+    "sorting_index": 6005
+  },
+  {
+    "id": 1129239852,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventPvP_Bronze",
+    "art_id": 6004,
+    "sorting_index": 6006
+  },
+  {
+    "id": 1175218316,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventPvP_Silver",
+    "art_id": 6005,
+    "sorting_index": 6007
+  },
+  {
+    "id": 3404704475,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventPvP_Gold",
+    "art_id": 6006,
+    "sorting_index": 6008
+  },
+  {
+    "id": 3630441817,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventPvP_Platinum",
+    "art_id": 6007,
+    "sorting_index": 6009
+  },
+  {
+    "id": 2539622062,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventKlingon_Bronze",
+    "art_id": 6150,
+    "sorting_index": 6010
+  },
+  {
+    "id": 477068032,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventKlingon_Silver",
+    "art_id": 6151,
+    "sorting_index": 6011
+  },
+  {
+    "id": 3966764913,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventKlingon_Gold",
+    "art_id": 6152,
+    "sorting_index": 6012
+  },
+  {
+    "id": 1838575230,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventKlingon_Platinum",
+    "art_id": 6153,
+    "sorting_index": 6013
+  },
+  {
+    "id": 3547609879,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Klingon_Bronze_1",
+    "art_id": 6160,
+    "sorting_index": 6014
+  },
+  {
+    "id": 1417868395,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Klingon_Silver_1",
+    "art_id": 6161,
+    "sorting_index": 6015
+  },
+  {
+    "id": 2699454784,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Klingon_Gold_1",
+    "art_id": 6162,
+    "sorting_index": 6016
+  },
+  {
+    "id": 611299651,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Klingon_Platinum_1",
+    "art_id": 6163,
+    "sorting_index": 6017
+  },
+  {
+    "id": 2254353023,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Romulan_Bronze_1",
+    "art_id": 6164,
+    "sorting_index": 6018
+  },
+  {
+    "id": 3123595351,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Romulan_Silver_1",
+    "art_id": 6165,
+    "sorting_index": 6019
+  },
+  {
+    "id": 1511709843,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Romulan_Gold_1",
+    "art_id": 6166,
+    "sorting_index": 6020
+  },
+  {
+    "id": 2993024533,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Romulan_Platinum_1",
+    "art_id": 6167,
+    "sorting_index": 6021
+  },
+  {
+    "id": 1618116578,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Federation_Bronze_1",
+    "art_id": 6168,
+    "sorting_index": 6022
+  },
+  {
+    "id": 3790900896,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Federation_Silver_1",
+    "art_id": 6169,
+    "sorting_index": 6023
+  },
+  {
+    "id": 3301328353,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Federation_Gold_1",
+    "art_id": 6170,
+    "sorting_index": 6024
+  },
+  {
+    "id": 1787621402,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Federation_Platinum_1",
+    "art_id": 6171,
+    "sorting_index": 6025
+  },
+  {
+    "id": 1802642848,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Valentines",
+    "art_id": 6110,
+    "sorting_index": 6026
+  },
+  {
+    "id": 237437085,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_AllianceGiftToken",
+    "art_id": 6172,
+    "sorting_index": 6027
+  },
+  {
+    "id": 2655948578,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_KeyToken",
+    "art_id": 6173,
+    "sorting_index": 6028
+  },
+  {
+    "id": 3579745292,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_PalladiumToken",
+    "art_id": 6174,
+    "sorting_index": 6029
+  },
+  {
+    "id": 3764599212,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HeroToken",
+    "art_id": 6175,
+    "sorting_index": 6030
+  },
+  {
+    "id": 2741166256,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Daily_Meta1",
+    "art_id": 7000,
+    "sorting_index": 7000
+  },
+  {
+    "id": 3788095604,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_1h",
+    "art_id": 1502,
+    "sorting_index": 1601
+  },
+  {
+    "id": 3679054867,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_2h",
+    "art_id": 1502,
+    "sorting_index": 1602
+  },
+  {
+    "id": 3058388990,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_4h",
+    "art_id": 1502,
+    "sorting_index": 1603
+  },
+  {
+    "id": 3257212914,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_8h",
+    "art_id": 1503,
+    "sorting_index": 1604
+  },
+  {
+    "id": 1105830521,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_12h",
+    "art_id": 1503,
+    "sorting_index": 1605
+  },
+  {
+    "id": 178169676,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_1d",
+    "art_id": 1503,
+    "sorting_index": 1606
+  },
+  {
+    "id": 1905604904,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_3d",
+    "art_id": 1504,
+    "sorting_index": 1607
+  },
+  {
+    "id": 985389969,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_7d",
+    "art_id": 1504,
+    "sorting_index": 1608
+  },
+  {
+    "id": 676333576,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Consumable_PeaceShield_30d",
+    "art_id": 1504,
+    "sorting_index": 1609
+  },
+  {
+    "id": 2028406060,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "PeaceShield_Triggered_Defeat",
+    "art_id": 1502,
+    "sorting_index": 1601
+  },
+  {
+    "id": 3962256026,
+    "grade": 1,
+    "rarity": 1,
+    "resource_id": "PeaceShield_Triggered_Destruction",
+    "art_id": 1502,
+    "sorting_index": 1601
+  },
+  {
+    "id": 444634882,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Ascension_G4",
+    "art_id": 901,
+    "sorting_index": 4501
+  },
+  {
+    "id": 3690675741,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Ascension_G5",
+    "art_id": 902,
+    "sorting_index": 4502
+  },
+  {
+    "id": 4283583065,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_ParsteelToken_100k",
+    "art_id": 2000,
+    "sorting_index": 20
+  },
+  {
+    "id": 786236343,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_TritaniumToken_100k",
+    "art_id": 2100,
+    "sorting_index": 21
+  },
+  {
+    "id": 806841289,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_DilithiumToken_10k",
+    "art_id": 2200,
+    "sorting_index": 22
+  },
+  {
+    "id": 1367711783,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_ParsteelToken",
+    "art_id": 2001,
+    "sorting_index": 20
+  },
+  {
+    "id": 2533089074,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_TritaniumToken",
+    "art_id": 2101,
+    "sorting_index": 21
+  },
+  {
+    "id": 693841382,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_DilithiumToken",
+    "art_id": 2201,
+    "sorting_index": 22
+  },
+  {
+    "id": 1150400770,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_ParsteelToken_1B",
+    "art_id": 2002,
+    "sorting_index": 20
+  },
+  {
+    "id": 3352499627,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_TritaniumToken_1B",
+    "art_id": 2102,
+    "sorting_index": 21
+  },
+  {
+    "id": 3168533496,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_DilithiumToken_1M",
+    "art_id": 2202,
+    "sorting_index": 22
+  },
+  {
+    "id": 2300015231,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 1367504689,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 2692552457,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 2566335752,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jan",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 4017913291,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Feb",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 2108269193,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Mar",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 128233705,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Apr",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 1509130461,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_May",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 3193052630,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jun",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 538911921,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jul",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 184202931,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Aug",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 3710748574,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Sep",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 4044808589,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Oct",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 1974274017,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Nov",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 582028979,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Dec",
+    "art_id": 3001,
+    "sorting_index": 40
+  },
+  {
+    "id": 2438084654,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jan",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 3426664999,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Feb",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 469374522,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Mar",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 521101335,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Apr",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 333901242,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_May",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 353672513,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jun",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 3519923675,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jul",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 1981661174,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Aug",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 2547416137,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Sep",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 3707029655,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Oct",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 2434443072,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Nov",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 293205062,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Dec",
+    "art_id": 3101,
+    "sorting_index": 41
+  },
+  {
+    "id": 31427583,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jan",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 580359161,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Feb",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 1304556261,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Mar",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 3090967219,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Apr",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 1499816143,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_May",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 1613839772,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jun",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 104603348,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jul",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 836272734,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Aug",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 52492053,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Sep",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 3828209873,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Oct",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 4132649639,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Nov",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 1955033627,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Dec",
+    "art_id": 3201,
+    "sorting_index": 42
+  },
+  {
+    "id": 893554457,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jan_2020",
+    "art_id": 3002,
+    "sorting_index": 40
+  },
+  {
+    "id": 349535454,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Feb_2020",
+    "art_id": 3003,
+    "sorting_index": 40
+  },
+  {
+    "id": 2025294240,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Mar_2020",
+    "art_id": 3004,
+    "sorting_index": 40
+  },
+  {
+    "id": 3945439740,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Apr_2020",
+    "art_id": 3002,
+    "sorting_index": 40
+  },
+  {
+    "id": 460973767,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_May_2020",
+    "art_id": 3003,
+    "sorting_index": 40
+  },
+  {
+    "id": 1427682221,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jun_2020",
+    "art_id": 3004,
+    "sorting_index": 40
+  },
+  {
+    "id": 4014532472,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Jul_2020",
+    "art_id": 3002,
+    "sorting_index": 40
+  },
+  {
+    "id": 2264166286,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Aug_2020",
+    "art_id": 3003,
+    "sorting_index": 40
+  },
+  {
+    "id": 1982856416,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Sep_2020",
+    "art_id": 3004,
+    "sorting_index": 40
+  },
+  {
+    "id": 2723682822,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Oct_2020",
+    "art_id": 3002,
+    "sorting_index": 40
+  },
+  {
+    "id": 4021396281,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Nov_2020",
+    "art_id": 3003,
+    "sorting_index": 40
+  },
+  {
+    "id": 2844380760,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken1_Dec_2020",
+    "art_id": 3004,
+    "sorting_index": 40
+  },
+  {
+    "id": 3056220220,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jan_2020",
+    "art_id": 3102,
+    "sorting_index": 41
+  },
+  {
+    "id": 2913794188,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Feb_2020",
+    "art_id": 3103,
+    "sorting_index": 41
+  },
+  {
+    "id": 3463828437,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Mar_2020",
+    "art_id": 3104,
+    "sorting_index": 41
+  },
+  {
+    "id": 2024996896,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Apr_2020",
+    "art_id": 3102,
+    "sorting_index": 41
+  },
+  {
+    "id": 1011165711,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_May_2020",
+    "art_id": 3103,
+    "sorting_index": 41
+  },
+  {
+    "id": 2672477296,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jun_2020",
+    "art_id": 3104,
+    "sorting_index": 41
+  },
+  {
+    "id": 2683108432,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Jul_2020",
+    "art_id": 3102,
+    "sorting_index": 41
+  },
+  {
+    "id": 59620062,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Aug_2020",
+    "art_id": 3103,
+    "sorting_index": 41
+  },
+  {
+    "id": 527205303,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Sep_2020",
+    "art_id": 3104,
+    "sorting_index": 41
+  },
+  {
+    "id": 3647351167,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Oct_2020",
+    "art_id": 3102,
+    "sorting_index": 41
+  },
+  {
+    "id": 1474801199,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Nov_2020",
+    "art_id": 3103,
+    "sorting_index": 41
+  },
+  {
+    "id": 1449952055,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken2_Dec_2020",
+    "art_id": 3104,
+    "sorting_index": 41
+  },
+  {
+    "id": 4278093949,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jan_2020",
+    "art_id": 3202,
+    "sorting_index": 42
+  },
+  {
+    "id": 953470213,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Feb_2020",
+    "art_id": 3203,
+    "sorting_index": 42
+  },
+  {
+    "id": 575613452,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Mar_2020",
+    "art_id": 3204,
+    "sorting_index": 42
+  },
+  {
+    "id": 2252282479,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Apr_2020",
+    "art_id": 3202,
+    "sorting_index": 42
+  },
+  {
+    "id": 2668085121,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_May_2020",
+    "art_id": 3203,
+    "sorting_index": 42
+  },
+  {
+    "id": 949285281,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jun_2020",
+    "art_id": 3204,
+    "sorting_index": 42
+  },
+  {
+    "id": 2658212678,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Jul_2020",
+    "art_id": 3202,
+    "sorting_index": 42
+  },
+  {
+    "id": 3243471639,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Aug_2020",
+    "art_id": 3203,
+    "sorting_index": 42
+  },
+  {
+    "id": 2244853497,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Sep_2020",
+    "art_id": 3204,
+    "sorting_index": 42
+  },
+  {
+    "id": 1168950251,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Oct_2020",
+    "art_id": 3202,
+    "sorting_index": 42
+  },
+  {
+    "id": 1113786974,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Nov_2020",
+    "art_id": 3203,
+    "sorting_index": 42
+  },
+  {
+    "id": 3755780696,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BonusToken3_Dec_2020",
+    "art_id": 3204,
+    "sorting_index": 42
+  },
+  {
+    "id": 1422843188,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_Crystal_G3",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 2323968209,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_Hydrocarbon_G3",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 4118714246,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_Ore_G3",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 2747372174,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Daily_Loyalty1",
+    "art_id": 7101,
+    "sorting_index": 50
+  },
+  {
+    "id": 2306110757,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Armada_Token_PvE",
+    "art_id": 7113,
+    "sorting_index": 8001
+  },
+  {
+    "id": 2925848876,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Armada_Token_PvE_Rare",
+    "art_id": 7114,
+    "sorting_index": 8002
+  },
+  {
+    "id": 2705178687,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Armada_Token_PvE_Epic",
+    "art_id": 7115,
+    "sorting_index": 8003
+  },
+  {
+    "id": 2627181702,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Armada_Token_PvP",
+    "art_id": 7106,
+    "sorting_index": 8004
+  },
+  {
+    "id": 2431852293,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Armada_Credit_Bronze",
+    "art_id": 7107,
+    "sorting_index": 8005
+  },
+  {
+    "id": 822290119,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Armada_Credit_Silver",
+    "art_id": 7108,
+    "sorting_index": 8006
+  },
+  {
+    "id": 2796354043,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Armada_Credit_Gold",
+    "art_id": 7109,
+    "sorting_index": 8007
+  },
+  {
+    "id": 2266367499,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Armada_Upgrade_PvE",
+    "art_id": 7110,
+    "sorting_index": 8008
+  },
+  {
+    "id": 4000270850,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Armada_Upgrade_PvE_Rare",
+    "art_id": 7110,
+    "sorting_index": 8008
+  },
+  {
+    "id": 3288183772,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_ServerTransfer_Novice",
+    "art_id": 7111,
+    "sorting_index": 2005
+  },
+  {
+    "id": 3362218447,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_ServerTransfer_Advanced",
+    "art_id": 7112,
+    "sorting_index": 2006
+  },
+  {
+    "id": 2526003880,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BlackJellyfishEvent_HiddenToken",
+    "art_id": 7132,
+    "sorting_index": 2007
+  },
+  {
+    "id": 1566087474,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mirror_MissionToken1",
+    "art_id": 7118,
+    "sorting_index": 2008
+  },
+  {
+    "id": 1263340109,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mirror_MissionToken2",
+    "art_id": 7117,
+    "sorting_index": 2009
+  },
+  {
+    "id": 2676362235,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mirror_EventCurrency",
+    "art_id": 7119,
+    "sorting_index": 2010
+  },
+  {
+    "id": 3635937582,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mirror_MissionHiddenToken",
+    "art_id": 7131,
+    "sorting_index": 2011
+  },
+  {
+    "id": 3257818583,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Hikakin_Token",
+    "art_id": 7120,
+    "sorting_index": 2012
+  },
+  {
+    "id": 339468559,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mission_Research_Combat1",
+    "art_id": 7126,
+    "sorting_index": 8007
+  },
+  {
+    "id": 3017085902,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Borg_Research",
+    "art_id": 7128,
+    "sorting_index": 8009
+  },
+  {
+    "id": 2994241655,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mission_Research_Galaxy1",
+    "art_id": 7127,
+    "sorting_index": 8008
+  },
+  {
+    "id": 1587389759,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Federation_EncryptedMessage",
+    "art_id": 7121,
+    "sorting_index": 2007
+  },
+  {
+    "id": 1447606827,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Klingon_EncryptedMessage",
+    "art_id": 7122,
+    "sorting_index": 2007
+  },
+  {
+    "id": 1491405968,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Romulan_EncryptedMessage",
+    "art_id": 7123,
+    "sorting_index": 2007
+  },
+  {
+    "id": 2012873194,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_DeepSpace_Datapad",
+    "art_id": 7124,
+    "sorting_index": 2007
+  },
+  {
+    "id": 445497512,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_NewVulcan_Datapad",
+    "art_id": 7125,
+    "sorting_index": 2007
+  },
+  {
+    "id": 820807934,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Alpha",
+    "art_id": 8000,
+    "sorting_index": 100
+  },
+  {
+    "id": 3341775810,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Beta",
+    "art_id": 8001,
+    "sorting_index": 101
+  },
+  {
+    "id": 3201764205,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Delta",
+    "art_id": 8002,
+    "sorting_index": 102
+  },
+  {
+    "id": 2668326486,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Epsilon",
+    "art_id": 8003,
+    "sorting_index": 103
+  },
+  {
+    "id": 1632555225,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Gamma",
+    "art_id": 8004,
+    "sorting_index": 104
+  },
+  {
+    "id": 2924742837,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Kappa",
+    "art_id": 8005,
+    "sorting_index": 105
+  },
+  {
+    "id": 1672686371,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Theta",
+    "art_id": 8006,
+    "sorting_index": 106
+  },
+  {
+    "id": 1763301192,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Greek_Zeta",
+    "art_id": 8007,
+    "sorting_index": 107
+  },
+  {
+    "id": 3609639828,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Christmas",
+    "art_id": 7130,
+    "sorting_index": 2014
+  },
+  {
+    "id": 4019586475,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Christmas_2",
+    "art_id": 7230,
+    "sorting_index": 2015
+  },
+  {
+    "id": 3239314100,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Thanksgiving",
+    "art_id": 7129,
+    "sorting_index": 2013
+  },
+  {
+    "id": 2443678632,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Valentines_R1",
+    "art_id": 7231,
+    "sorting_index": 2016
+  },
+  {
+    "id": 753451360,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Valentines_R2",
+    "art_id": 7232,
+    "sorting_index": 2017
+  },
+  {
+    "id": 209330948,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Valentines_R3",
+    "art_id": 7233,
+    "sorting_index": 2018
+  },
+  {
+    "id": 2325651212,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Valentines_Generic",
+    "art_id": 7234,
+    "sorting_index": 2019
+  },
+  {
+    "id": 1299060526,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_StPatricksDay_R1",
+    "art_id": 7184,
+    "sorting_index": 2020
+  },
+  {
+    "id": 2751046721,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_StPatricksDay_R2",
+    "art_id": 7185,
+    "sorting_index": 2021
+  },
+  {
+    "id": 1935142689,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_StPatricksDay_R3",
+    "art_id": 7186,
+    "sorting_index": 2022
+  },
+  {
+    "id": 246178434,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Friday13",
+    "art_id": 7183,
+    "sorting_index": 2023
+  },
+  {
+    "id": 3861113753,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Spring_2020",
+    "art_id": 7187,
+    "sorting_index": 2024
+  },
+  {
+    "id": 785877346,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_FirstContact",
+    "art_id": 7192,
+    "sorting_index": 2025
+  },
+  {
+    "id": 2132167316,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_OlympicBronze",
+    "art_id": 7188,
+    "sorting_index": 2026
+  },
+  {
+    "id": 1430496634,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_OlympicSilver",
+    "art_id": 7189,
+    "sorting_index": 2027
+  },
+  {
+    "id": 2534108129,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_OlympicGold",
+    "art_id": 7190,
+    "sorting_index": 2028
+  },
+  {
+    "id": 3753270013,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EarthDay",
+    "art_id": 7199,
+    "sorting_index": 2029
+  },
+  {
+    "id": 3561506913,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EasterFed",
+    "art_id": 7200,
+    "sorting_index": 2030
+  },
+  {
+    "id": 4197123386,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EasterKlg",
+    "art_id": 7201,
+    "sorting_index": 2031
+  },
+  {
+    "id": 510122205,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EasterRom",
+    "art_id": 7202,
+    "sorting_index": 2032
+  },
+  {
+    "id": 3552255995,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EasterMirror",
+    "art_id": 7203,
+    "sorting_index": 2033
+  },
+  {
+    "id": 1231266746,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_EasterBorg",
+    "art_id": 7204,
+    "sorting_index": 2034
+  },
+  {
+    "id": 2416691149,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_MothersDay",
+    "art_id": 7218,
+    "sorting_index": 2035
+  },
+  {
+    "id": 1273508379,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_CincoDeMayo",
+    "art_id": 7216,
+    "sorting_index": 2036
+  },
+  {
+    "id": 396658006,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_MemorialDay",
+    "art_id": 7217,
+    "sorting_index": 2037
+  },
+  {
+    "id": 2694922370,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D1",
+    "art_id": 7317,
+    "sorting_index": 2038
+  },
+  {
+    "id": 1814065335,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D2",
+    "art_id": 7317,
+    "sorting_index": 2039
+  },
+  {
+    "id": 3034898761,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D3",
+    "art_id": 7317,
+    "sorting_index": 2040
+  },
+  {
+    "id": 956658437,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D4",
+    "art_id": 7317,
+    "sorting_index": 2041
+  },
+  {
+    "id": 817008652,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D5",
+    "art_id": 7317,
+    "sorting_index": 2042
+  },
+  {
+    "id": 102170616,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D6",
+    "art_id": 7317,
+    "sorting_index": 2043
+  },
+  {
+    "id": 58276111,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_GalaxyDay_D7",
+    "art_id": 7318,
+    "sorting_index": 2044
+  },
+  {
+    "id": 3415452770,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Quantum",
+    "art_id": 8008,
+    "sorting_index": 108
+  },
+  {
+    "id": 3672912508,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Plasma",
+    "art_id": 8009,
+    "sorting_index": 109
+  },
+  {
+    "id": 2865326666,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Photon",
+    "art_id": 8010,
+    "sorting_index": 110
+  },
+  {
+    "id": 3323023943,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Polaron",
+    "art_id": 8011,
+    "sorting_index": 111
+  },
+  {
+    "id": 3118409138,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Isokinetic",
+    "art_id": 8012,
+    "sorting_index": 112
+  },
+  {
+    "id": 448302420,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Blue_1",
+    "art_id": 7171,
+    "sorting_index": 113
+  },
+  {
+    "id": 1562880080,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Blue_2",
+    "art_id": 7172,
+    "sorting_index": 114
+  },
+  {
+    "id": 1854199247,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Blue_3",
+    "art_id": 7173,
+    "sorting_index": 115
+  },
+  {
+    "id": 356210821,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Blue_4",
+    "art_id": 7174,
+    "sorting_index": 116
+  },
+  {
+    "id": 455811660,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Green_1",
+    "art_id": 7175,
+    "sorting_index": 117
+  },
+  {
+    "id": 1844199535,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Green_2",
+    "art_id": 7176,
+    "sorting_index": 118
+  },
+  {
+    "id": 2894718616,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Green_3",
+    "art_id": 7177,
+    "sorting_index": 119
+  },
+  {
+    "id": 734378067,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Green_4",
+    "art_id": 7178,
+    "sorting_index": 120
+  },
+  {
+    "id": 1287142921,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Purple_1",
+    "art_id": 7179,
+    "sorting_index": 121
+  },
+  {
+    "id": 1566611505,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Purple_2",
+    "art_id": 7180,
+    "sorting_index": 122
+  },
+  {
+    "id": 2646159642,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Purple_3",
+    "art_id": 7181,
+    "sorting_index": 123
+  },
+  {
+    "id": 2519863371,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_Purple_4",
+    "art_id": 7182,
+    "sorting_index": 124
+  },
+  {
+    "id": 224488959,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_CmdToken",
+    "art_id": 7196,
+    "sorting_index": 125
+  },
+  {
+    "id": 1050716582,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_EngToken",
+    "art_id": 7198,
+    "sorting_index": 126
+  },
+  {
+    "id": 1920709621,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Generic_SciToken",
+    "art_id": 7197,
+    "sorting_index": 127
+  },
+  {
+    "id": 1815377588,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_ArmadaToken",
+    "art_id": 7195,
+    "sorting_index": 128
+  },
+  {
+    "id": 2441286487,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_Token",
+    "art_id": 7142,
+    "sorting_index": 200
+  },
+  {
+    "id": 1567885546,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_Reward",
+    "art_id": 7143,
+    "sorting_index": 203
+  },
+  {
+    "id": 1596047785,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_EpicToken",
+    "art_id": 7144,
+    "sorting_index": 201
+  },
+  {
+    "id": 2516233651,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_EpicReward",
+    "art_id": 7146,
+    "sorting_index": 204
+  },
+  {
+    "id": 2619919251,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward",
+    "art_id": 7147,
+    "sorting_index": 202
+  },
+  {
+    "id": 1069292915,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_MissionKey",
+    "art_id": 7148,
+    "sorting_index": 205
+  },
+  {
+    "id": 628048282,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_1",
+    "art_id": 7143,
+    "sorting_index": 206
+  },
+  {
+    "id": 1887679281,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_2",
+    "art_id": 7143,
+    "sorting_index": 207
+  },
+  {
+    "id": 2576357400,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_3",
+    "art_id": 7143,
+    "sorting_index": 208
+  },
+  {
+    "id": 45514221,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_4",
+    "art_id": 7143,
+    "sorting_index": 209
+  },
+  {
+    "id": 1581882768,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_5",
+    "art_id": 7143,
+    "sorting_index": 210
+  },
+  {
+    "id": 2800914434,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_6",
+    "art_id": 7143,
+    "sorting_index": 211
+  },
+  {
+    "id": 3817777397,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_7",
+    "art_id": 7143,
+    "sorting_index": 212
+  },
+  {
+    "id": 1487954776,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_8",
+    "art_id": 7143,
+    "sorting_index": 213
+  },
+  {
+    "id": 4275981488,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_9",
+    "art_id": 7143,
+    "sorting_index": 214
+  },
+  {
+    "id": 1354403301,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_PremiumReward_10",
+    "art_id": 7143,
+    "sorting_index": 215
+  },
+  {
+    "id": 94936157,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_HiddenToken_Jan",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2627208771,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_HiddenToken_Feb",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2756628201,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_HiddenToken_Mar",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3537041027,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_HiddenToken_Mar_2",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1607042317,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_HiddenToken_Mar_3",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2010646153,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_1",
+    "art_id": 7143,
+    "sorting_index": 217
+  },
+  {
+    "id": 2288900293,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_2",
+    "art_id": 7143,
+    "sorting_index": 218
+  },
+  {
+    "id": 79026825,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_3",
+    "art_id": 7143,
+    "sorting_index": 219
+  },
+  {
+    "id": 4267869478,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_4",
+    "art_id": 7143,
+    "sorting_index": 220
+  },
+  {
+    "id": 74797268,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_5",
+    "art_id": 7143,
+    "sorting_index": 221
+  },
+  {
+    "id": 1799179181,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_6",
+    "art_id": 7143,
+    "sorting_index": 222
+  },
+  {
+    "id": 3193131510,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_7",
+    "art_id": 7143,
+    "sorting_index": 223
+  },
+  {
+    "id": 4164605438,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_8",
+    "art_id": 7143,
+    "sorting_index": 224
+  },
+  {
+    "id": 2334013784,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_9",
+    "art_id": 7143,
+    "sorting_index": 225
+  },
+  {
+    "id": 89798992,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FebBorgEvent_PremiumReward_10",
+    "art_id": 7143,
+    "sorting_index": 226
+  },
+  {
+    "id": 2927202128,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_1",
+    "art_id": 7143,
+    "sorting_index": 227
+  },
+  {
+    "id": 4017859423,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_2",
+    "art_id": 7143,
+    "sorting_index": 228
+  },
+  {
+    "id": 3062207154,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_3",
+    "art_id": 7143,
+    "sorting_index": 229
+  },
+  {
+    "id": 961590534,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_4",
+    "art_id": 7143,
+    "sorting_index": 230
+  },
+  {
+    "id": 160670068,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_5",
+    "art_id": 7143,
+    "sorting_index": 231
+  },
+  {
+    "id": 429638491,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_6",
+    "art_id": 7143,
+    "sorting_index": 232
+  },
+  {
+    "id": 721020226,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_7",
+    "art_id": 7143,
+    "sorting_index": 233
+  },
+  {
+    "id": 2863378837,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_8",
+    "art_id": 7143,
+    "sorting_index": 234
+  },
+  {
+    "id": 2052492785,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_9",
+    "art_id": 7143,
+    "sorting_index": 235
+  },
+  {
+    "id": 2538619740,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MarBorgEvent_PremiumReward_10",
+    "art_id": 7143,
+    "sorting_index": 236
+  },
+  {
+    "id": 2914321012,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgEvent_MarchPoints",
+    "art_id": 7191,
+    "sorting_index": 237
+  },
+  {
+    "id": 3435535200,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprBorgEvent_RewardToken",
+    "art_id": 7215,
+    "sorting_index": 239
+  },
+  {
+    "id": 872603462,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprBorgEvent_LoopToken",
+    "art_id": 7210,
+    "sorting_index": 238
+  },
+  {
+    "id": 3015227355,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprBorgEvent_MegaLoopToken",
+    "art_id": 7209,
+    "sorting_index": 240
+  },
+  {
+    "id": 2249658109,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprBorgEvent_WarEffortToken",
+    "art_id": 7208,
+    "sorting_index": 241
+  },
+  {
+    "id": 2838044184,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprBorgEvent_WarpToken_Generic",
+    "art_id": 7193,
+    "sorting_index": 242
+  },
+  {
+    "id": 4269692898,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_AprBorgEvent_WarpToken_Mega",
+    "art_id": 7194,
+    "sorting_index": 243
+  },
+  {
+    "id": 1961083157,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_AprBorgEvent_ArmadaDir_Uncommon",
+    "art_id": 7211,
+    "sorting_index": 244
+  },
+  {
+    "id": 4111447370,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_AprBorgEvent_ArmadaDir_Rare",
+    "art_id": 7212,
+    "sorting_index": 245
+  },
+  {
+    "id": 1308749719,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_AprBorgEvent_ArmadaDir_Epic",
+    "art_id": 7213,
+    "sorting_index": 246
+  },
+  {
+    "id": 2795363445,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_AprBorgEvent_ArmadaDir_Mega",
+    "art_id": 7214,
+    "sorting_index": 247
+  },
+  {
+    "id": 3582105576,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_WarpToken_Generic",
+    "art_id": 6010,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3617283774,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgToken_Raw",
+    "art_id": 7140,
+    "sorting_index": 8009
+  },
+  {
+    "id": 15735971,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgToken_Refined",
+    "art_id": 7141,
+    "sorting_index": 8010
+  },
+  {
+    "id": 3033003135,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgToken_Refined_2",
+    "art_id": 7170,
+    "sorting_index": 8011
+  },
+  {
+    "id": 610286118,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgSystem_Access_1",
+    "art_id": 7149,
+    "sorting_index": 8008
+  },
+  {
+    "id": 2775883306,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgGoblin",
+    "art_id": 7205,
+    "sorting_index": 8012
+  },
+  {
+    "id": 3461720168,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_WarpToken_Latinum_1",
+    "art_id": 7207,
+    "sorting_index": 8014
+  },
+  {
+    "id": 3467622175,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_WarpToken_Latinum_2",
+    "art_id": 7207,
+    "sorting_index": 8015
+  },
+  {
+    "id": 1888662191,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_WarpToken_Latinum_3",
+    "art_id": 7207,
+    "sorting_index": 8016
+  },
+  {
+    "id": 570481349,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BorgToken_Refined_3",
+    "art_id": 7206,
+    "sorting_index": 8013
+  },
+  {
+    "id": 449692819,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Tribble_AprilFools",
+    "art_id": 7133,
+    "sorting_index": 8014
+  },
+  {
+    "id": 4085773143,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprilEvent_HiddenToken_Phase1",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3634792081,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprilEvent_HiddenToken_Phase2",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2156946113,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprilEvent_HiddenToken_Phase3",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3613488879,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprilEvent_HiddenToken_Phase4",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3854719088,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AprilEvent_HiddenToken_Special",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2162049938,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawMission_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1061556716,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawMission_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1107211909,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawMission_HiddenToken_3",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 4055983790,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawMission_HiddenToken_4",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2530075213,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawMission_HiddenToken_5",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 558495087,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_June_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 259
+  },
+  {
+    "id": 1939103555,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_1",
+    "art_id": 7223,
+    "sorting_index": 248
+  },
+  {
+    "id": 3693861464,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_2",
+    "art_id": 7224,
+    "sorting_index": 249
+  },
+  {
+    "id": 1615973433,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_3",
+    "art_id": 7225,
+    "sorting_index": 250
+  },
+  {
+    "id": 986460216,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_4",
+    "art_id": 7226,
+    "sorting_index": 251
+  },
+  {
+    "id": 1308371528,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_5",
+    "art_id": 7227,
+    "sorting_index": 252
+  },
+  {
+    "id": 4234413795,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_6",
+    "art_id": 7228,
+    "sorting_index": 253
+  },
+  {
+    "id": 3144445067,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_7",
+    "art_id": 7229,
+    "sorting_index": 254
+  },
+  {
+    "id": 2025163693,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_8",
+    "art_id": 7300,
+    "sorting_index": 255
+  },
+  {
+    "id": 386214824,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_9",
+    "art_id": 7301,
+    "sorting_index": 256
+  },
+  {
+    "id": 385035938,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayOutlawsEvent_Premium_10",
+    "art_id": 7302,
+    "sorting_index": 257
+  },
+  {
+    "id": 3215596916,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AugmentPremiumMissionToken",
+    "art_id": 7219,
+    "sorting_index": 258
+  },
+  {
+    "id": 3697048758,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayEvent_DataCollectionToken",
+    "art_id": 7220,
+    "sorting_index": 260
+  },
+  {
+    "id": 434731653,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_MayEvent_ArenaToken",
+    "art_id": 7221,
+    "sorting_index": 261
+  },
+  {
+    "id": 2731135330,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_DaboToken",
+    "art_id": 8011,
+    "sorting_index": 2038
+  },
+  {
+    "id": 3856871860,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_BattlePass_Points",
+    "art_id": 7334,
+    "sorting_index": 262
+  },
+  {
+    "id": 1796800387,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D20_OutlawMission_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 8014
+  },
+  {
+    "id": 1639333319,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D20_OutlawsMissionToken",
+    "art_id": 7319,
+    "sorting_index": 8013
+  },
+  {
+    "id": 839940851,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_OutlawEvent_Trophy",
+    "art_id": 7312,
+    "sorting_index": 8015
+  },
+  {
+    "id": 3699091594,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AugmentEvent_Trophy",
+    "art_id": 7311,
+    "sorting_index": 8016
+  },
+  {
+    "id": 850817193,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionPoint_Rogue",
+    "art_id": 7316,
+    "sorting_index": 1086
+  },
+  {
+    "id": 2915388793,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_FactionToken_Rogue",
+    "art_id": 7310,
+    "sorting_index": 2006
+  },
+  {
+    "id": 2094002129,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_SecurityCodes",
+    "art_id": 7321,
+    "sorting_index": 8004
+  },
+  {
+    "id": 1125023161,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Outlaw_ArmadaDir_Uncommon",
+    "art_id": 7325,
+    "sorting_index": 8008
+  },
+  {
+    "id": 1887264057,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Outlaw_ArmadaDir_Rare",
+    "art_id": 7326,
+    "sorting_index": 8009
+  },
+  {
+    "id": 797343955,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Outlaw_ArmadaDir_Epic",
+    "art_id": 7327,
+    "sorting_index": 8010
+  },
+  {
+    "id": 3816343106,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Outlaw_ArmadaReward_Uncommon",
+    "art_id": 7328,
+    "sorting_index": 8005
+  },
+  {
+    "id": 3053219457,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Outlaw_ArmadaReward_Rare",
+    "art_id": 7329,
+    "sorting_index": 8006
+  },
+  {
+    "id": 2669436591,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Outlaw_ArmadaReward_Epic",
+    "art_id": 7330,
+    "sorting_index": 8007
+  },
+  {
+    "id": 4019747058,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Mudd_Ship_R2",
+    "art_id": 7322,
+    "sorting_index": 8017
+  },
+  {
+    "id": 3546227782,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Mudd_Ship_R3",
+    "art_id": 7323,
+    "sorting_index": 8019
+  },
+  {
+    "id": 4023842134,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Mudd_Ship_R4",
+    "art_id": 7324,
+    "sorting_index": 8020
+  },
+  {
+    "id": 403769668,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Prestige_Tutorial_Token",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1931725393,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_Tutorial_Token_1",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1359271247,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_Tutorial_Token_2",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1393154662,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_Research_Prestige_Token",
+    "art_id": 7306,
+    "sorting_index": 8021
+  },
+  {
+    "id": 2311131421,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_Research_Credits",
+    "art_id": 7320,
+    "sorting_index": 8022
+  },
+  {
+    "id": 1409042786,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_Research_Rep_Token_1",
+    "art_id": 7307,
+    "sorting_index": 8023
+  },
+  {
+    "id": 1685622096,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Outlaw_Research_Rep_Token_2",
+    "art_id": 7307,
+    "sorting_index": 8023
+  },
+  {
+    "id": 4012021812,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Outlaw_Research_Rep_Token_3",
+    "art_id": 7307,
+    "sorting_index": 8023
+  },
+  {
+    "id": 1696502469,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Outlaw_Research_Rep_Token_4",
+    "art_id": 7307,
+    "sorting_index": 8023
+  },
+  {
+    "id": 2368770234,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Outlaw_Research_Particle_1",
+    "art_id": 7305,
+    "sorting_index": 8024
+  },
+  {
+    "id": 1473932390,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Outlaw_Research_Particle_2",
+    "art_id": 7305,
+    "sorting_index": 8025
+  },
+  {
+    "id": 2655522776,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Outlaw_Research_Particle_3",
+    "art_id": 7305,
+    "sorting_index": 8026
+  },
+  {
+    "id": 395292626,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Rogue_Transwarp",
+    "art_id": 7315,
+    "sorting_index": 8028
+  },
+  {
+    "id": 3016859627,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Mudd_Blueprint_Token",
+    "art_id": 7309,
+    "sorting_index": 8029
+  },
+  {
+    "id": 2496984001,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Aug_Rep_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 321383548,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Aug_Ind_Credit_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2749938082,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Borg_Ind_Credit_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1252045110,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Rogue_Rep_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3772908391,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Rogue_Credits_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 1264036112,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Ind_Credit_Gift_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 2160219296,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mudd_Mission_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 817405395,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Khan_Mission_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 1000
+  },
+  {
+    "id": 3708206274,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_July_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 260
+  },
+  {
+    "id": 2217898776,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_ArmadaRewardEvent_Casino",
+    "art_id": 7313,
+    "sorting_index": 8030
+  },
+  {
+    "id": 3937228981,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Outlaw_ArmadaRewardEvent_Bank",
+    "art_id": 7314,
+    "sorting_index": 8031
+  },
+  {
+    "id": 1151598288,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Prime_Token",
+    "art_id": 7308,
+    "sorting_index": 8032
+  },
+  {
+    "id": 3754152297,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_August_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8033
+  },
+  {
+    "id": 2023150629,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D21_OutlawMissionKey",
+    "art_id": 7331,
+    "sorting_index": 8034
+  },
+  {
+    "id": 2674936853,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D21_OutlawMission_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8035
+  },
+  {
+    "id": 982018355,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D21_OutlawMission_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8036
+  },
+  {
+    "id": 744953155,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Rogue_EventStore_Currency",
+    "art_id": 7332,
+    "sorting_index": 8037
+  },
+  {
+    "id": 3737332208,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Stella_Particle_G4",
+    "art_id": 7333,
+    "sorting_index": 8038
+  },
+  {
+    "id": 2424553373,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mycelium_Raw",
+    "art_id": 7335,
+    "sorting_index": 8039
+  },
+  {
+    "id": 514734139,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Mycelium_Refined",
+    "art_id": 7336,
+    "sorting_index": 8040
+  },
+  {
+    "id": 3352058891,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Gacha_Discovery",
+    "art_id": 7338,
+    "sorting_index": 8041
+  },
+  {
+    "id": 2844724309,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Discovery_Refinery_Token",
+    "art_id": 7343,
+    "sorting_index": 8042
+  },
+  {
+    "id": 3013926942,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Spore_Drive_Component",
+    "art_id": 7339,
+    "sorting_index": 8043
+  },
+  {
+    "id": 482847783,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Synaptic_Interface",
+    "art_id": 7337,
+    "sorting_index": 8044
+  },
+  {
+    "id": 1861203672,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_September_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8048
+  },
+  {
+    "id": 3981416701,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D22_Discovery_Mission_Key",
+    "art_id": 7340,
+    "sorting_index": 8049
+  },
+  {
+    "id": 53777518,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D22_BP_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 8050
+  },
+  {
+    "id": 2089733012,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D22_MissionObject1",
+    "art_id": 7341,
+    "sorting_index": 8051
+  },
+  {
+    "id": 1183809230,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D22_MissionObject2",
+    "art_id": 7342,
+    "sorting_index": 8052
+  },
+  {
+    "id": 2838117239,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Event_AllianceGiftToken_R3",
+    "art_id": 7345,
+    "sorting_index": 8053
+  },
+  {
+    "id": 3634756405,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Officer_Badge_Shards",
+    "art_id": 7344,
+    "sorting_index": 3004
+  },
+  {
+    "id": 3447154334,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Distortion_Ring",
+    "art_id": 7171,
+    "sorting_index": 8046
+  },
+  {
+    "id": 1944336946,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Spatial_Coords",
+    "art_id": 7172,
+    "sorting_index": 8047
+  },
+  {
+    "id": 3345469928,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_October_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8048
+  },
+  {
+    "id": 1758867409,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D23_Discovery_Mission_Key",
+    "art_id": 7346,
+    "sorting_index": 8049
+  },
+  {
+    "id": 1763598559,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_KlgWar_Gold",
+    "art_id": 7347,
+    "sorting_index": 8050
+  },
+  {
+    "id": 1298126586,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_KlgWar_Silver",
+    "art_id": 7348,
+    "sorting_index": 8051
+  },
+  {
+    "id": 2130474340,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_KlgWar_Bronze",
+    "art_id": 7349,
+    "sorting_index": 8052
+  },
+  {
+    "id": 1986141294,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Event_Halloween_2020_R2",
+    "art_id": 7351,
+    "sorting_index": 8053
+  },
+  {
+    "id": 1460804882,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Event_Halloween_2020_R3",
+    "art_id": 7350,
+    "sorting_index": 8054
+  },
+  {
+    "id": 3289898923,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Event_Halloween_2020_R4",
+    "art_id": 7352,
+    "sorting_index": 8055
+  },
+  {
+    "id": 2428676086,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D23_DiscoveryMission_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 8056
+  },
+  {
+    "id": 16310415,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_A",
+    "art_id": 6000,
+    "sorting_index": 8057
+  },
+  {
+    "id": 2423353676,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_B",
+    "art_id": 6000,
+    "sorting_index": 8058
+  },
+  {
+    "id": 3833296704,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_C",
+    "art_id": 6000,
+    "sorting_index": 8059
+  },
+  {
+    "id": 2078747046,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_D",
+    "art_id": 6000,
+    "sorting_index": 8060
+  },
+  {
+    "id": 1859600870,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_E",
+    "art_id": 6000,
+    "sorting_index": 8061
+  },
+  {
+    "id": 2402077229,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_F",
+    "art_id": 6000,
+    "sorting_index": 8062
+  },
+  {
+    "id": 1572294455,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_G",
+    "art_id": 6000,
+    "sorting_index": 8063
+  },
+  {
+    "id": 1733413761,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_H",
+    "art_id": 6000,
+    "sorting_index": 8064
+  },
+  {
+    "id": 4139956357,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_I",
+    "art_id": 6000,
+    "sorting_index": 8065
+  },
+  {
+    "id": 3640683558,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_J",
+    "art_id": 6000,
+    "sorting_index": 8066
+  },
+  {
+    "id": 4168726288,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_K",
+    "art_id": 6000,
+    "sorting_index": 8067
+  },
+  {
+    "id": 990229129,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_L",
+    "art_id": 6000,
+    "sorting_index": 8068
+  },
+  {
+    "id": 1948117075,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_M",
+    "art_id": 6000,
+    "sorting_index": 8069
+  },
+  {
+    "id": 168898655,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_N",
+    "art_id": 6000,
+    "sorting_index": 8070
+  },
+  {
+    "id": 3351558853,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_O",
+    "art_id": 6000,
+    "sorting_index": 8071
+  },
+  {
+    "id": 1793184406,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_P",
+    "art_id": 6000,
+    "sorting_index": 8072
+  },
+  {
+    "id": 3745601382,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_Q",
+    "art_id": 6000,
+    "sorting_index": 8073
+  },
+  {
+    "id": 3172047220,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_R",
+    "art_id": 6000,
+    "sorting_index": 8074
+  },
+  {
+    "id": 2567639478,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_HiddenToken_S",
+    "art_id": 6000,
+    "sorting_index": 8075
+  },
+  {
+    "id": 3018281200,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D24_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8076
+  },
+  {
+    "id": 1870377665,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D24_Discovery_Mission_Key",
+    "art_id": 7346,
+    "sorting_index": 8077
+  },
+  {
+    "id": 4151437268,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_EventStore_Currency_Generic",
+    "art_id": 7119,
+    "sorting_index": 8078
+  },
+  {
+    "id": 3722833821,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D24_DiscoveryMission_HiddenToken",
+    "art_id": 6000,
+    "sorting_index": 8056
+  },
+  {
+    "id": 3166447747,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TC_TutorialMission_StoreToken",
+    "art_id": 6000,
+    "sorting_index": 8057
+  },
+  {
+    "id": 3175135922,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Sarcophagus_Upgrade",
+    "art_id": 7353,
+    "sorting_index": 8058
+  },
+  {
+    "id": 3222759449,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Sarcophagus_Gate_1",
+    "art_id": 7354,
+    "sorting_index": 8059
+  },
+  {
+    "id": 2061100683,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Sarcophagus_Gate_2",
+    "art_id": 7354,
+    "sorting_index": 8060
+  },
+  {
+    "id": 1639296526,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Sarcophagus_Gate_3",
+    "art_id": 7354,
+    "sorting_index": 8061
+  },
+  {
+    "id": 2759790331,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Sarcophagus_Repair",
+    "art_id": 7355,
+    "sorting_index": 8062
+  },
+  {
+    "id": 782505699,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D25_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8063
+  },
+  {
+    "id": 1182434975,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D25_Discovery_Mission_Key",
+    "art_id": 7346,
+    "sorting_index": 8064
+  },
+  {
+    "id": 1289945554,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Holiday_2020",
+    "art_id": 7356,
+    "sorting_index": 8065
+  },
+  {
+    "id": 1605292396,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D25_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8066
+  },
+  {
+    "id": 3084720139,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D25_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8067
+  },
+  {
+    "id": 799218710,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_ActiveNanoprobes",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 2717487596,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_BorgRewards",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 3974892076,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_UnlockPrimeRefine_Latinum",
+    "art_id": 72,
+    "sorting_index": 42
+  },
+  {
+    "id": 2165764879,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_WarpToken_Latinum_Miner",
+    "art_id": 7360,
+    "sorting_index": 8017
+  },
+  {
+    "id": 2162499047,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D26_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8068
+  },
+  {
+    "id": 3612123841,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D26_TOS_Mission_Key",
+    "art_id": 7359,
+    "sorting_index": 8069
+  },
+  {
+    "id": 1912354246,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TOS_BP_Completion_Tracker",
+    "art_id": 6000,
+    "sorting_index": 8070
+  },
+  {
+    "id": 4235832072,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Event_Ticket",
+    "art_id": 7358,
+    "sorting_index": 8071
+  },
+  {
+    "id": 166169311,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D27_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8072
+  },
+  {
+    "id": 1710945943,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D27_Mission_Key",
+    "art_id": 7359,
+    "sorting_index": 8073
+  },
+  {
+    "id": 3025948726,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D27_Hidden_Token_1",
+    "art_id": 6000,
+    "sorting_index": 8074
+  },
+  {
+    "id": 2180279059,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D27_Hidden_Token_2",
+    "art_id": 6000,
+    "sorting_index": 8075
+  },
+  {
+    "id": 1830543114,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_D27_Event_Ticket",
+    "art_id": 7370,
+    "sorting_index": 8076
+  },
+  {
+    "id": 3948172440,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_G4_Station_Tree_Gate",
+    "art_id": 7375,
+    "sorting_index": 8077
+  },
+  {
+    "id": 1479784590,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_WarpToken_Doomsday_1",
+    "art_id": 7373,
+    "sorting_index": 8078
+  },
+  {
+    "id": 2985471784,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_WarpToken_Doomsday_2",
+    "art_id": 7374,
+    "sorting_index": 8079
+  },
+  {
+    "id": 3738195473,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Valentines_Day_2021",
+    "art_id": 7372,
+    "sorting_index": 8080
+  },
+  {
+    "id": 1120250534,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Valentines_Ticket_2021",
+    "art_id": 7371,
+    "sorting_index": 8081
+  },
+  {
+    "id": 1799745077,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Salvage_Parts",
+    "art_id": 7369,
+    "sorting_index": 8082
+  },
+  {
+    "id": 3828629174,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Prime_Survey_Parts_Refine",
+    "art_id": 6000,
+    "sorting_index": 8084
+  },
+  {
+    "id": 3712299306,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Prime_Interceptor_Parts_Refine",
+    "art_id": 6000,
+    "sorting_index": 8085
+  },
+  {
+    "id": 1041286757,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Prime_Explorer_Parts_Refine",
+    "art_id": 6000,
+    "sorting_index": 8086
+  },
+  {
+    "id": 1000926916,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Prime_Battleship_Parts_Refine",
+    "art_id": 6000,
+    "sorting_index": 8087
+  },
+  {
+    "id": 227271339,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Second_Builder_Hidden_Tracking",
+    "art_id": 6000,
+    "sorting_index": 8088
+  },
+  {
+    "id": 2168046101,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_CosmeticShard_ISSJellyfish_Constellation",
+    "art_id": 7361,
+    "sorting_index": 8091
+  },
+  {
+    "id": 549969472,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_Enterprise_60sEnterprise",
+    "art_id": 7362,
+    "sorting_index": 8092
+  },
+  {
+    "id": 1925319009,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_D4_60sD7",
+    "art_id": 7363,
+    "sorting_index": 8093
+  },
+  {
+    "id": 1409799164,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_Augur_60sBirdofPrey",
+    "art_id": 7364,
+    "sorting_index": 8094
+  },
+  {
+    "id": 2345460754,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_EnterpriseA_60sEnterprise",
+    "art_id": 7365,
+    "sorting_index": 8095
+  },
+  {
+    "id": 3424248677,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_Heghta_60sD7",
+    "art_id": 7366,
+    "sorting_index": 8096
+  },
+  {
+    "id": 2559643751,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_Tribune_60sBirdofPrey",
+    "art_id": 7367,
+    "sorting_index": 8097
+  },
+  {
+    "id": 557145934,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_projectiles_common",
+    "art_id": 7376,
+    "sorting_index": 8098
+  },
+  {
+    "id": 4155279544,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_projectiles_uncommon",
+    "art_id": 7377,
+    "sorting_index": 8099
+  },
+  {
+    "id": 3097000695,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_projectiles_rare",
+    "art_id": 7378,
+    "sorting_index": 8100
+  },
+  {
+    "id": 1535999330,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_projectiles_epic",
+    "art_id": 7387,
+    "sorting_index": 8101
+  },
+  {
+    "id": 959365518,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8102
+  },
+  {
+    "id": 863390659,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_TOS_Mission_Key",
+    "art_id": 7382,
+    "sorting_index": 8103
+  },
+  {
+    "id": 3669129028,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_EventStore_Currency",
+    "art_id": 7381,
+    "sorting_index": 8104
+  },
+  {
+    "id": 3069185850,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Doomsday_Trophy",
+    "art_id": 7380,
+    "sorting_index": 8105
+  },
+  {
+    "id": 3505867462,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_TOSOfficer_Basic",
+    "art_id": 7385,
+    "sorting_index": 8106
+  },
+  {
+    "id": 3892274658,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Stpatricks_Gold",
+    "art_id": 7186,
+    "sorting_index": 8107
+  },
+  {
+    "id": 1134594091,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Stpatricks_Silver",
+    "art_id": 7185,
+    "sorting_index": 8108
+  },
+  {
+    "id": 1624826313,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Stpatricks_Bronze",
+    "art_id": 7184,
+    "sorting_index": 8109
+  },
+  {
+    "id": 303923665,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Aprilfools_1",
+    "art_id": 7386,
+    "sorting_index": 8110
+  },
+  {
+    "id": 205800655,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Aprilfools_2",
+    "art_id": 407,
+    "sorting_index": 8111
+  },
+  {
+    "id": 731975908,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Doomsdirective_ArmadaDir",
+    "art_id": 7384,
+    "sorting_index": 8113
+  },
+  {
+    "id": 1349978816,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Event_Ticket",
+    "art_id": 7383,
+    "sorting_index": 8114
+  },
+  {
+    "id": 3803308008,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8115
+  },
+  {
+    "id": 284159140,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8116
+  },
+  {
+    "id": 3111349051,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_HiddenToken_3",
+    "art_id": 6000,
+    "sorting_index": 8117
+  },
+  {
+    "id": 210202687,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Easteregg_Token_1",
+    "art_id": 6000,
+    "sorting_index": 8118
+  },
+  {
+    "id": 2415483790,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Easteregg_Token_2",
+    "art_id": 6000,
+    "sorting_index": 8119
+  },
+  {
+    "id": 4029771450,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M28_Easteregg_Token_3",
+    "art_id": 6000,
+    "sorting_index": 8120
+  },
+  {
+    "id": 1667385141,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_CosmeticShard_Vidar_1",
+    "art_id": 7408,
+    "sorting_index": 8120
+  },
+  {
+    "id": 1391513230,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_CosmeticShard_Stella_1",
+    "art_id": 7409,
+    "sorting_index": 8121
+  },
+  {
+    "id": 755606205,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_CosmeticShard_Franklin2_1",
+    "art_id": 7410,
+    "sorting_index": 8122
+  },
+  {
+    "id": 3230316872,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M29_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8123
+  },
+  {
+    "id": 1221709175,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M29_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8124
+  },
+  {
+    "id": 3439218430,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Second_Researcher_Hidden_Tracking",
+    "art_id": 6000,
+    "sorting_index": 8126
+  },
+  {
+    "id": 2505385166,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M29_Battle_Pass_Unlock",
+    "art_id": 7304,
+    "sorting_index": 8126
+  },
+  {
+    "id": 2964195678,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M29_Absolution_Mission_Key",
+    "art_id": 7392,
+    "sorting_index": 8126
+  },
+  {
+    "id": 2850418488,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Borgdirective_ArmadaDir",
+    "art_id": 7395,
+    "sorting_index": 8126
+  },
+  {
+    "id": 2949238416,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Borg_Recruit_Token",
+    "art_id": 7389,
+    "sorting_index": 8126
+  },
+  {
+    "id": 499904779,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Projectiles_PlasmaBlast",
+    "art_id": 7388,
+    "sorting_index": 8127
+  },
+  {
+    "id": 817642656,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AwayTeamsBuilding_Unlock",
+    "art_id": 7417,
+    "sorting_index": 8127
+  },
+  {
+    "id": 1702263838,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AwayAssignment_Refresh",
+    "art_id": 7411,
+    "sorting_index": 8128
+  },
+  {
+    "id": 659387578,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AwayTeams_Service_Award",
+    "art_id": 7422,
+    "sorting_index": 8129
+  },
+  {
+    "id": 4098101920,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_AwayTeams_Merits_of_Honor",
+    "art_id": 7423,
+    "sorting_index": 8130
+  },
+  {
+    "id": 2059547286,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_AT_Prime_Particle",
+    "art_id": 7424,
+    "sorting_index": 8139
+  },
+  {
+    "id": 3131374452,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AwayTeams_StarChart_R3",
+    "art_id": 7425,
+    "sorting_index": 8131
+  },
+  {
+    "id": 986155296,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_AwayTeams_StarChart_R4",
+    "art_id": 7426,
+    "sorting_index": 8132
+  },
+  {
+    "id": 3752758392,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Uncommon_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8133
+  },
+  {
+    "id": 44689878,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Rare_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8134
+  },
+  {
+    "id": 3243246251,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Epic_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8135
+  },
+  {
+    "id": 466819668,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Officer_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8136
+  },
+  {
+    "id": 2495698641,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Nanoprobe_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8137
+  },
+  {
+    "id": 1801913047,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Blueprint_Assignment_Unlock",
+    "art_id": 6000,
+    "sorting_index": 8138
+  },
+  {
+    "id": 2242472107,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_May21_Assignment_Unlock",
+    "art_id": 7425,
+    "sorting_index": 8139
+  },
+  {
+    "id": 3216234242,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M30_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8140
+  },
+  {
+    "id": 1215673621,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M30_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8141
+  },
+  {
+    "id": 1617654727,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M30_Battle_Pass_Unlock",
+    "art_id": 7427,
+    "sorting_index": 8142
+  },
+  {
+    "id": 3159583417,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M30_TNG_Mission_Key",
+    "art_id": 7416,
+    "sorting_index": 8143
+  },
+  {
+    "id": 3697651008,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Memorial_Day_2021",
+    "art_id": 7418,
+    "sorting_index": 8144
+  },
+  {
+    "id": 2406470951,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_Event_Ticket_Rare",
+    "art_id": 7419,
+    "sorting_index": 8145
+  },
+  {
+    "id": 962245189,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Event_Ticket_Epic",
+    "art_id": 7420,
+    "sorting_index": 8146
+  },
+  {
+    "id": 3252982312,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_Battle_Pass_Unlock",
+    "art_id": 7427,
+    "sorting_index": 8147
+  },
+  {
+    "id": 1267560386,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_TNG_Mission_Key",
+    "art_id": 7428,
+    "sorting_index": 8148
+  },
+  {
+    "id": 3976169194,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_M31_PicardDay_Epic",
+    "art_id": 7429,
+    "sorting_index": 8149
+  },
+  {
+    "id": 2838267772,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_M31_PicardDay_Rare",
+    "art_id": 7430,
+    "sorting_index": 8150
+  },
+  {
+    "id": 1406589030,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8151
+  },
+  {
+    "id": 1826828342,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8152
+  },
+  {
+    "id": 1156373789,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_HiddenToken_3",
+    "art_id": 6000,
+    "sorting_index": 8153
+  },
+  {
+    "id": 415547544,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Euro2020_Token_Generic",
+    "art_id": 7432,
+    "sorting_index": 8154
+  },
+  {
+    "id": 4213550141,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Euro2020_Token_Fed_Blue",
+    "art_id": 7433,
+    "sorting_index": 8155
+  },
+  {
+    "id": 1868445854,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Euro2020_Token_Klg_Red",
+    "art_id": 7434,
+    "sorting_index": 8156
+  },
+  {
+    "id": 549396489,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Euro2020_Token_Rom_Green",
+    "art_id": 7435,
+    "sorting_index": 8157
+  },
+  {
+    "id": 2482651459,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_Armada_Credit_Platinum",
+    "art_id": 7439,
+    "sorting_index": 8158
+  },
+  {
+    "id": 1165949788,
+    "grade": 0,
+    "rarity": 4,
+    "resource_id": "Resource_ProjectileGate_RefractiveBeam",
+    "art_id": 7436,
+    "sorting_index": 8159
+  },
+  {
+    "id": 1112439037,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_ProjectileGate_PositronPhaser",
+    "art_id": 7437,
+    "sorting_index": 8160
+  },
+  {
+    "id": 1251900890,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_HiddenToken_4",
+    "art_id": 6000,
+    "sorting_index": 8161
+  },
+  {
+    "id": 3303179193,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M31_HiddenToken_5",
+    "art_id": 6000,
+    "sorting_index": 8162
+  },
+  {
+    "id": 3127012357,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Iso_Resin",
+    "art_id": 7445,
+    "sorting_index": 8162
+  },
+  {
+    "id": 1714608922,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_ISOMinerComponent_T3",
+    "art_id": 7446,
+    "sorting_index": 8163
+  },
+  {
+    "id": 3766942738,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_ISOMinerComponent_T6",
+    "art_id": 7447,
+    "sorting_index": 8164
+  },
+  {
+    "id": 2642046855,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_CosmeticShard_ISOMiner_1",
+    "art_id": 7451,
+    "sorting_index": 8165
+  },
+  {
+    "id": 3788606807,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_G4_Survey_Fed_1",
+    "art_id": 7448,
+    "sorting_index": 8166
+  },
+  {
+    "id": 3397887153,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_G4_Survey_Klg_1",
+    "art_id": 7449,
+    "sorting_index": 8167
+  },
+  {
+    "id": 1955700619,
+    "grade": 0,
+    "rarity": 3,
+    "resource_id": "Resource_CosmeticShard_G4_Survey_Rom_1",
+    "art_id": 7450,
+    "sorting_index": 8168
+  },
+  {
+    "id": 2867385427,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_CosmeticToken_ISOMiner_1",
+    "art_id": 6000,
+    "sorting_index": 8169
+  },
+  {
+    "id": 3795541801,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_Battle_Pass_Unlock",
+    "art_id": 7427,
+    "sorting_index": 8170
+  },
+  {
+    "id": 3842524277,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_TNG_Mission_Key",
+    "art_id": 7440,
+    "sorting_index": 8171
+  },
+  {
+    "id": 2156397549,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_HolodeckGamesMedal_Bronze",
+    "art_id": 7441,
+    "sorting_index": 8172
+  },
+  {
+    "id": 3411847674,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_HolodeckGamesMedal_Silver",
+    "art_id": 7442,
+    "sorting_index": 8173
+  },
+  {
+    "id": 4099875417,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_HolodeckGamesMedal_Gold",
+    "art_id": 7443,
+    "sorting_index": 8174
+  },
+  {
+    "id": 3683259829,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_RikerDayToken",
+    "art_id": 7444,
+    "sorting_index": 8175
+  },
+  {
+    "id": 1052559905,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_1",
+    "art_id": 6000,
+    "sorting_index": 8176
+  },
+  {
+    "id": 3830687026,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_2",
+    "art_id": 6000,
+    "sorting_index": 8177
+  },
+  {
+    "id": 608389464,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_3",
+    "art_id": 6000,
+    "sorting_index": 8178
+  },
+  {
+    "id": 2297490424,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_4",
+    "art_id": 6000,
+    "sorting_index": 8179
+  },
+  {
+    "id": 3749523382,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_5",
+    "art_id": 6000,
+    "sorting_index": 8180
+  },
+  {
+    "id": 1598221029,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_6",
+    "art_id": 6000,
+    "sorting_index": 8181
+  },
+  {
+    "id": 3299987879,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_7",
+    "art_id": 6000,
+    "sorting_index": 8182
+  },
+  {
+    "id": 4250883102,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_8",
+    "art_id": 6000,
+    "sorting_index": 8183
+  },
+  {
+    "id": 4130785422,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_9",
+    "art_id": 6000,
+    "sorting_index": 8184
+  },
+  {
+    "id": 3933001534,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_10",
+    "art_id": 6000,
+    "sorting_index": 8185
+  },
+  {
+    "id": 1978106550,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_11",
+    "art_id": 6000,
+    "sorting_index": 8186
+  },
+  {
+    "id": 82533000,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_12",
+    "art_id": 6000,
+    "sorting_index": 8187
+  },
+  {
+    "id": 197052089,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M32_HiddenToken_13",
+    "art_id": 6000,
+    "sorting_index": 8188
+  },
+  {
+    "id": 888628627,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Battle_Pass_Unlock",
+    "art_id": 7427,
+    "sorting_index": 8189
+  },
+  {
+    "id": 1494827964,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Server_Milestone_Ticket",
+    "art_id": 7452,
+    "sorting_index": 8190
+  },
+  {
+    "id": 1671109760,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_TNG_Mission_Key",
+    "art_id": 7453,
+    "sorting_index": 8191
+  },
+  {
+    "id": 3397225233,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Burst_Event_Trophy",
+    "art_id": 7454,
+    "sorting_index": 8192
+  },
+  {
+    "id": 2051056349,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Story_Choice_Token",
+    "art_id": 7455,
+    "sorting_index": 8193
+  },
+  {
+    "id": 941473551,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_TNG_Gacha",
+    "art_id": 7456,
+    "sorting_index": 8195
+  },
+  {
+    "id": 1600496352,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Mining_Gacha",
+    "art_id": 7457,
+    "sorting_index": 8196
+  },
+  {
+    "id": 2327168780,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Hidden_Story_Token_1",
+    "art_id": 6000,
+    "sorting_index": 8197
+  },
+  {
+    "id": 2852712716,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Hidden_Story_Token_2",
+    "art_id": 6000,
+    "sorting_index": 8198
+  },
+  {
+    "id": 274946708,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_Hidden_Story_Token_3",
+    "art_id": 6000,
+    "sorting_index": 8199
+  },
+  {
+    "id": 772145191,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_HiddenEventToken_1",
+    "art_id": 6000,
+    "sorting_index": 8200
+  },
+  {
+    "id": 930341156,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_HiddenEventToken_2",
+    "art_id": 6000,
+    "sorting_index": 8201
+  },
+  {
+    "id": 2186357685,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_HiddenEventToken_3",
+    "art_id": 6000,
+    "sorting_index": 8202
+  },
+  {
+    "id": 3560594458,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_HiddenEventToken_4",
+    "art_id": 6000,
+    "sorting_index": 8203
+  },
+  {
+    "id": 1817958366,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M33_HiddenEventToken_5",
+    "art_id": 6000,
+    "sorting_index": 8204
+  },
+  {
+    "id": 1048097146,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Consumable_Credits",
+    "art_id": 7458,
+    "sorting_index": 8205
+  },
+  {
+    "id": 3782163651,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Consumable_Building_Unlock_Token",
+    "art_id": 7459,
+    "sorting_index": 8207
+  },
+  {
+    "id": 3112791796,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Consumable_Building_Upgrade",
+    "art_id": 7460,
+    "sorting_index": 8206
+  },
+  {
+    "id": 1494425877,
+    "grade": 0,
+    "rarity": 2,
+    "resource_id": "Resource_Consumable_Building_Lvl_41_Token",
+    "art_id": 7459,
+    "sorting_index": 8208
+  },
+  {
+    "id": 2188873676,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TraitXP",
+    "art_id": 7486,
+    "sorting_index": 103
+  },
+  {
+    "id": 554515354,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT_Currency",
+    "art_id": 7488,
+    "sorting_index": 8209
+  },
+  {
+    "id": 4206572463,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_AT2_Gating_Token",
+    "art_id": 7417,
+    "sorting_index": 8210
+  },
+  {
+    "id": 2638089994,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_TraitBadge",
+    "art_id": 7487,
+    "sorting_index": 8211
+  },
+  {
+    "id": 2173424244,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_Battle_Pass_Unlock",
+    "art_id": 7427,
+    "sorting_index": 8212
+  },
+  {
+    "id": 1729846617,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_TNG_Mission_Key",
+    "art_id": 7505,
+    "sorting_index": 8213
+  },
+  {
+    "id": 876972054,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_Memento_Of_Valor",
+    "art_id": 7489,
+    "sorting_index": 8214
+  },
+  {
+    "id": 3079867730,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Alpha",
+    "art_id": 7490,
+    "sorting_index": 8215
+  },
+  {
+    "id": 2996169925,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Beta",
+    "art_id": 7491,
+    "sorting_index": 8216
+  },
+  {
+    "id": 3963522042,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Gamma",
+    "art_id": 7492,
+    "sorting_index": 8217
+  },
+  {
+    "id": 1080237183,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Delta",
+    "art_id": 7493,
+    "sorting_index": 8218
+  },
+  {
+    "id": 4093345898,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Epsilon",
+    "art_id": 7494,
+    "sorting_index": 8219
+  },
+  {
+    "id": 3841889067,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Zeta",
+    "art_id": 7495,
+    "sorting_index": 8220
+  },
+  {
+    "id": 3208584328,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Theta",
+    "art_id": 7496,
+    "sorting_index": 8221
+  },
+  {
+    "id": 1250056025,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Kappa",
+    "art_id": 7497,
+    "sorting_index": 8222
+  },
+  {
+    "id": 1981550105,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Lamba",
+    "art_id": 7498,
+    "sorting_index": 8223
+  },
+  {
+    "id": 681831320,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Xi",
+    "art_id": 7499,
+    "sorting_index": 8224
+  },
+  {
+    "id": 3829778621,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Sigma",
+    "art_id": 7500,
+    "sorting_index": 8225
+  },
+  {
+    "id": 2185774362,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Chi",
+    "art_id": 7501,
+    "sorting_index": 8226
+  },
+  {
+    "id": 342998378,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Phi",
+    "art_id": 7502,
+    "sorting_index": 8227
+  },
+  {
+    "id": 1198403886,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_EventToken_Omega",
+    "art_id": 7503,
+    "sorting_index": 8228
+  },
+  {
+    "id": 1506795723,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_1",
+    "art_id": 6000,
+    "sorting_index": 8229
+  },
+  {
+    "id": 72491128,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_2",
+    "art_id": 6000,
+    "sorting_index": 8230
+  },
+  {
+    "id": 3738025785,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_3",
+    "art_id": 6000,
+    "sorting_index": 8231
+  },
+  {
+    "id": 821453385,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_4",
+    "art_id": 6000,
+    "sorting_index": 8232
+  },
+  {
+    "id": 937086589,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_5",
+    "art_id": 6000,
+    "sorting_index": 8233
+  },
+  {
+    "id": 1168364692,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_6",
+    "art_id": 6000,
+    "sorting_index": 8234
+  },
+  {
+    "id": 3264070212,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_M34_HiddenEventToken_7",
+    "art_id": 6000,
+    "sorting_index": 8235
+  },
+  {
+    "id": 1546490552,
+    "grade": 0,
+    "rarity": 1,
+    "resource_id": "Resource_Multiphasic_Credits",
+    "art_id": 7504,
+    "sorting_index": 8236
+  }
+]

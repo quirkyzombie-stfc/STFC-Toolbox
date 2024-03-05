@@ -1,0 +1,6 @@
+.prettierignore
+build
+node_modules
+out
+manual
+temp
