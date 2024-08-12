@@ -34,6 +34,7 @@ export interface CombatLogRoundEventAttack {
   remaining_shield: number;
   damage_iso: number;
   damage_iso_mitigated: number;
+  damage_apex_mitigated: number;
   triggers: CombatLogRoundEventAbility[];
 }
 
@@ -220,6 +221,7 @@ function parseAttack(
       damage_mitigated: input.read(),
       damage_iso: input.read(),
       damage_iso_mitigated: input.read(),
+      damage_apex_mitigated: input.read(),
       triggers: [],
     };
     if (input.peek() === BattleLogEvents.OFFICER_ABILITIES_FIRING) {

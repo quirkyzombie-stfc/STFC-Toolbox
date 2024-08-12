@@ -87,6 +87,21 @@ const isoMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => 
   return iso_damage > 0 ? iso_mitigated / iso_damage : NaN;
 };
 
+const apexMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
+  const total_unmitigated_damage = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => true,
+    (x) => x.hhp + x.shp,
+  ).sum;
+  const apex_mitigated = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => true,
+    (x) => x.apex_mitigated,
+  ).sum;
+
+  return total_unmitigated_damage > 0 ? apex_mitigated / (apex_mitigated + total_unmitigated_damage) : NaN;
+};
+
 const shieldMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
   const total_unmitigated_damage = getStats(
     parsedData.stats.ships[ship.shipId].damageIn,
@@ -351,6 +366,12 @@ export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
           cells: [
             "Iso mitigation",
             ...allShips.map((ship) => formatPercentage(isoMitigation(ship, parsedData))),
+          ],
+        },
+        {
+          cells: [
+            "Apex mitigation",
+            ...allShips.map((ship) => formatPercentage(apexMitigation(ship, parsedData))),
           ],
         },
         {

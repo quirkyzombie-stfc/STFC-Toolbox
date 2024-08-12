@@ -19,6 +19,7 @@ export interface DamageSample {
   std_mitigated: number; // Standard damage mitigated
   iso_damage: number;
   iso_mitigated: number;
+  apex_mitigated: number;
   base_min: number; // Base damage
   base_max: number; // Base damage
 }
@@ -169,7 +170,8 @@ export function gatherStats(
               event.damage_taken_hull +
               event.damage_taken_shield +
               event.damage_mitigated +
-              event.damage_iso_mitigated;
+              event.damage_iso_mitigated +
+              event.damage_apex_mitigated;
             const mitigation = event.damage_mitigated / damage_total;
 
             // Damage
@@ -185,6 +187,7 @@ export function gatherStats(
               damageMultiplier: damage_total / ((damage_base_min + damage_base_max) / 2),
               std_mitigated: event.damage_mitigated,
               iso_mitigated: event.damage_iso_mitigated,
+              apex_mitigated: event.damage_apex_mitigated,
               base_min: damage_base_min,
               base_max: damage_base_max,
             };

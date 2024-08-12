@@ -44,7 +44,8 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
                 event.damage_mitigated +
                 event.damage_taken_shield +
                 event.damage_taken_hull +
-                event.damage_iso_mitigated;
+                event.damage_iso_mitigated +
+                event.damage_apex_mitigated;
               return [
                 [
                   roundId + 1,
@@ -59,6 +60,7 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
                   roundTo2Digits(event.damage_mitigated),
                   roundTo2Digits(event.damage_iso),
                   roundTo2Digits(event.damage_iso_mitigated),
+                  roundTo2Digits(event.damage_apex_mitigated),
                   event.damage_taken_shield,
                   event.damage_taken_hull,
                   event.crit ? "CRIT" : "",
@@ -135,6 +137,7 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
     { label: "Std Damage mitigated", align: "left" },
     { label: "Iso damage", align: "left" },
     { label: "Iso damage mitigated", align: "left" },
+    { label: "Damage apex mitigated", align: "left" },
     { label: "Damage to SHP", align: "left" },
     { label: "Damage to HHP", align: "left" },
     { label: "Crit", align: "left" },
