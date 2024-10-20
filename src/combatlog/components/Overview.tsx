@@ -99,7 +99,9 @@ const apexMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) =>
     (x) => x.apex_mitigated,
   ).sum;
 
-  return total_unmitigated_damage > 0 ? apex_mitigated / (apex_mitigated + total_unmitigated_damage) : NaN;
+  return total_unmitigated_damage > 0
+    ? apex_mitigated / (apex_mitigated + total_unmitigated_damage)
+    : NaN;
 };
 
 const shieldMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {

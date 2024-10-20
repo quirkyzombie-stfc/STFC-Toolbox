@@ -5,6 +5,7 @@ import type { ShipComponentWeapon } from "../../util/gameData";
 export interface CombatLogTime {
   round: number;
   subRound: number;
+  event: number;
 }
 
 export interface DamageSample {
@@ -150,8 +151,12 @@ export function gatherStats(
 
   battleLog.forEach((round, roundIndex) => {
     round.subRounds.forEach((subRound, subRoundIndex) => {
-      const t: CombatLogTime = { round: roundIndex + 1, subRound: subRoundIndex + 1 };
-      subRound.events.forEach((event) => {
+      subRound.events.forEach((event, eventIndex) => {
+        const t: CombatLogTime = {
+          round: roundIndex + 1,
+          subRound: subRoundIndex + 1,
+          event: eventIndex + 1,
+        };
         switch (event.type) {
           case "attack":
             const weaponComponent = lookupComponent(event.weapon, data)?.component.data as
@@ -228,12 +233,12 @@ export function gatherStats(
                 defender.hhpChange.push(hhpChangeSample);
               }
               if (diffShp != 0) {
-                const hhpChangeSample: HitPointChangeSample = {
+                const shpChangeSample: HitPointChangeSample = {
                   tag: "hp_change",
                   t,
-                  diff: -diffHhp,
+                  diff: -diffShp,
                 };
-                defender.hhpChange.push(hhpChangeSample);
+                defender.shpChange.push(shpChangeSample);
               }
             }
 

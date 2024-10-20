@@ -13,6 +13,7 @@ import {
   MenuItem,
   List,
   ListItem,
+  ListItemButton,
   ListItemText,
   ListItemIcon,
 } from "@mui/material";
@@ -93,8 +94,7 @@ function ExpandingListRow(props: ExpandingListRowProps): JSX.Element {
 
   return (
     <React.Fragment>
-      <ListItem
-        button
+      <ListItemButton
         onClick={() => {
           setOpen(!open);
         }}
@@ -102,7 +102,7 @@ function ExpandingListRow(props: ExpandingListRowProps): JSX.Element {
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={text} />
         {open ? <ExpandLess /> : <ExpandMore />}
-      </ListItem>
+      </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         {details}
       </Collapse>

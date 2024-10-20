@@ -2,12 +2,13 @@
     "compilerOptions": {
         "target": "es6",
         "module": "es6",
-        "lib": ["dom", "es2021"],
+        "lib": ["dom", "ESNext"],
         "strict": true,
         "noImplicitReturns": true,
         "sourceMap": true,
         "jsx": "react",
         "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
     },
     "include": [
         "src/**/*"
