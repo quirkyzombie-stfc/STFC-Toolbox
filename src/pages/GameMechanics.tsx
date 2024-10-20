@@ -61,10 +61,12 @@ const titleIsoDamage = makeTitle("Isolitic damage");
 const titleIsoMitigation = makeTitle("Isolitic damage mitigation");
 const titleShieldMitigation = makeTitle("Shield mitigation");
 const titleAttackDamage = makeTitle("Attack damage");
-const titleWeaponReloading = makeTitle("Weapon reloading");
+const titleWeaponFiringPattern = makeTitle("Weapon firing pattern");
 const titleBorgCubeBeamCharge = makeTitle("Borg cube beam charge");
 const titleShipPower = makeTitle("Ship power rating");
 const titleClientSideCalculations = makeTitle("Client-side calculations");
+const titleEfficiency = makeTitle("Efficiency");
+const titleApexBarrier = makeTitle("Apex Barrier");
 const titleTodo = makeTitle("TODO");
 
 const entries: EntryData[] = [
@@ -674,6 +676,10 @@ const entries: EntryData[] = [
             officers, officer abilities have their effectiveness reduced by -25% for that
             activation. TODO: test how this stacks with things like Pike.
           </li>
+          <li>
+            <strong>Taunt</strong>. Enemy weapons will prioritize ships with the Taunt status
+            effects when selecting targets to attack.
+          </li>
         </Typography>
         <Typography paragraph>
           There are also traces in the game of additional unused status effects "Low Morale" and
@@ -854,12 +860,29 @@ const entries: EntryData[] = [
     ),
   },
   {
+    title: titleApexBarrier,
+    content: (
+      <>
+        <Typography paragraph>
+          After mitigated damage has been removed, the remaining unmitigated isolitic and regular is
+          added up and reduced by apex barrier. The damage reduction is equal to
+        </Typography>
+        <Typography paragraph>
+          <code>apex_barrier_damage_reduction = 10000 / (10000 + apex_barrier)</code>
+        </Typography>
+        <Typography paragraph>
+          I.e., every 10000 apex barrier, your ship will be able to take 100% more damage.
+        </Typography>
+      </>
+    ),
+  },
+  {
     title: titleShieldMitigation,
     content: (
       <>
         <Typography paragraph>
-          After mitigated damage has been removed, the remaining unmitigated isolitic and regular
-          damage is added up and distributed to the targets shield and hull hit points:
+          After unmitigated damage has been reduced by apex barrier, the remaining damage is
+          distributed to the targets shield and hull hit points:
         </Typography>
         <Typography paragraph>
           <code>shp_damage_taken = S * total_unmitigated_damage</code>
@@ -898,23 +921,42 @@ const entries: EntryData[] = [
     ),
   },
   {
-    title: titleWeaponReloading,
+    title: titleWeaponFiringPattern,
     content: (
       <>
         <Typography paragraph>
-          Weapons have two stats that affect its firing pattern: the load and the reload time. The
-          load time defines the first round in which the weapon fires, and the reload time defines
-          how many rounds have to pass until the weapon fires again.
+          Weapons have three stats that affect its firing pattern: the load time, the reload time,
+          and the number of shots. The load time defines the first round in which the weapon
+          performs an attack, and the reload time defines how many rounds have to pass until the
+          weapon attacks again. When a weapon attacks, it fires a number of shots, all at the same
+          target.
         </Typography>
         <Typography paragraph>
-          The load and reload times are simple stats that are affected by{" "}
-          {makeLink(titleEffectStacking, "effect stacking")} like any other stat. Changing a weapons
-          load or reload time doesn't have any immediate effect.
+          The load time, the reload time, and the number fo shots are simple stats that are affected
+          by {makeLink(titleEffectStacking, "effect stacking")} like any other stat.
         </Typography>
         <Typography paragraph>
-          When a weapon fires an attack, it inspects the <i>current</i> value of its reload time and
-          schedules the next attack according to that value. Any subsequent changes to its reload
-          time do not move the next scheduled attack.
+          Changing a weapons load or reload time doesn't have any immediate effect. When a weapon
+          fires an attack, it inspects the <i>current</i> value of its reload time and schedules the
+          next attack according to that value. Any subsequent changes to its reload time do not move
+          the next scheduled attack.
+        </Typography>
+        <Typography paragraph>
+          Example: <a href="https://stfc.space/officers/1730335425">Chang</a>'s officer ability is
+          poorly described, a better description would be: "On each shot fired by your ship, if that
+          shot is a critical hit AND the target has Hull Breach, X% chance to activate Chang for the
+          next sub-round. At the start of each sub-round, if Chang is active, add +1 to the reload
+          time of ALL target weapons. This effect stacks with itself and lasts until the end of the
+          current round.". This allows you to predict all edge cases: Chang has no effect on weapons
+          that are currently reloading, Chang can never delay the first weapon of the opponent
+          unless he activated in the last sub-round of the previous round, Chang can delay a weapon
+          by multiple rounds if he applied his effect multiple times in the same round before the
+          weapon fired.
+        </Typography>
+        <Typography paragraph>
+          The number of shots is rounded to the nearest whole number, using "round to half even" to
+          break ties. I.e., 0.5 is rounded to 0, 1.5 is rounded to 2, 2.5 is rounded to 2, 3.5 is
+          rounded to 4, ...
         </Typography>
       </>
     ),
@@ -924,7 +966,7 @@ const entries: EntryData[] = [
     content: (
       <>
         <Typography paragraph>
-          After a regular combat against a red dot (TODO: does it charge against other kinds of
+          After a regular combat against a ship (TODO: does it charge against other kinds of
           targets?), your beam charge increases by
         </Typography>
         <Typography paragraph>
@@ -943,7 +985,7 @@ const entries: EntryData[] = [
           The power of a ship (both player ships and NPCs) is calculated as
         </Typography>
         <Typography paragraph>
-          <code>ship_power = attack_rating + defense_rating + health_rating</code>
+          <code>ship_power = attack_rating + defense_rating + health_rating + ft_rating</code>
           <br />
           <code>
             attack_rating = total_damage_per_round + 0.5 * (armor_piercing + shield_piercing +
@@ -966,6 +1008,10 @@ const entries: EntryData[] = [
           </li>
           <li>
             <strong>total_damage_per_round</strong> is the sum of damage_per_round of all weapons
+          </li>
+          <li>
+            <strong>ft_rating</strong> is given by the equipped Forbidden Tech, with the exact
+            formula unknown
           </li>
         </Typography>
         <Typography paragraph>Notes:</Typography>
@@ -1017,11 +1063,36 @@ const entries: EntryData[] = [
     ),
   },
   {
+    title: titleEfficiency,
+    content: (
+      <>
+        <Typography paragraph>
+          Some effects decrease the cost or speed of upgrading buildings/ships/research or repairing
+          ships. They are usually described as something like "Increases the base cost efficiency of
+          X by Y%."
+        </Typography>
+        <Typography paragraph>
+          Efficiency is a stat subject to {makeLink(titleEffectStacking, "effect stacking")}, with a
+          base value of 1. The actual cost is then
+        </Typography>
+        <Typography paragraph>
+          <code>actual_cost = base_cost/efficiency</code>
+        </Typography>
+        <Typography paragraph>
+          Most (but not all) efficiency bonuses are in stacking category A, so for most cases the
+          above simplifies to
+        </Typography>
+        <Typography paragraph>
+          <code>actual_cost = base_cost/(1 + sum of efficiency bonuses)</code>
+        </Typography>
+      </>
+    ),
+  },
+  {
     title: titleTodo,
     content: (
       <Typography component="ul" gutterBottom>
         <li>Changing officer health bonus in combat</li>
-        <li>Efficiency formula</li>
         <li>Warp path mechanics</li>
         <li>Combat simulator prototype in TypeScript</li>
       </Typography>
