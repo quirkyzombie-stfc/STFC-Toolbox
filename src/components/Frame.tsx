@@ -10,7 +10,7 @@ import {
   List,
   Typography,
   Divider,
-  ListItem,
+  ListItemButton,
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
@@ -44,10 +44,10 @@ function ListItemLink(props: ListItemLinkProps) {
 
   return (
     <li>
-      <ListItem button component={renderLink}>
+      <ListItemButton component={renderLink}>
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
-      </ListItem>
+      </ListItemButton>
     </li>
   );
 }
