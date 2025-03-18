@@ -8,7 +8,23 @@ import {
   getHullType,
 } from "../util/combatLog";
 import { RawCombatLog } from "../util/inputTypes";
-import { getStats } from "../util/combatLogStats";
+import {
+  allDamageMultiplier,
+  apexMitigationTotal,
+  critDamage,
+  getStats,
+  hhpDepleted,
+  hullDamageIn,
+  hullDamageOut,
+  isoDamageMultiplierTotal,
+  isoMitigationTotal,
+  shieldMitigationTotal,
+  shotsIn,
+  shotsOut,
+  shpDepleted,
+  stdDamageMultiplierTotal,
+  stdMitigationTotal,
+} from "../util/combatLogStats";
 import { roundTo2Digits, infinityToEmpty, shortNumber } from "../util/format";
 
 export interface OverviewProps {
@@ -57,200 +73,6 @@ const formatPercentage = (x: number) => (isNaN(x) ? "" : `${(100 * x).toFixed(2)
 const formatMultiplier = (x: number) => (isNaN(x) ? "" : `${x.toFixed(3)}`);
 const formatNumber = (x: number) => (isNaN(x) ? "" : shortNumber(x));
 
-const stdMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const std_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.std_damage,
-  ).sum;
-  const std_mitigated = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.std_mitigated,
-  ).sum;
-
-  return std_damage > 0 ? std_mitigated / std_damage : NaN;
-};
-
-const isoMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const iso_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.iso_damage,
-  ).sum;
-  const iso_mitigated = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.iso_mitigated,
-  ).sum;
-
-  return iso_damage > 0 ? iso_mitigated / iso_damage : NaN;
-};
-
-const apexMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const total_unmitigated_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.hhp + x.shp,
-  ).sum;
-  const apex_mitigated = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.apex_mitigated,
-  ).sum;
-
-  return total_unmitigated_damage > 0
-    ? apex_mitigated / (apex_mitigated + total_unmitigated_damage)
-    : NaN;
-};
-
-const shieldMitigation = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const total_unmitigated_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.hhp + x.shp,
-  ).sum;
-  const total_shp_damage_taken = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.shp,
-  ).sum;
-
-  return total_unmitigated_damage > 0 ? total_shp_damage_taken / total_unmitigated_damage : NaN;
-};
-
-const stdDamageMultiplier = (
-  ship: CombatLogShip,
-  parsedData: CombatLogParsedData,
-  crit: boolean,
-) => {
-  const std_min_base_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.crit == crit,
-    (x) => x.base_min,
-  ).sum;
-  const std_max_base_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.crit == crit,
-    (x) => x.base_max,
-  ).sum;
-  const std_base_damage = (std_min_base_damage + std_max_base_damage) / 2;
-  const std_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.crit == crit,
-    (x) => x.std_damage,
-  ).sum;
-
-  return std_base_damage > 0 ? std_damage / std_base_damage : NaN;
-};
-
-const isoDamageMultiplier = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const std_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.std_damage,
-  ).sum;
-  const iso_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.iso_damage,
-  ).sum;
-
-  return std_damage > 0 ? iso_damage / std_damage : NaN;
-};
-
-const totalDamageMultiplier = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const std_min_base_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.base_min,
-  ).sum;
-  const std_max_base_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.base_max,
-  ).sum;
-  const std_base_damage = (std_min_base_damage + std_max_base_damage) / 2;
-  const total_damage = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.std_damage + x.iso_damage,
-  ).sum;
-
-  return total_damage > 0 ? total_damage / std_base_damage : NaN;
-};
-
-const shotsOut = (
-  ship: CombatLogShip,
-  parsedData: CombatLogParsedData,
-  crit: boolean | undefined = undefined,
-) => {
-  const count = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => crit == undefined || x.crit == crit,
-    (x) => 1,
-  ).count;
-
-  return count;
-};
-
-const shotsIn = (
-  ship: CombatLogShip,
-  parsedData: CombatLogParsedData,
-  crit: boolean | undefined = undefined,
-) => {
-  const count = getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => crit == undefined || x.crit == crit,
-    (x) => 1,
-  ).count;
-
-  return count;
-};
-
-const critDamage = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const noncrit_multiplier = stdDamageMultiplier(ship, parsedData, false);
-  const crit_multiplier = stdDamageMultiplier(ship, parsedData, true);
-
-  return !isNaN(noncrit_multiplier) && !isNaN(crit_multiplier)
-    ? crit_multiplier / noncrit_multiplier
-    : NaN;
-};
-
-const hullDamageOut = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  return getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.hhp,
-  ).sum;
-};
-
-const hullDamageIn = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  return getStats(
-    parsedData.stats.ships[ship.shipId].damageIn,
-    (x) => true,
-    (x) => x.hhp,
-  ).sum;
-};
-
-const shpDepleted = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const round = getStats(
-    parsedData.stats.ships[ship.shipId].hitPoints,
-    (x) => x.shp <= 0,
-    (x) => x.t.round,
-  ).min;
-  return round !== Infinity ? round : NaN;
-};
-
-const hhpDepleted = (ship: CombatLogShip, parsedData: CombatLogParsedData) => {
-  const round = getStats(
-    parsedData.stats.ships[ship.shipId].hitPoints,
-    (x) => x.hhp <= 0,
-    (x) => x.t.round,
-  ).min;
-  return round !== Infinity ? round : NaN;
-};
-
 export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
   const allShips = parsedData.allShips;
 
@@ -296,7 +118,7 @@ export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
           cells: [
             "Std damage multiplier (non-crit)",
             ...allShips.map((ship) =>
-              formatMultiplier(stdDamageMultiplier(ship, parsedData, false)),
+              formatMultiplier(stdDamageMultiplierTotal(ship, parsedData, 0.5, false)),
             ),
           ],
         },
@@ -304,7 +126,7 @@ export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
           cells: [
             "Std damage multiplier (crit)",
             ...allShips.map((ship) =>
-              formatMultiplier(stdDamageMultiplier(ship, parsedData, true)),
+              formatMultiplier(stdDamageMultiplierTotal(ship, parsedData, 0.5, true)),
             ),
           ],
         },
@@ -317,13 +139,13 @@ export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
         {
           cells: [
             "Iso damage multiplier",
-            ...allShips.map((ship) => formatMultiplier(isoDamageMultiplier(ship, parsedData))),
+            ...allShips.map((ship) => formatMultiplier(isoDamageMultiplierTotal(ship, parsedData))),
           ],
         },
         {
           cells: [
             "Total damage multiplier",
-            ...allShips.map((ship) => formatMultiplier(totalDamageMultiplier(ship, parsedData))),
+            ...allShips.map((ship) => formatMultiplier(allDamageMultiplier(ship, parsedData))),
           ],
         },
         { cells: ["", ...allShips.map((ship) => "")] },
@@ -361,25 +183,25 @@ export const Overview = ({ parsedData, input, data, csv }: OverviewProps) => {
         {
           cells: [
             "Std mitigation",
-            ...allShips.map((ship) => formatPercentage(stdMitigation(ship, parsedData))),
+            ...allShips.map((ship) => formatPercentage(stdMitigationTotal(ship, parsedData))),
           ],
         },
         {
           cells: [
             "Iso mitigation",
-            ...allShips.map((ship) => formatPercentage(isoMitigation(ship, parsedData))),
+            ...allShips.map((ship) => formatPercentage(isoMitigationTotal(ship, parsedData))),
           ],
         },
         {
           cells: [
             "Apex mitigation",
-            ...allShips.map((ship) => formatPercentage(apexMitigation(ship, parsedData))),
+            ...allShips.map((ship) => formatPercentage(apexMitigationTotal(ship, parsedData))),
           ],
         },
         {
           cells: [
             "Shield mitigation",
-            ...allShips.map((ship) => formatPercentage(shieldMitigation(ship, parsedData))),
+            ...allShips.map((ship) => formatPercentage(shieldMitigationTotal(ship, parsedData))),
           ],
         },
       ]}

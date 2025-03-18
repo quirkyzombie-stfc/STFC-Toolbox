@@ -56,9 +56,11 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
                   parsedData.shipById[event.target].displayName,
                   weapon?.displayName,
                   weaponData ? getWeaponDamageType(weaponData) : undefined,
-                  roundTo2Digits(totalDamage - event.damage_iso),
+                  roundTo2Digits(
+                    totalDamage - event.damage_iso_unmitigated - event.damage_iso_mitigated,
+                  ),
                   roundTo2Digits(event.damage_mitigated),
-                  roundTo2Digits(event.damage_iso),
+                  roundTo2Digits(event.damage_iso_unmitigated + event.damage_iso_mitigated),
                   roundTo2Digits(event.damage_iso_mitigated),
                   roundTo2Digits(event.damage_apex_mitigated),
                   event.damage_taken_shield,

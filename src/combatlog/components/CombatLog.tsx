@@ -40,6 +40,7 @@ import { Officers } from "./Officers";
 import { Loot } from "./Loot";
 import { DamageGraph } from "./DamageGraph";
 import { Charts } from "./Charts";
+import { Stats } from "./Stats";
 
 import syncServerRustUrl from "../../../assets/sync-server.exe";
 import syncServerNodeUrl from "../../../assets/index.mjs.txt";
@@ -61,6 +62,7 @@ type View =
   | "loot"
   | "damage_graph"
   | "charts"
+  | "stats"
   | "not_implemented";
 
 interface ActiveViewProps {
@@ -90,6 +92,8 @@ const ActiveView = ({ activeView, input, data, parsedData, csv }: ActiveViewProp
       return <DamageGraph input={input} data={data} parsedData={parsedData} csv={csv} />;
     case "charts":
       return <Charts input={input} data={data} parsedData={parsedData} csv={csv} />;
+    case "stats":
+      return <Stats input={input} data={data} parsedData={parsedData} csv={csv} />;
     case "not_implemented":
       return <Overview input={input} data={data} parsedData={parsedData} csv={csv} />;
   }
@@ -275,6 +279,7 @@ export function CombatLogNew() {
               <MenuItem label="Officers" view="officers" />
               <MenuItem label="Buffs" view="buffs" />
               <MenuItem label="Loot" view="loot" />
+              <MenuItem label="Stats" view="stats" />
             </List>
             <Divider />
             <List>

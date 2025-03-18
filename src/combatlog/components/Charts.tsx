@@ -55,14 +55,48 @@ function getAllStats(obj: ShipStats, data: GameData) {
 
   const damageSample = (prefix: string, ss: DamageSample[]) => {
     return [
-      [prefix + "mitigation", ss.map((s) => ({ v: s.mitigation, t: s.t })), avg],
       [prefix + "hhp", ss.map((s) => ({ v: s.hhp, t: s.t })), avg],
       [prefix + "shp", ss.map((s) => ({ v: s.shp, t: s.t })), avg],
       [prefix + "crit", ss.map((s) => ({ v: s.crit ? 1 : 0, t: s.t })), avg],
       [prefix + "damageMultiplier", ss.map((s) => ({ v: s.damageMultiplier, t: s.t })), avg],
+      [prefix + "all_damage", ss.map((s) => ({ v: s.std_damage + s.iso_damage, t: s.t })), sum],
+      [prefix + "all_mitigation", ss.map((s) => ({ v: s.mitigation, t: s.t })), avg],
       [prefix + "std_damage", ss.map((s) => ({ v: s.std_damage, t: s.t })), sum],
       [prefix + "std_mitigated", ss.map((s) => ({ v: s.std_mitigated, t: s.t })), sum],
+      [
+        prefix + "std_mitigation",
+        ss.map((s) => ({ v: s.std_mitigated / s.std_damage, t: s.t })),
+        sum,
+      ],
+      [prefix + "iso_damage", ss.map((s) => ({ v: s.iso_damage, t: s.t })), sum],
+      [prefix + "iso_mitigated", ss.map((s) => ({ v: s.iso_mitigated, t: s.t })), sum],
+      [
+        prefix + "iso_mitigation",
+        ss.map((s) => ({ v: s.iso_mitigated / s.iso_damage, t: s.t })),
+        sum,
+      ],
       [prefix + "apex_mitigated", ss.map((s) => ({ v: s.apex_mitigated, t: s.t })), sum],
+      [
+        prefix + "apex_mitigation",
+        ss.map((s) => ({
+          v: s.apex_mitigated / (s.std_damage + s.iso_damage - s.std_mitigated - s.iso_mitigated),
+          t: s.t,
+        })),
+        sum,
+      ],
+      [
+        prefix + "apex_barrier",
+        ss.map((s) => ({
+          v:
+            10000.0 /
+              (1 -
+                s.apex_mitigated /
+                  (s.std_damage + s.iso_damage - s.std_mitigated - s.iso_mitigated)) -
+            10000.0,
+          t: s.t,
+        })),
+        sum,
+      ],
       [prefix + "base_min", ss.map((s) => ({ v: s.base_min, t: s.t })), sum],
       [prefix + "base_max", ss.map((s) => ({ v: s.base_max, t: s.t })), sum],
     ] as DataSeries[];

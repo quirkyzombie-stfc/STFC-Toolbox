@@ -6,7 +6,7 @@ import fetch from "node-fetch";
 // Settings
 // --------------------------------------------------------------------------------------------------------------------
 
-const apiHost = "https://assets.stfc.space/data/latest/";
+const apiHost = "https://data.stfc.space/";
 const apiLanguage = "en"; // For now only one language supported
 
 export interface ApiTranslation {
@@ -26,6 +26,7 @@ export interface ApiTranslation {
 
 async function loadVersion(): Promise<string> {
   const url = apiHost + "version.txt";
+  console.info(`Fetching version from ${url}`)
   return fetch(url).then((res) => res.text());
 }
 

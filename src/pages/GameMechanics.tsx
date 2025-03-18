@@ -498,7 +498,8 @@ const entries: EntryData[] = [
           is split into sub-rounds (the game client does not show where sub-rounds begin and end).
         </Typography>
         <Typography paragraph>
-          At the beginning of each round, before the first sub-round starts, the {makeLink(titleHealing, "hull repair")} effect is applied.
+          At the beginning of each round, before the first sub-round starts, the{" "}
+          {makeLink(titleHealing, "hull repair")} effect is applied.
         </Typography>
         <Typography paragraph>Within each sub-round:</Typography>
         <Typography component="ol" gutterBottom>
@@ -528,9 +529,7 @@ const entries: EntryData[] = [
                 If two or more ships are using the same forbidden tech, both apply their effect but
                 only one is displayed in the combat log.
               </li>
-              <li>
-                Chaos tech are treated the same as forbidden tech.
-              </li>
+              <li>Chaos tech are treated the same as forbidden tech.</li>
             </ul>
           </li>
           <li>
@@ -705,32 +704,35 @@ const entries: EntryData[] = [
         </Typography>
         <Typography component="ul" gutterBottom>
           <li>
-            <strong>Officer/ship abilities</strong>.
-            They will be listed in the log, but not tell you how much they healed
-            E.g., Spock will show in the log as something like "Restored Shield Health to an amount equal to 750% of the Defense of the Officers",
-            but won't show much much SHP was restored.
-            This applies both to the UI and the raw combat log data.
+            <strong>Officer/ship abilities</strong>. They will be listed in the log, but not tell
+            you how much they healed E.g., Spock will show in the log as something like "Restored
+            Shield Health to an amount equal to 750% of the Defense of the Officers", but won't show
+            much much SHP was restored. This applies both to the UI and the raw combat log data.
           </li>
           <li>
-            <strong>The Burning status effect</strong>. This one is extra special, and does not appear in the combat log at all (not even in the raw combat log data).
-            Removes 1% of the starting HHP at the end of each round, see {makeLink(titleStatusEffects, "status effects")}.
+            <strong>The Burning status effect</strong>. This one is extra special, and does not
+            appear in the combat log at all (not even in the raw combat log data). Removes 1% of the
+            starting HHP at the end of each round, see{" "}
+            {makeLink(titleStatusEffects, "status effects")}.
           </li>
           <li>
-            <strong>Hull repair</strong>, e.g., from PIC Hugh. Restores HHP equal to a percentage of HHP damage taken in the previous round.
-            This is a distinct event that appears at the beginning of each round, before officer abilities.
-            It shows exactly how much hit points were healed, but doesn't show which abilities contributed to the healing.
+            <strong>Hull repair</strong>, e.g., from PIC Hugh. Restores HHP equal to a percentage of
+            HHP damage taken in the previous round. This is a distinct event that appears at the
+            beginning of each round, before officer abilities. It shows exactly how much hit points
+            were healed, but doesn't show which abilities contributed to the healing.
           </li>
         </Typography>
         <Typography paragraph>
           Some effects restore hit points during combat, but the amount of hit points that was
-          healed during combat is removed at the end of combat, which can lead to ships being destroyed after winning a combat, or ships being "resurrected" after being destroyed in combat.
-          For other effects, the healed hit points persist after combat.
-          An (unconfirmed) explanation for this is that the game tracks two different stats:
+          healed during combat is removed at the end of combat, which can lead to ships being
+          destroyed after winning a combat, or ships being "resurrected" after being destroyed in
+          combat. For other effects, the healed hit points persist after combat. An (unconfirmed)
+          explanation for this is that the game tracks two different stats:
         </Typography>
         <Typography component="ul" gutterBottom>
           <li>
-            <strong>Maximum hit points</strong>. Your maximum hit points, calculated dynamically from different
-            buffs, see {makeLink(titleEffectStacking, "effect stacking")}.
+            <strong>Maximum hit points</strong>. Your maximum hit points, calculated dynamically
+            from different buffs, see {makeLink(titleEffectStacking, "effect stacking")}.
           </li>
           <li>
             <strong>Damage taken</strong>. The cumulative amount of damage taken since you fully
@@ -747,10 +749,10 @@ const entries: EntryData[] = [
           <li>
             <strong>Leslie</strong>. Healed hit points are reverted after combat. Your ship may end
             up being destroyed after combat, even if you had remaining hit points at the end of
-            combat. Works most likely by increasing your maximum hit points - Leslie should
-            only activate if you are below 35% HHP, but in long fights, he keeps activating at
-            higher and higher remaining hit points thresholds, up to the point where you end combat
-            with more hit points than you started.
+            combat. Works most likely by increasing your maximum hit points - Leslie should only
+            activate if you are below 35% HHP, but in long fights, he keeps activating at higher and
+            higher remaining hit points thresholds, up to the point where you end combat with more
+            hit points than you started.
           </li>
           <li>
             <strong>Spock</strong>. Healed hit points are not reverted. Can overcharge shields,
@@ -764,17 +766,22 @@ const entries: EntryData[] = [
           </li>
         </Typography>
         <Typography paragraph>
-          To determine the amount of hit points healed by officer abilities (and to reverse-engineer how they work), you can: 
+          To determine the amount of hit points healed by officer abilities (and to reverse-engineer
+          how they work), you can:
         </Typography>
         <Typography component="ul" gutterBottom>
           <li>
-            Compare the remaining hit points after a weapon attack with the remaining hit points after the previous attack and the damage done by the attack itself.
-            This will tell you exactly much much hit points were added/removed in between those attacks.
-            This information is only available in the raw combat log data, and automatically calculated by the <a href="/combatlog">raw combat log viewer</a>. 
+            Compare the remaining hit points after a weapon attack with the remaining hit points
+            after the previous attack and the damage done by the attack itself. This will tell you
+            exactly much much hit points were added/removed in between those attacks. This
+            information is only available in the raw combat log data, and automatically calculated
+            by the <a href="/combatlog">raw combat log viewer</a>.
           </li>
           <li>
-            Compare the total damage taken from weapon attacks with the amount of hit points restored by Hull Repair abilities or the difference between starting and ending hit points.
-            Not as accurate as the above method, but only needs information shown in the combat log UI.
+            Compare the total damage taken from weapon attacks with the amount of hit points
+            restored by Hull Repair abilities or the difference between starting and ending hit
+            points. Not as accurate as the above method, but only needs information shown in the
+            combat log UI.
           </li>
         </Typography>
       </>
@@ -885,7 +892,18 @@ const entries: EntryData[] = [
           added up and reduced by apex barrier. The damage reduction is equal to
         </Typography>
         <Typography paragraph>
-          <code>apex_barrier_damage_reduction = 10000 / (10000 + apex_barrier)</code>
+          <code>
+            apex_barrier_damage_reduction = 10000 / (10000 + apex_barrier / (1 + apex_shred))
+          </code>
+        </Typography>
+        <Typography paragraph>where</Typography>
+        <Typography component="ul" gutterBottom>
+          <li>
+            <strong>apex_barrier</strong> is the defenders apex barrier stat
+          </li>
+          <li>
+            <strong>apex_shred</strong> is the attackers apex shred stat
+          </li>
         </Typography>
         <Typography paragraph>
           I.e., every 10000 apex barrier, your ship will be able to take 100% more damage.

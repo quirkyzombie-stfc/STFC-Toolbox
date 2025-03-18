@@ -32,7 +32,7 @@ export interface CombatLogRoundEventAttack {
   damage_taken_shield: number;
   remaining_hull: number;
   remaining_shield: number;
-  damage_iso: number;
+  damage_iso_unmitigated: number;
   damage_iso_mitigated: number;
   damage_apex_mitigated: number;
   triggers: CombatLogRoundEventAbility[];
@@ -219,7 +219,7 @@ function parseAttack(
       damage_taken_shield: input.read(),
       remaining_shield: input.read(),
       damage_mitigated: input.read(),
-      damage_iso: input.read(),
+      damage_iso_unmitigated: input.read(),
       damage_iso_mitigated: input.read(),
       damage_apex_mitigated: input.read(),
       triggers: [],
