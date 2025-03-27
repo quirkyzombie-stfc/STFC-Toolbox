@@ -90,6 +90,7 @@ export function Frame(props: FrameProps) {
             <ListItemLink to="/origin-sector" primary="Origin Sector" icon={<FlashOnIcon />} />
             <ListItemLink to="/leslie" primary="Leslie" icon={<FlashOnIcon />} />
             <ListItemLink to="/scrapping" primary="Scrapping" icon={<FlashOnIcon />} />
+            <ListItemLink to="/ship-comparison" primary="Ship Comparison" icon={<FlashOnIcon />} />
             <ListItemLink to="/game-mechanics" primary="Game Mechanics" icon={<FlashOnIcon />} />
           </List>
           <Divider />

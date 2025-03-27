@@ -13,6 +13,7 @@ import { Leslie } from "./pages/Leslie";
 import { GameMechanics } from "./pages/GameMechanics";
 import { Scrapping } from "./pages/Scrapping";
 import { HostilesByHhp } from "./pages/HostilesByHhp";
+import { ShipComparison } from "./pages/ShipComparison";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,7 @@ export function App() {
           <Route path="/spock-bug" element={<GameMechanics />} />
           <Route path="/armada-duplicate-officers" element={<GameMechanics />} />
           <Route path="/hostiles-by-hhp" element={<HostilesByHhp />} />
+          <Route path="/ship-comparison" element={<ShipComparison />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
