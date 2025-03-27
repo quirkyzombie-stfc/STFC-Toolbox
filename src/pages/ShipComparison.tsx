@@ -49,10 +49,13 @@ interface ChartProps {
   shipA: ShipDetail | undefined;
   shipB: ShipDetail | undefined;
   shipC: ShipDetail | undefined;
+  shipNameA : string | undefined;
+  shipNameB : string | undefined;
+  shipNameC : string | undefined;
   getValue: (ship: ShipDetail, tier: number) => number;
 }
 
-const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps) => {
+const Chart = ({ title, description, shipA, shipB, shipC, shipNameA, shipNameB, shipNameC, getValue }: ChartProps) => {
   const tiers = [
     ...(shipA ? shipA.tiers.keys() : []),
     ...(shipB ? shipB.tiers.keys() : []),
@@ -62,9 +65,9 @@ const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps
     .map((x) => +x)
     .toSorted((a, b) => a - b);
   const data: RechartsSample[] = tiers.map((t) => ({
-    vA: shipA !== undefined && shipA.tiers.length > t ? getValue(shipA, t) : undefined,
-    vB: shipB !== undefined && shipB.tiers.length > t ? getValue(shipB, t) : undefined,
-    vC: shipC !== undefined && shipC.tiers.length > t ? getValue(shipC, t) : undefined,
+    vA: shipA !== undefined && shipA.tiers.length > t ? Math.round(getValue(shipA, t)) : undefined,
+    vB: shipB !== undefined && shipB.tiers.length > t ? Math.round(getValue(shipB, t)) : undefined,
+    vC: shipC !== undefined && shipC.tiers.length > t ? Math.round(getValue(shipC, t)) : undefined,
     t: t + 1,
   }));
   return (
@@ -85,7 +88,9 @@ const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <Tooltip />
+            <Tooltip
+            formatter={(value, name, props) => [value.toLocaleString(), name]}
+            />
             <Legend />
 
             <XAxis
@@ -106,6 +111,7 @@ const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps
               dot={true}
               activeDot={false}
               legendType="none"
+              name={shipNameA || "A"}
             />
             <Line
               dataKey="vB"
@@ -114,6 +120,7 @@ const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps
               dot={true}
               activeDot={false}
               legendType="none"
+              name={shipNameB || "B"}
             />
             <Line
               dataKey="vC"
@@ -122,6 +129,7 @@ const Chart = ({ title, description, shipA, shipB, shipC, getValue }: ChartProps
               dot={true}
               activeDot={false}
               legendType="none"
+              name={shipNameC || "C"}
             />
           </ComposedChart>
         )}
@@ -249,6 +257,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentArmor>(s, t, "Armor", (cs) => cs[0].hp) +
               s.levels[t * 5].health
@@ -260,6 +271,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentShield>(s, t, "Shield", (cs) => cs[0].hp) +
               s.levels[t * 5].shield
@@ -271,6 +285,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentWeapon>(s, t, "Weapon", (cs) =>
                 cs
@@ -285,6 +302,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentWeapon>(s, t, "Weapon", (cs) =>
                 cs
@@ -300,6 +320,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentWeapon>(s, t, "Weapon", (cs) =>
                 cs
@@ -320,6 +343,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentWarp>(s, t, "Warp", (cs) => cs[0].distance)
             }
@@ -330,6 +356,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentCargo>(s, t, "Cargo", (cs) => cs[0].max_resources) +
               s.tiers[t].buffs.cargo
@@ -341,6 +370,9 @@ export function ShipComparison() {
             shipA={shipA}
             shipB={shipB}
             shipC={shipC}
+            shipNameA={shipNameA}
+            shipNameB={shipNameB}
+            shipNameC={shipNameC}
             getValue={(s, t) =>
               getComponentValue<ShipComponentImpulse>(s, t, "Impulse", (cs) => cs[0].impulse)
             }
