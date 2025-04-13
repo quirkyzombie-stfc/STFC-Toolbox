@@ -212,7 +212,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
                 "Iso defense: (1 / (iso mitigation) - 1)",
                 ...rowWithTf(
                   isoMitigationStats(ship, parsedData),
-                  (x) => 1 / x - 1,
+                  (x) => 1 / (1-x) - 1,
                   formatPercentage,
                 ),
               ],
@@ -237,7 +237,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             { label: "Apex barrier bonus", align: "left" },
             { label: "Apex shred bonus", align: "left" },
           ]}
-          data={[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0, 1.5, 2.0, 5.0, 10.0].map((x) => {
+          data={[0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0, 1.5, 1.55, 2.0, 5.0, 10.0].map((x) => {
             return {
               cells: [
                 formatPercentage(avgApexMitigation),
