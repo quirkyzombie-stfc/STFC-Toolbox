@@ -224,7 +224,7 @@ function parseAttack(
       damage_apex_mitigated: input.read(),
       triggers: [],
     };
-    if (input.peek() === BattleLogEvents.OFFICER_ABILITIES_FIRING) {
+    while (input.peek() === BattleLogEvents.OFFICER_ABILITIES_FIRING) {
       result.triggers.push(...parseAbilities(input));
     }
     input.readLiteral(BattleLogEvents.END_ATTACK);
