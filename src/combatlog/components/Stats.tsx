@@ -212,7 +212,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
                 "Iso defense: (1 / (iso mitigation) - 1)",
                 ...rowWithTf(
                   isoMitigationStats(ship, parsedData),
-                  (x) => 1 / (1-x) - 1,
+                  (x) => 1 / (1 - x) - 1,
                   formatPercentage,
                 ),
               ],

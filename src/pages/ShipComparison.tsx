@@ -49,13 +49,23 @@ interface ChartProps {
   shipA: ShipDetail | undefined;
   shipB: ShipDetail | undefined;
   shipC: ShipDetail | undefined;
-  shipNameA : string | undefined;
-  shipNameB : string | undefined;
-  shipNameC : string | undefined;
+  shipNameA: string | undefined;
+  shipNameB: string | undefined;
+  shipNameC: string | undefined;
   getValue: (ship: ShipDetail, tier: number) => number;
 }
 
-const Chart = ({ title, description, shipA, shipB, shipC, shipNameA, shipNameB, shipNameC, getValue }: ChartProps) => {
+const Chart = ({
+  title,
+  description,
+  shipA,
+  shipB,
+  shipC,
+  shipNameA,
+  shipNameB,
+  shipNameC,
+  getValue,
+}: ChartProps) => {
   const tiers = [
     ...(shipA ? shipA.tiers.keys() : []),
     ...(shipB ? shipB.tiers.keys() : []),
@@ -88,9 +98,7 @@ const Chart = ({ title, description, shipA, shipB, shipC, shipNameA, shipNameB, 
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <Tooltip
-            formatter={(value, name, props) => [value.toLocaleString(), name]}
-            />
+            <Tooltip formatter={(value, name, props) => [value.toLocaleString(), name]} />
             <Legend />
 
             <XAxis

@@ -9,7 +9,9 @@ export interface BattleLogProps {
 }
 
 export const BattleLogRaw = ({ input, csv }: BattleLogProps) => {
-  const data: string = extractTags(input.battle_log).map((v,i) => `${i}: ${v}`).join("\n");
+  const data: string = extractTags(input.battle_log)
+    .map((v, i) => `${i}: ${v}`)
+    .join("\n");
 
   return (
     <code>
