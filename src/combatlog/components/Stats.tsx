@@ -7,7 +7,7 @@ import {
   CardContent,
   Collapse,
   Typography,
-  Grid2,
+  Grid,
   TextField,
   Button,
   MenuItem,
@@ -89,7 +89,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
 
   return (
     <>
-      <Grid2 size={{ xs: 12 }}>
+      <Grid size={{ xs: 12 }}>
         <h2>Standard damage</h2>
         <CombatLogTable
           csv={csv}
@@ -139,8 +139,8 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             },
           ]}
         ></CombatLogTable>
-      </Grid2>
-      <Grid2 size={{ xs: 12 }}>
+      </Grid>
+      <Grid size={{ xs: 12 }}>
         <h2>Isolitic damage</h2>
         <CombatLogTable
           csv={csv}
@@ -182,8 +182,8 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             };
           })}
         ></CombatLogTable>
-      </Grid2>
-      <Grid2 size={{ xs: 12 }}>
+      </Grid>
+      <Grid size={{ xs: 12 }}>
         <h2>Mitigation</h2>
         <CombatLogTable
           csv={csv}
@@ -247,7 +247,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             };
           })}
         ></CombatLogTable>
-      </Grid2>
+      </Grid>
     </>
   );
 };
@@ -257,8 +257,8 @@ export const Stats = ({ parsedData, input, data, csv }: StatsProps) => {
 
   return (
     <React.Fragment>
-      <Grid2 container spacing={2}>
-        <Grid2 size={{ xs: 12 }}>
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12 }}>
           <TextField
             id="select"
             label="Ship"
@@ -274,11 +274,11 @@ export const Stats = ({ parsedData, input, data, csv }: StatsProps) => {
               </MenuItem>
             ))}
           </TextField>
-        </Grid2>
+        </Grid>
         {shipId === undefined ? null : (
           <Content ship={parsedData.shipById[shipId]} parsedData={parsedData} csv={csv} />
         )}
-      </Grid2>
+      </Grid>
     </React.Fragment>
   );
 };

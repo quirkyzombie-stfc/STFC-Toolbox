@@ -35,7 +35,7 @@ export interface CombatLogTableProps {
   csv?: boolean;
 }
 
-export function CombatLogTable(props: CombatLogTableProps): JSX.Element {
+export function CombatLogTable(props: CombatLogTableProps): React.JSX.Element {
   const { columns, data, csv } = props;
 
   if (csv) {

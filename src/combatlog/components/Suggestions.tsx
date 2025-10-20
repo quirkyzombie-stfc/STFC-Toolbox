@@ -22,7 +22,7 @@ import {
   CardContent,
   Collapse,
   Typography,
-  Grid2,
+  Grid,
   TextField,
   Button,
   MenuItem,
@@ -167,7 +167,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
                   ],
             ),
             subround: i,
-            name: w.c.displayName,
+            name: `W${i}`,
           },
         ],
   );
@@ -179,7 +179,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
       damageByRound.flatMap((s) => s.data.map((r) => r.z)),
     ),
   ];
-  const firingPatternZRange = [10, 300];
+  const firingPatternZRange: [number, number] = [10, 300];
 
   const dataDamageTypes = [
     { name: "Standard Energy", value: energyBaseDamage },
@@ -194,13 +194,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
     const y = cy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
 
     return (
-      <text
-        x={x}
-        y={y}
-        fill="white"
-        textAnchor={x > cx ? "start" : "end"}
-        dominantBaseline="central"
-      >
+      <text x={x} y={y} fill="white" textAnchor={"middle"} dominantBaseline="central">
         {`${((percent ?? 1) * 100).toFixed(0)}%`}
       </text>
     );
@@ -208,10 +202,10 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
 
   return (
     <>
-      <Grid2 size={{ xs: 3 }}>
+      <Grid size={{ xs: 3 }}>
         <h2>Damage types</h2>
         <ResponsiveContainer width="100%" height={400}>
-          <PieChart width={400} height={400}>
+          <PieChart responsive width={400} height={400}>
             <Pie
               data={dataDamageTypes}
               labelLine={false}
@@ -229,8 +223,8 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             <Legend verticalAlign="bottom" height={36} />
           </PieChart>
         </ResponsiveContainer>
-      </Grid2>
-      <Grid2 size={{ xs: 6 }}>
+      </Grid>
+      <Grid size={{ xs: 6 }}>
         <h2>Firing pattern</h2>
 
         <div style={{ width: "100%" }}>
@@ -279,8 +273,8 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             </ResponsiveContainer>
           ))}
         </div>
-      </Grid2>
-      <Grid2 size={{ xs: 3 }}>
+      </Grid>
+      <Grid size={{ xs: 3 }}>
         <h2>Observed stats</h2>
         <SimpleTable
           minWidth={200}
@@ -296,15 +290,15 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             { cells: ["Damage multiplier", formatNumber(avdDmgMultiplier)] },
           ]}
         />
-      </Grid2>
-      <Grid2 size={{ xs: 12 }}>
+      </Grid>
+      <Grid size={{ xs: 12 }}>
         <h2>Crew suggestions</h2>
         <Alert severity="warning">
-            <AlertTitle>How suggestions are ranked</AlertTitle>
-            The table below shows the upper bound for the relative change to effective hit points.
-            E.g., if "Std mitigation" shows a value of 1.2, it means that you can survive up to 20%
-            longer if you max your std mitigation. If might not be feasible to reach the maximum,
-            expand the row for more information.
+          <AlertTitle>How suggestions are ranked</AlertTitle>
+          The table below shows the upper bound for the relative change to effective hit points.
+          E.g., if "Std mitigation" shows a value of 1.2, it means that you can survive up to 20%
+          longer if you max your std mitigation. If might not be feasible to reach the maximum,
+          expand the row for more information.
         </Alert>
         <CollapsibleTable
           columns={[
@@ -322,7 +316,7 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
             { cells: ["Std mitigation", "Joachim", "1.1"], details: "Test" },
           ]}
         />
-      </Grid2>
+      </Grid>
     </>
   );
 };
@@ -332,8 +326,8 @@ export const Suggestions = ({ parsedData, input, data, csv }: StatsProps) => {
 
   return (
     <React.Fragment>
-      <Grid2 container spacing={2}>
-        <Grid2 size={{ xs: 12 }}>
+      <Grid container spacing={2}>
+        <Grid size={{ xs: 12 }}>
           <TextField
             id="select"
             label="Ship"
@@ -349,11 +343,11 @@ export const Suggestions = ({ parsedData, input, data, csv }: StatsProps) => {
               </MenuItem>
             ))}
           </TextField>
-        </Grid2>
+        </Grid>
         {shipId === undefined ? null : (
           <Content ship={parsedData.shipById[shipId]} parsedData={parsedData} csv={csv} />
         )}
-      </Grid2>
+      </Grid>
     </React.Fragment>
   );
 };

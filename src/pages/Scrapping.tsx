@@ -164,7 +164,7 @@ export function Scrapping() {
       <p>Helps you determine what to scrap. What is your situation?</p>
       <form noValidate autoComplete="off">
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <TextField
               select
               onChange={(event) => setModeName(event.target.value)}
@@ -182,7 +182,7 @@ export function Scrapping() {
               })}
             </TextField>
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <p>
               Each unit of {inputName} will {mode.type === "build_cost" ? "yield" : "cost"} the
               following materials:

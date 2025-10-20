@@ -143,7 +143,7 @@ export function Mitigation() {
       </p>
       <form noValidate autoComplete="off">
         <Grid container spacing={4}>
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <h4>Attacker</h4>
             <FormField
               required
@@ -159,14 +159,14 @@ export function Mitigation() {
             />
             <FormField required fullWidth label="Accuracy" {...number("attackerAccuracy")} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <h4>Defender</h4>
             <FormField required fullWidth label="Armor" {...number("defenderArmor")} />
             <FormField required fullWidth label="Shield deflection" {...number("defenderShield")} />
             <FormField required fullWidth label="Dodge" {...number("defenderDodge")} />
             <ShipTypeSelectField required fullWidth label="Ship type" {...raw("defenderType")} />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <h4>Mitigation</h4>
             <Typography variant="h4" display="block" gutterBottom>
               {(mitigation * 100).toFixed(4) + "%"}
@@ -176,12 +176,12 @@ export function Mitigation() {
       </form>
       <h2>Scenarios</h2>
       <Grid container spacing={4}>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <p>
             Quickly inspect how mitigation would change if you have more defense or piercing values.
           </p>
           <Grid container spacing={2}>
-            <Grid item xs={4}>
+            <Grid size={{ xs: 12 }}>
               <Typography id="attacker-switch" gutterBottom>
                 Attacker/Defender
               </Typography>
@@ -192,7 +192,7 @@ export function Mitigation() {
                 inputProps={{ "aria-label": "attacker-switch" }}
               />
             </Grid>
-            <Grid item xs={8}>
+            <Grid size={{ xs: 8 }}>
               <Typography id="bonus-slider" gutterBottom>
                 Absolute bonus: {scenarioBonus}
               </Typography>
@@ -295,7 +295,7 @@ export function Mitigation() {
       </p>
 
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <AutoSizer disableHeight>
             {({ width }) => (
               <ComposedChart

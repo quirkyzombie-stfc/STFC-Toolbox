@@ -81,14 +81,14 @@ const formatInt = (x: number | undefined) =>
 const formatPercent = (x: number) => (isUsefulNumber(x) ? (x * 100).toFixed(2) + "%" : "");
 
 interface ExpandingListRowProps {
-  icon?: JSX.Element;
-  text: string | JSX.Element;
-  details: string | JSX.Element;
+  icon?: React.JSX.Element;
+  text: string | React.JSX.Element;
+  details: string | React.JSX.Element;
   className?: string;
   side: "initiator" | "target";
 }
 
-function ExpandingListRow(props: ExpandingListRowProps): JSX.Element {
+function ExpandingListRow(props: ExpandingListRowProps): React.JSX.Element {
   const { icon, text, details } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -121,7 +121,7 @@ interface CombatRoundEventProps {
   ships: CombatLogShip[];
 }
 
-function CombatRoundEvent(props: CombatRoundEventProps): JSX.Element {
+function CombatRoundEvent(props: CombatRoundEventProps): React.JSX.Element {
   const { event, ships } = props;
 
   switch (event.type) {
@@ -221,7 +221,7 @@ interface CombatLogRoundCardProps {
   ships: CombatLogShip[];
 }
 
-function CombatLogRoundCard(props: CombatLogRoundCardProps): JSX.Element {
+function CombatLogRoundCard(props: CombatLogRoundCardProps): React.JSX.Element {
   const { round, ships } = props;
 
   return (
@@ -244,7 +244,7 @@ const CombatLogRoundCardM = memo(CombatLogRoundCard);
 interface CombatLogFleetCardProps {
   ships: CombatLogShip[];
 }
-function CombatLogFleetCard(props: CombatLogFleetCardProps): JSX.Element {
+function CombatLogFleetCard(props: CombatLogFleetCardProps): React.JSX.Element {
   const { ships } = props;
 
   return (
@@ -319,7 +319,7 @@ interface CombatLogSummaryCardProps {
   combatLog: CombatLog;
   stats: CombatLogStats;
 }
-function CombatLogSummaryCard(props: CombatLogSummaryCardProps): JSX.Element {
+function CombatLogSummaryCard(props: CombatLogSummaryCardProps): React.JSX.Element {
   const { combatLog, stats } = props;
 
   let winnerHullDamage = 0;
@@ -352,7 +352,7 @@ interface CombatLogStatsDetailsProps {
   combatLog: CombatLog;
   stats: CombatLogStats;
 }
-function CombatLogDefensiveStats(props: CombatLogStatsDetailsProps): JSX.Element {
+function CombatLogDefensiveStats(props: CombatLogStatsDetailsProps): React.JSX.Element {
   const { combatLog, stats } = props;
   return (
     <SimpleTable
@@ -387,7 +387,7 @@ function CombatLogDefensiveStats(props: CombatLogStatsDetailsProps): JSX.Element
   );
 }
 
-function CombatLogOffensiveStats(props: CombatLogStatsDetailsProps): JSX.Element {
+function CombatLogOffensiveStats(props: CombatLogStatsDetailsProps): React.JSX.Element {
   const { combatLog, stats } = props;
   return (
     <SimpleTable
@@ -420,7 +420,7 @@ function CombatLogOffensiveStats(props: CombatLogStatsDetailsProps): JSX.Element
   );
 }
 
-function CombatLogWeaponStats(props: CombatLogStatsDetailsProps): JSX.Element {
+function CombatLogWeaponStats(props: CombatLogStatsDetailsProps): React.JSX.Element {
   const { combatLog, stats } = props;
   return (
     <SimpleTable
@@ -456,7 +456,7 @@ function CombatLogWeaponStats(props: CombatLogStatsDetailsProps): JSX.Element {
   );
 }
 
-function CombatLoBurningStats(props: CombatLogStatsDetailsProps): JSX.Element {
+function CombatLoBurningStats(props: CombatLogStatsDetailsProps): React.JSX.Element {
   const { combatLog, stats } = props;
   return (
     <React.Fragment>
@@ -516,7 +516,7 @@ function allStats(obj: any) {
   return paths(obj);
 }
 
-function CombatLogCharts(props: CombatLogStatsDetailsProps): JSX.Element {
+function CombatLogCharts(props: CombatLogStatsDetailsProps): React.JSX.Element {
   const { stats } = props;
   const [ship, setShip] = useState<string>(props.combatLog.ships[0].ship_id);
   const [stat, setStat] = useState<string>("");
@@ -533,7 +533,7 @@ function CombatLogCharts(props: CombatLogStatsDetailsProps): JSX.Element {
   return (
     <React.Fragment>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid size={{ xs: 4 }}>
           <TextField
             id="select"
             label="Ship"
@@ -549,7 +549,7 @@ function CombatLogCharts(props: CombatLogStatsDetailsProps): JSX.Element {
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={4}>
+        <Grid size={{ xs: 4 }}>
           <TextField
             id="select"
             label="Data"
@@ -565,7 +565,7 @@ function CombatLogCharts(props: CombatLogStatsDetailsProps): JSX.Element {
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <AutoSizer disableHeight>
             {({ width }) => (
               <ComposedChart
@@ -618,7 +618,7 @@ interface CombatLogStatsCardProps {
   combatLog: CombatLog;
   stats: CombatLogStats;
 }
-function CombatLogStatsCard(props: CombatLogStatsCardProps): JSX.Element {
+function CombatLogStatsCard(props: CombatLogStatsCardProps): React.JSX.Element {
   const { combatLog, stats } = props;
 
   return (
@@ -668,17 +668,17 @@ function CombatLogImpl(props: CombatLogImplProps) {
 
   return (
     <Grid container spacing={1}>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <CombatLogFleetCardM ships={combatLog.ships} />
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <CombatLogSummaryCardM combatLog={combatLog} stats={stats} />
       </Grid>
-      <Grid item xs={12}>
+      <Grid size={{ xs: 12 }}>
         <CombatLogStatsCardM combatLog={combatLog} stats={stats} />
       </Grid>
       {combatLog.log.map((round) => (
-        <Grid item xs={12} key={round.round}>
+        <Grid size={{ xs: 12 }} key={round.round}>
           <CombatLogRoundCardM round={round} ships={combatLog.ships} />
         </Grid>
       ))}

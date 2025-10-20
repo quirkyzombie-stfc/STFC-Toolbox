@@ -23,7 +23,7 @@ const TableRowWithoutBottom = styled(TableRow)(({ theme }) => ({
 
 export interface CollapsibleTableRowData {
   cells: string[];
-  details: string | JSX.Element;
+  details: string | React.JSX.Element;
 }
 
 export interface CollapsibleTableColumnData {
@@ -69,7 +69,7 @@ function Row(props: {
   );
 }
 
-export function CollapsibleTable(props: CollapsibleTableProps): JSX.Element {
+export function CollapsibleTable(props: CollapsibleTableProps): React.JSX.Element {
   const { columns, data } = props;
 
   return (

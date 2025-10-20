@@ -11,12 +11,12 @@ export function OriginSector() {
     <Frame title="Origin Sector">
       <h2>Map of origin space territories</h2>
       <Grid container spacing={4}>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <a target="_blank" href={bigImage}>
             <img src={smallImage} alt="Origin Sector" style={{ width: "100%" }} />
           </a>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           Click on the map to view it in full resolution. Click{" "}
           <a href={imageSource} download>
             here

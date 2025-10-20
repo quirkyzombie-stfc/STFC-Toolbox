@@ -23,7 +23,7 @@ export interface SimpleTableProps {
   }[];
 }
 
-export function SimpleTable(props: SimpleTableProps): JSX.Element {
+export function SimpleTable(props: SimpleTableProps): React.JSX.Element {
   const { columns, data, minWidth } = props;
 
   return (

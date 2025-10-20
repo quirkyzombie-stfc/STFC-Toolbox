@@ -86,7 +86,7 @@ function getIndexNameFromUrl(): string {
   }
 }
 
-export function CombatLogs(props: CombatLogsProps): JSX.Element {
+export function CombatLogs(props: CombatLogsProps): React.JSX.Element {
   const [data, setData] = useState<CombatLogDatabase>([]);
   const navigate = useNavigate();
   const [search, setSearch] = React.useState("");

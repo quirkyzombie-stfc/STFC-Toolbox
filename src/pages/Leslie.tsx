@@ -47,7 +47,7 @@ export function Leslie() {
       </p>
       <form noValidate autoComplete="off">
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <h4>Settings</h4>
             <FormField
               required
@@ -75,7 +75,7 @@ export function Leslie() {
               {...number("playerSpock")}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <h4>Result</h4>
             <p>The higher your mitigation, the less hit points and defense stats you need.</p>
             <SimpleTable

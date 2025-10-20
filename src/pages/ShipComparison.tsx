@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Card,
   CardContent,
   Collapse,
   Typography,
-  Grid2,
+  Grid,
   TextField,
   Button,
   MenuItem,
@@ -81,7 +81,7 @@ const Chart = ({
     t: t + 1,
   }));
   return (
-    <Grid2 size={{ xs: 12, lg: 6, xl: 4 }}>
+    <Grid size={{ xs: 12, lg: 6, xl: 4 }}>
       <h2>{title}</h2>
       <p>{description}</p>
       <AutoSizer disableHeight>
@@ -142,18 +142,21 @@ const Chart = ({
           </ComposedChart>
         )}
       </AutoSizer>
-    </Grid2>
+    </Grid>
   );
 };
 
 export function ShipComparison() {
-  const gameData = useQuery("game-data", async () => {
-    const response = await fetch("/data/game-data/all.json");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const body = (await response.json()) as GameData;
-    return body;
+  const gameData = useQuery({
+    queryKey: ["game-data"],
+    queryFn: async () => {
+      const response = await fetch("/data/game-data/all.json");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const body = (await response.json()) as GameData;
+      return body;
+    },
   });
   const [shipIdA, setShipIdA] = useState<number | undefined>(3426564736);
   const [shipIdB, setShipIdB] = useState<number | undefined>(701705952);
@@ -198,8 +201,8 @@ export function ShipComparison() {
     });
     return (
       <Frame title="About">
-        <Grid2 container spacing={2}>
-          <Grid2 size={{ xs: 4 }}>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 4 }}>
             <TextField
               id="select"
               label="Ship A"
@@ -218,8 +221,8 @@ export function ShipComparison() {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid2>
-          <Grid2 size={{ xs: 4 }}>
+          </Grid>
+          <Grid size={{ xs: 4 }}>
             <TextField
               id="select"
               label="Ship B"
@@ -238,8 +241,8 @@ export function ShipComparison() {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid2>
-          <Grid2 size={{ xs: 4 }}>
+          </Grid>
+          <Grid size={{ xs: 4 }}>
             <TextField
               id="select"
               label="Ship C"
@@ -258,7 +261,7 @@ export function ShipComparison() {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid2>
+          </Grid>
           <Chart
             title="HHP"
             description="Base hull hit points. Value is the sum of the bonus from the armor ship component, and the bonus from the ship level assuming the ship is maximally leveled for its tier. Not including any research."
@@ -385,7 +388,7 @@ export function ShipComparison() {
               getComponentValue<ShipComponentImpulse>(s, t, "Impulse", (cs) => cs[0].impulse)
             }
           />
-        </Grid2>
+        </Grid>
       </Frame>
     );
   } else {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback, useMemo, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import {
   Alert,
   AlertTitle,
@@ -143,9 +143,9 @@ export function CombatLogNew() {
   );
 
   // Loading of the game data
-  const gameData = useQuery(
-    "game-data",
-    async () => {
+  const gameData = useQuery({
+    queryKey: ["game-data"],
+    queryFn: async () => {
       const response = await fetch("/data/game-data/all.json");
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -153,8 +153,8 @@ export function CombatLogNew() {
       const body = (await response.json()) as GameData;
       return body;
     },
-    { enabled: logData !== undefined },
-  );
+    enabled: logData !== undefined,
+  });
 
   // Data transform
   const parsedData = useMemo(() => {

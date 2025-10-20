@@ -130,7 +130,7 @@ export function Simulator() {
       <p>Simulates combat</p>
       <form noValidate autoComplete="off">
         <Grid container spacing={4}>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <h4>Input</h4>
             <FormField
               required
@@ -142,7 +142,7 @@ export function Simulator() {
               {...text("combatData")}
             />
           </Grid>
-          <Grid item xs={4}>
+          <Grid size={{ xs: 4 }}>
             <h4>Simulation</h4>
             <FormField
               required
@@ -155,7 +155,7 @@ export function Simulator() {
               Simulate
             </StyledButton>
           </Grid>
-          <Grid item xs={12}>
+          <Grid size={{ xs: 12 }}>
             <h4>Result</h4>
             {result ? (
               <>

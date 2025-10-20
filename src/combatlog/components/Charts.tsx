@@ -181,7 +181,7 @@ export const Charts = ({ parsedData, input, data, csv }: BuffsProps) => {
   return (
     <React.Fragment>
       <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid size={{ xs: 4 }}>
           <TextField
             id="select"
             label="Ship"
@@ -198,7 +198,7 @@ export const Charts = ({ parsedData, input, data, csv }: BuffsProps) => {
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={4}>
+        <Grid size={{ xs: 4 }}>
           <TextField
             id="select"
             label="Data"
@@ -215,7 +215,7 @@ export const Charts = ({ parsedData, input, data, csv }: BuffsProps) => {
             ))}
           </TextField>
         </Grid>
-        <Grid item xs={4}>
+        <Grid size={{ xs: 4 }}>
           <TextField
             id="select"
             label="Resolution"
@@ -236,7 +236,7 @@ export const Charts = ({ parsedData, input, data, csv }: BuffsProps) => {
             </MenuItem>
           </TextField>
         </Grid>
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <AutoSizer disableHeight>
             {({ width }) => (
               <ComposedChart
