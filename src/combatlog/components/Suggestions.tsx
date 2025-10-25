@@ -16,6 +16,9 @@ import {
   Cell,
   ScatterChart,
   Scatter,
+  Label,
+  AreaChart,
+  Area,
 } from "recharts";
 import {
   Card,
@@ -32,6 +35,8 @@ import {
   ListItemIcon,
   Alert,
   AlertTitle,
+  Chip,
+  Stack,
 } from "@mui/material";
 import {
   BuffLookupResult,
@@ -60,6 +65,8 @@ import {
   isoDamageMultiplierStats,
   apexMitigationTotal,
   apexMitigationStats,
+  getStats,
+  Stats,
 } from "../util/combatLogStats";
 import { CombatLogTable } from "./CombatLogTable";
 import { shortNumber } from "../util/format";
@@ -68,20 +75,22 @@ import { ShipComponentWeapon } from "../../util/gameData";
 import { SimpleTable } from "../../components/SimpleTable";
 import { CollapsibleTable } from "../../components/CollapsibleTable";
 
-export interface StatsProps {
+export interface SuggestionsProps {
   parsedData: CombatLogParsedData;
   input: RawCombatLog;
   data: GameData;
   csv: boolean;
 }
 
-const formatPercentage = (x: number) => (isNaN(x) ? "" : `${(100 * x).toFixed(3)}%`);
+const formatPercentage = (x: number) => (isNaN(x) ? "" : `${(100 * x).toFixed(2)}%`);
 const formatMultiplier = (x: number) => (isNaN(x) ? "" : `${x.toFixed(4)}`);
 const formatNumber = (x: number) => (isNaN(x) ? "" : shortNumber(x));
 
-interface TableProps {
+interface ContentProps {
   ship: CombatLogShip;
   parsedData: CombatLogParsedData;
+  input: RawCombatLog;
+  data: GameData;
   csv: boolean;
 }
 
@@ -107,22 +116,77 @@ const rowWithTf = (s: CombatLogStats, f: (x: number) => number, format: (x: numb
 const isFiring = (round: number, warm_up: number, cool_down: number) =>
   round >= warm_up - 1 && (round - warm_up + 1) % cool_down === 0;
 
-const Content = ({ ship, parsedData, csv }: TableProps) => {
-  const colorEnergy = "#0088FE";
-  const colorKinetic = "#00C49F";
-  const colorIsolitic = "#FFBB28";
-  const colorNone = "#ffffff";
+const colorShp = "#66BFFF";
+const colorHhp = "#FF69B4";
+const colorEnergy = "rgba(0, 136, 254, 1)";
+const colorKinetic = "#00C49F";
+const colorIsolitic = "#FFBB28";
+const colorNone = "#ffffff";
 
-  const avgIsoMultiplier = average(isoDamageMultiplierStats(ship, parsedData));
-  const avgApexMitigation = average(apexMitigationStats(ship, parsedData));
-  const avgIsoMitigation = average(isoMitigationStats(ship, parsedData));
-  const avgStdMitigation = average(stdMitigationStats(ship, parsedData));
-  const avdDmgMultiplier = average(stdDamageMultiplierStats(ship, parsedData, 0.5, false));
+const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) => {
+  const RADIAN = Math.PI / 180;
+  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-(midAngle ?? 0) * RADIAN);
+    const y = cy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
+
+    return (
+      <text x={x} y={y} fill="white" textAnchor={"middle"} dominantBaseline="central">
+        {`${((percent ?? 1) * 100).toFixed(1)}%`}
+      </text>
+    );
+  };
 
   const shipWeapons: ShipComponentWeapon[] = ship.components.flatMap((c, i) =>
     c?.component.data.tag === "Weapon" ? [c.component.data] : [],
   );
 
+  const avgIsoMultiplier = average(isoDamageMultiplierStats(ship, parsedData));
+
+  const rawDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY",
+    (x) => x.std_damage,
+  ).sum;
+  const rawDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC",
+    (x) => x.std_damage,
+  ).sum;
+  const rawDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.iso_damage,
+  ).sum;
+
+  const actualDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+
+  const totalDamageHhp = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.hhp,
+  ).sum;
+  const totalDamageShp = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.shp,
+  ).sum;
+
+  /*
   const energyBaseDamage = shipWeapons
     .filter((c) => getWeaponDamageType(c) === "ENERGY")
     .reduce((p, c) => p + (((c.minimum_damage + c.maximum_damage) / 2) * c.shots) / c.cool_down, 0);
@@ -130,6 +194,329 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
     .filter((c) => getWeaponDamageType(c) === "KINETIC")
     .reduce((p, c) => p + (((c.minimum_damage + c.maximum_damage) / 2) * c.shots) / c.cool_down, 0);
   const isoBaseDamage = (energyBaseDamage + kineticBaseDamage) * avgIsoMultiplier;
+  */
+
+  const dataDamageRaw = [
+    { name: "Energy", value: rawDamageEnergy, fill: colorEnergy },
+    { name: "Kinetic", value: rawDamageKinetic, fill: colorKinetic },
+    { name: "Isolitic", value: rawDamageIsolitic, fill: colorIsolitic },
+  ].filter((r) => r.value > 0);
+
+  const dataDamageActual = [
+    { name: "Energy", value: actualDamageEnergy, fill: colorEnergy },
+    { name: "Kinetic", value: actualDamageKinetic, fill: colorKinetic },
+    { name: "Isolitic", value: actualDamageIsolitic, fill: colorIsolitic },
+  ].filter((r) => r.value > 0);
+  const dataDamageShpHhp = [
+    { name: "SHP", value: totalDamageHhp, fill: colorHhp },
+    { name: "HHP", value: totalDamageShp, fill: colorShp },
+  ].filter((r) => r.value > 0);
+
+  return (
+    <PieChart responsive style={{ height: "210px", width: "520px" }}>
+      <Pie
+        data={dataDamageRaw}
+        label={renderCustomizedLabel}
+        labelLine={false}
+        dataKey="value"
+        nameKey="name"
+        cx="90"
+        cy="100"
+        outerRadius={80}
+        innerRadius={30}
+        fill="#8884d8"
+      >
+        {dataDamageRaw.map((r) => (
+          <Cell key={`cell-${r.name}`} fill={r.fill} />
+        ))}
+        <text x={90} y={10} textAnchor="middle" dominantBaseline="middle">
+          Raw
+        </text>
+        <text x={90} y={200} textAnchor="middle" dominantBaseline="middle">
+          {shortNumber(rawDamageEnergy + rawDamageKinetic + rawDamageIsolitic)}
+        </text>
+      </Pie>
+      <Pie
+        data={dataDamageActual}
+        label={renderCustomizedLabel}
+        labelLine={false}
+        dataKey="value"
+        nameKey="name"
+        cx="260"
+        cy="100"
+        outerRadius={80}
+        innerRadius={30}
+        fill="#8884d8"
+      >
+        {dataDamageActual.map((r) => (
+          <Cell key={`cell-${r.name}`} fill={r.fill} />
+        ))}
+        <text x={260} y={10} textAnchor="middle" dominantBaseline="middle">
+          After mitigation
+        </text>
+        <text x={260} y={200} textAnchor="middle" dominantBaseline="middle">
+          {shortNumber(actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic)}
+        </text>
+      </Pie>
+      <Pie
+        data={dataDamageShpHhp}
+        label={renderCustomizedLabel}
+        labelLine={false}
+        dataKey="value"
+        nameKey="name"
+        cx="430"
+        cy="100"
+        outerRadius={80}
+        innerRadius={30}
+        fill="#8884d8"
+      >
+        {dataDamageShpHhp.map((r) => (
+          <Cell key={`cell-${r.name}`} fill={r.fill} />
+        ))}
+        <text x={430} y={10} textAnchor="middle" dominantBaseline="middle">
+          Hit points
+        </text>
+        <text x={430} y={200} textAnchor="middle" dominantBaseline="middle">
+          {shortNumber(totalDamageHhp) + " HHP"}
+        </text>
+      </Pie>
+    </PieChart>
+  );
+};
+
+const QuickStats = ({ ship, parsedData, csv, input, data }: ContentProps) => {
+  const formatStats = (s: Stats, format: (value: number) => string) =>
+    s.count === 0 ? "N/A" : format(s.sum / s.count);
+
+  return (
+    <SimpleTable
+      minWidth={200}
+      size="small"
+      columns={[
+        { label: "Stat", align: "left" },
+        { label: "Value", align: "right" },
+      ]}
+      data={[
+        {
+          cells: [
+            "Damage multiplier",
+            formatStats(stdDamageMultiplierStats(ship, parsedData, 0.5, false), formatNumber),
+          ],
+        },
+        {
+          cells: [
+            "Iso multiplier",
+            formatStats(isoDamageMultiplierStats(ship, parsedData), formatNumber),
+          ],
+        },
+
+        {
+          cells: [
+            "Apex mitigation",
+            formatStats(apexMitigationStats(ship, parsedData), formatPercentage),
+          ],
+        },
+        {
+          cells: [
+            "Iso mitigation",
+            formatStats(isoMitigationStats(ship, parsedData), formatPercentage),
+          ],
+        },
+        {
+          cells: [
+            "Std mitigation",
+            formatStats(stdMitigationStats(ship, parsedData), formatPercentage),
+          ],
+        },
+
+        {
+          cells: [
+            "Hull repair",
+            formatStats(
+              getStats(
+                parsedData.stats.ships[ship.shipId].hullRepairs,
+                (x) => true,
+                (x) => x.fraction,
+              ),
+              formatNumber,
+            ),
+          ],
+        },
+      ]}
+    />
+  );
+};
+
+const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => {
+  const actualDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+
+  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
+  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
+
+  const rEHP = (reduction: number) => {
+    const newActualDamageEnergy = actualDamageEnergy * Math.max(0, damageBonus + reduction) / damageBonus;
+    const newActualTotalDamage = newActualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+    const rEHP = actualTotalDamage / newActualTotalDamage;
+    return rEHP;
+  };
+
+  return {
+    cells: ["Energy damage reduction", "Chen", formatNumber(rEHP(-0.66))],
+    details: (
+      <>
+        <p>
+          Assuming the target has a damage bonus of {formatPercentage(damageBonus)} (measured from
+          this combat log), reducing the target energy damage bonus will affect your rEHP as
+          follows:
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "Reduction", align: "left" },
+            { label: "Setup", align: "left" },
+            { label: "rEHP", align: "right" },
+          ]}
+          data={[-0.1, -0.2, -0.3, -0.4, -0.5, -0.6, -0.66].map((reduction) => {
+            return {
+              cells: [formatNumber(reduction), "TODO", formatNumber(rEHP(reduction))],
+            };
+          })}
+        />
+      </>
+    ),
+  };
+};
+
+const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) => {
+  const actualDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+
+  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
+  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
+
+  const rEHP = (reduction: number) => {
+    const newActualDamageKinetic = actualDamageKinetic * Math.max(0, damageBonus + reduction) / damageBonus;
+    const newActualTotalDamage = actualDamageEnergy + newActualDamageKinetic + actualDamageIsolitic;
+    const rEHP = actualTotalDamage / newActualTotalDamage;
+    return rEHP;
+  };
+
+  return {
+    cells: ["Kinetic damage reduction", "Cath", formatNumber(rEHP(-0.55))],
+    details: (
+      <>
+        <p>
+          Assuming the target has a damage bonus of {formatPercentage(damageBonus)} (measured from
+          this combat log), reducing the target kinetic damage bonus will affect your rEHP as
+          follows:
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "Reduction", align: "left" },
+            { label: "Setup", align: "left" },
+            { label: "rEHP", align: "right" },
+          ]}
+          data={[-0.1, -0.2, -0.3, -0.4, -0.5, -0.55].map((reduction) => {
+            return {
+              cells: [formatNumber(reduction), "TODO", formatNumber(rEHP(reduction))],
+            };
+          })}
+        />
+      </>
+    ),
+  };
+};
+
+const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: CombatLogShip) => {
+  const isoMitigationS = isoMitigationStats(playerShip, parsedData);
+  const isoMitigation = isoMitigationS.sum / isoMitigationS.count;
+  const isoDefense = 1 / (1 - isoMitigation) - 1;
+
+  const actualDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+  ).sum;
+  const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+
+  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
+  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
+
+  const rEHP = (defense: number) => {
+    const newActualDamageIsolitic = actualDamageIsolitic / (1 - isoMitigation) * (1 / (1 + defense + isoDefense));
+    const newActualTotalDamage = actualDamageEnergy + actualDamageKinetic + newActualDamageIsolitic;
+    const rEHP = actualTotalDamage / newActualTotalDamage;
+    return rEHP;
+  };
+
+  return {
+    cells: ["Isolitic defense", "Joachim", formatNumber(rEHP(100.0))],
+    details: (
+      <>
+        <p>
+          Assuming you have a isolitic mitigation of {formatPercentage(isoMitigation)} (measured from
+          this combat log), your have a isolitic defense of {formatPercentage(isoDefense)}.
+          Adding more isolitic defense will affect your rEHP as follows:
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "Iso defense", align: "left" },
+            { label: "Source", align: "left" },
+            { label: "rEHP", align: "right" },
+          ]}
+          data={[0.1, 0.2, 0.5, 1.0, 1.5, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0].map((defense) => {
+            return {
+              cells: [formatPercentage(defense), "TODO", formatNumber(rEHP(defense))],
+            };
+          })}
+        />
+      </>
+    ),
+  };
+};
+
+const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
+  const hostileName = getShipName(ship, input, data);
+  const playerShip = parsedData.allShips.filter((s) => s.fleetId != ship.fleetId)[0];
+  const playerName = playerShip.displayName;
 
   const shipWeaponsBySubround: (
     | { c: ComponentLookupResult; d: ShipComponentWeapon }
@@ -181,148 +568,152 @@ const Content = ({ ship, parsedData, csv }: TableProps) => {
   ];
   const firingPatternZRange: [number, number] = [10, 300];
 
-  const dataDamageTypes = [
-    { name: "Standard Energy", value: energyBaseDamage },
-    { name: "Standard Kinetic", value: kineticBaseDamage },
-    { name: "Isolitic", value: isoBaseDamage },
-  ];
-
-  const RADIAN = Math.PI / 180;
-  const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-    const x = cx + radius * Math.cos(-(midAngle ?? 0) * RADIAN);
-    const y = cy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
-
-    return (
-      <text x={x} y={y} fill="white" textAnchor={"middle"} dominantBaseline="central">
-        {`${((percent ?? 1) * 100).toFixed(0)}%`}
-      </text>
-    );
-  };
+  const remainingHitPoints = parsedData.stats.ships[playerShip.shipId].hitPoints.map((d, i) => ({
+    round: d.t.round,
+    i: i,
+    hhp: d.hhp,
+    shp: d.shp,
+  }));
 
   return (
     <>
-      <Grid size={{ xs: 3 }}>
-        <h2>Damage types</h2>
-        <ResponsiveContainer width="100%" height={400}>
-          <PieChart responsive width={400} height={400}>
-            <Pie
-              data={dataDamageTypes}
-              labelLine={false}
-              label={renderCustomizedLabel}
-              dataKey="value"
-              cx="50%"
-              cy="50%"
-              outerRadius={100}
-              fill="#8884d8"
-            >
-              <Cell key={`cell-std-energy`} fill={colorEnergy} />
-              <Cell key={`cell-std-kinetic`} fill={colorKinetic} />
-              <Cell key={`cell-isolitic`} fill={colorIsolitic} />
-            </Pie>
-            <Legend verticalAlign="bottom" height={36} />
-          </PieChart>
-        </ResponsiveContainer>
+      <Grid size={{ xs: 12 }}>
+        <h1>
+          {playerName} vs {hostileName}
+        </h1>
+      </Grid>
+      <Grid size={{ xs: 12 }}>
+        <Stack direction="row" spacing={1}>
+          <Chip label="Isolitic damage" sx={{ bgcolor: colorIsolitic }} />
+          <Chip label="Energy damage" sx={{ bgcolor: colorEnergy }} />
+          <Chip label="Kinetic damage" sx={{ bgcolor: colorKinetic }} />
+          <Chip label="Hull hit points" sx={{ bgcolor: colorHhp }} />
+          <Chip label="Shield hit points" sx={{ bgcolor: colorShp }} />
+        </Stack>
+      </Grid>
+      <Grid size={{ xs: 4 }}>
+        <h4>{hostileName} damage</h4>
+        <DamagePieChart ship={ship} parsedData={parsedData} csv={csv} input={input} data={data} />
+      </Grid>
+      <Grid size={{ xs: 2 }}>
+        <h4>{hostileName} stats</h4>
+        <QuickStats ship={ship} parsedData={parsedData} csv={csv} input={input} data={data} />
       </Grid>
       <Grid size={{ xs: 6 }}>
-        <h2>Firing pattern</h2>
+        <h4>{hostileName} firing pattern</h4>
 
         <div style={{ width: "100%" }}>
           {damageByRound.map((data, i) => (
-            <ResponsiveContainer width="100%" height={60}>
-              <ScatterChart
-                margin={{
-                  top: 10,
-                  right: 0,
-                  bottom: 0,
-                  left: 0,
-                }}
-              >
-                <XAxis
-                  type="category"
-                  domain={[0, 15]}
-                  dataKey="x"
-                  interval={0}
-                  tick={{ fontSize: 0 }}
-                  tickLine={{ transform: "translate(0, -6)" }}
-                />
-                <YAxis
-                  type="number"
-                  dataKey="y"
-                  name={`subround${i}`}
-                  height={10}
-                  width={80}
-                  tick={false}
-                  tickLine={false}
-                  axisLine={false}
-                  label={{ value: data.name, position: "insideRight" }}
-                />
-                <ZAxis
-                  type="number"
-                  dataKey="z"
-                  domain={firingPatternZDomain}
-                  range={firingPatternZRange}
-                  scale="linear"
-                />
-                <Scatter name={`subround${i}`} fill="#8884d8" data={data.data}>
-                  {data.data.map((r) => (
-                    <Cell key={`cell-${r.x}`} fill={r.c} />
-                  ))}
-                </Scatter>
-              </ScatterChart>
-            </ResponsiveContainer>
+            <ScatterChart
+              style={{ width: "100%", height: "80px" }}
+              responsive
+              margin={{
+                top: 20,
+                right: 0,
+                bottom: 0,
+                left: 0,
+              }}
+            >
+              <XAxis
+                type="category"
+                domain={[0, 15]}
+                dataKey="x"
+                interval={0}
+                tick={{ fontSize: 0 }}
+                tickLine={{ transform: "translate(0, -6)" }}
+              />
+              <YAxis
+                type="number"
+                dataKey="y"
+                name={`subround${i}`}
+                height={10}
+                width={80}
+                tick={false}
+                tickLine={false}
+                axisLine={false}
+                label={{ value: data.name, position: "insideRight" }}
+              />
+              <ZAxis
+                type="number"
+                dataKey="z"
+                domain={firingPatternZDomain}
+                range={firingPatternZRange}
+                scale="linear"
+              />
+              <Scatter name={`subround${i}`} fill="#8884d8" data={data.data}>
+                {data.data.map((r) => (
+                  <Cell key={`cell-${r.x}`} fill={r.c} />
+                ))}
+              </Scatter>
+            </ScatterChart>
           ))}
         </div>
       </Grid>
-      <Grid size={{ xs: 3 }}>
-        <h2>Observed stats</h2>
-        <SimpleTable
-          minWidth={200}
-          columns={[
-            { label: "Stat", align: "left" },
-            { label: "Value", align: "right" },
-          ]}
-          data={[
-            { cells: ["Iso multiplier", formatNumber(avgIsoMultiplier)] },
-            { cells: ["Apex mitigation", formatNumber(avgApexMitigation)] },
-            { cells: ["Iso mitigation", formatNumber(avgIsoMitigation)] },
-            { cells: ["Std mitigation", formatNumber(avgStdMitigation)] },
-            { cells: ["Damage multiplier", formatNumber(avdDmgMultiplier)] },
-          ]}
+      <Grid size={{ xs: 4 }}>
+        <h4>{playerName} damage</h4>
+        <DamagePieChart
+          ship={playerShip}
+          parsedData={parsedData}
+          csv={csv}
+          input={input}
+          data={data}
         />
+      </Grid>
+      <Grid size={{ xs: 2 }}>
+        <h4>{playerName} stats</h4>
+        <QuickStats ship={playerShip} parsedData={parsedData} csv={csv} input={input} data={data} />
+      </Grid>
+      <Grid size={{ xs: 6 }}>
+        <h4>{playerName} hit points over time</h4>
+
+        <div style={{ width: "100%" }}>
+          <AreaChart
+            style={{ width: "100%", height: "320px" }}
+            responsive
+            data={remainingHitPoints}
+            margin={{
+              top: 20,
+              right: 0,
+              left: 0,
+              bottom: 0,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="i" />
+            <YAxis width="auto" />
+            <Tooltip />
+            <Area type="monotone" dataKey="hhp" stackId="1" stroke={colorHhp} fill={colorHhp} />
+            <Area type="monotone" dataKey="shp" stackId="1" stroke={colorShp} fill={colorShp} />
+          </AreaChart>
+        </div>
       </Grid>
       <Grid size={{ xs: 12 }}>
         <h2>Crew suggestions</h2>
         <Alert severity="warning">
           <AlertTitle>How suggestions are ranked</AlertTitle>
-          The table below shows the upper bound for the relative change to effective hit points.
-          E.g., if "Std mitigation" shows a value of 1.2, it means that you can survive up to 20%
-          longer if you max your std mitigation. If might not be feasible to reach the maximum,
-          expand the row for more information.
+          Suggestions are ranked by the relative change to effective hit points. E.g., if an effect
+          shows a value of 1.2, it means that you can survive 20% longer if you apply that effect.
+          Some suggestions might not be feasible to apply, expand the rows for more information.
         </Alert>
         <CollapsibleTable
           columns={[
             { label: "Effect", align: "left" },
             { label: "Example officers", align: "right" },
-            { label: "Upper bound", align: "right" },
+            { label: "rEHP", align: "right" },
           ]}
           data={[
-            { cells: ["Round begin shield absorption", "SNW Pike", "4.0"], details: "Test" },
-            { cells: ["On hit shield absorption", "Janeway, WoK Carol", "3.5"], details: "Test" },
-            { cells: ["Reload delay", "Chang", "2.0"], details: "Test" },
-            { cells: ["Energy damage reduction", "Chen", "1.3"], details: "Test" },
-            { cells: ["Kinetic damage reduction", "Cath", "1.3"], details: "Test" },
-            { cells: ["Isolitic defense", "Joachim", "1.2"], details: "Test" },
-            { cells: ["Std mitigation", "Joachim", "1.1"], details: "Test" },
-          ]}
+            SuggestionEnergyDamageReduction({ ship, parsedData, csv, input, data }),
+            SuggestionKineticDamageReduction({ ship, parsedData, csv, input, data }),
+            SuggestionIsoDefense({ ship, parsedData, csv, input, data }, playerShip),
+          ].sort((a, b) => +b.cells[2] - +a.cells[2])}
         />
       </Grid>
     </>
   );
 };
 
-export const Suggestions = ({ parsedData, input, data, csv }: StatsProps) => {
-  const [shipId, setShipId] = useState<number | undefined>(parsedData.allShips[0]?.shipId);
+export const Suggestions = ({ parsedData, input, data, csv }: SuggestionsProps) => {
+  const [shipId, setShipId] = useState<number | undefined>(parsedData.allShips[1]?.shipId);
 
   return (
     <React.Fragment>
@@ -330,8 +721,8 @@ export const Suggestions = ({ parsedData, input, data, csv }: StatsProps) => {
         <Grid size={{ xs: 12 }}>
           <TextField
             id="select"
-            label="Ship"
-            placeholder="Select a ship"
+            label="Hostile"
+            placeholder="Select the hostile ship"
             fullWidth
             value={shipId}
             select
@@ -345,7 +736,13 @@ export const Suggestions = ({ parsedData, input, data, csv }: StatsProps) => {
           </TextField>
         </Grid>
         {shipId === undefined ? null : (
-          <Content ship={parsedData.shipById[shipId]} parsedData={parsedData} csv={csv} />
+          <Content
+            ship={parsedData.shipById[shipId]}
+            parsedData={parsedData}
+            csv={csv}
+            input={input}
+            data={data}
+          />
         )}
       </Grid>
     </React.Fragment>

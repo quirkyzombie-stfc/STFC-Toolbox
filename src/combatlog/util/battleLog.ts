@@ -6,12 +6,24 @@ import { BattleLogEvents } from "./constants";
 
 export interface CombatLogRound {
   hullRepairs: CombatLogHullRepair[];
+  hullMelts: CombatLogHullMelt[];
   subRounds: CombatLogSubRound[];
 }
 
 export interface CombatLogHullRepair {
   ship: number;
   hull_repaired: number;
+}
+
+export interface CombatLogHullMelt {
+  ship: number;
+  target: number;
+  melt_percent: number;
+  melt_hhp: number;
+  melt_mitigated_percent: number;
+  melt_mitigated_hhp: number;
+  damage_taken_hhp: number;
+  remaining_hull: number;
 }
 
 export interface CombatLogSubRound {
@@ -27,7 +39,7 @@ export interface CombatLogRoundEventAttack {
   dodge: number;
   missed: number;
   crit: boolean;
-  damage_mitigated: number;
+  damage_std_mitigated: number;
   damage_taken_hull: number;
   damage_taken_shield: number;
   remaining_hull: number;
@@ -96,7 +108,7 @@ class InputStream<T> {
 }
 
 function parseRound(input: InputStream<number>): CombatLogRound {
-  const result: CombatLogRound = { subRounds: [], hullRepairs: [] };
+  const result: CombatLogRound = { subRounds: [], hullRepairs: [], hullMelts: [] };
 
   input.readLiteral(BattleLogEvents.START_ROUND);
 
@@ -106,6 +118,8 @@ function parseRound(input: InputStream<number>): CombatLogRound {
       result.subRounds.push(parseSubRound(input));
     } else if (x === BattleLogEvents.HULL_REPAIR_START) {
       result.hullRepairs.push(parseHullRepair(input));
+    } else if (x === BattleLogEvents.HULL_MELT_START) {
+      result.hullMelts.push(parseHullMelt(input));
     } else if (x === BattleLogEvents.END_ROUND) {
       input.readLiteral(BattleLogEvents.END_ROUND);
       return result;
@@ -113,6 +127,22 @@ function parseRound(input: InputStream<number>): CombatLogRound {
       input.unexpectedElement();
     }
   }
+}
+
+function parseHullMelt(input: InputStream<number>): CombatLogHullMelt {
+  input.readLiteral(BattleLogEvents.HULL_MELT_START);
+  const result: CombatLogHullMelt = {
+    ship: input.read(),
+    melt_percent: input.read(),
+    melt_hhp: input.read(),
+    target: input.read(),
+    melt_mitigated_percent: input.read(),
+    melt_mitigated_hhp: input.read(),
+    damage_taken_hhp: input.read(),
+    remaining_hull: input.read(),
+  };
+  input.readLiteral(BattleLogEvents.HULL_MELT_END);
+  return result;
 }
 
 function parseHullRepair(input: InputStream<number>): CombatLogHullRepair {
@@ -218,7 +248,7 @@ function parseAttack(
       remaining_hull: input.read(),
       damage_taken_shield: input.read(),
       remaining_shield: input.read(),
-      damage_mitigated: input.read(),
+      damage_std_mitigated: input.read(),
       damage_iso_unmitigated: input.read(),
       damage_iso_mitigated: input.read(),
       damage_apex_mitigated: input.read(),
@@ -333,6 +363,10 @@ export function extractTags(data: number[]): string[] {
       return blockBegin("HULL_REPAIR_START");
     } else if (x === BattleLogEvents.HULL_REPAIR_END) {
       return blockEnd("HULL_REPAIR_END");
+    } else if (x === BattleLogEvents.HULL_MELT_START) {
+      return blockBegin("HULL_MELT_START");
+    } else if (x === BattleLogEvents.HULL_MELT_END) {
+      return blockEnd("HULL_MELT_END");
     } else {
       return indent() + x;
     }

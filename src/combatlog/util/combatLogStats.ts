@@ -1,4 +1,9 @@
-import { CombatLogParsedData, CombatLogRound, CombatLogShip } from "./combatLog";
+import {
+  CombatLogParsedData,
+  CombatLogRound,
+  CombatLogShip,
+  getWeaponDamageType,
+} from "./combatLog";
 import { lookupComponent, GameData } from "./combatLog";
 import type { ShipComponentWeapon } from "../../util/gameData";
 
@@ -11,18 +16,22 @@ export interface CombatLogTime {
 export interface DamageSample {
   tag: "damage";
   t: CombatLogTime;
-  mitigation: number; // In percent
   hhp: number; // HHP damage
   shp: number; // SHP damage
   crit: boolean;
   damageMultiplier: number; // Total standard outgoing damage divided by expected weapon base damage
   std_damage: number; // Standard outgoing damage
   std_mitigated: number; // Standard damage mitigated
+  std_mitigation: number; // In percent
   iso_damage: number;
   iso_mitigated: number;
+  iso_mitigation: number; // In percent
   apex_mitigated: number;
+  apex_mitigation: number; // In percent
+  all_mitigation: number; // In percent
   base_min: number; // Base damage
   base_max: number; // Base damage
+  std_damage_type?: "ENERGY" | "KINETIC";
 }
 
 export interface HitPointSample {
@@ -36,6 +45,13 @@ export interface HitPointChangeSample {
   tag: "hp_change";
   t: CombatLogTime;
   diff: number;
+}
+
+export interface HullRepairSample {
+  tag: "hull_repair";
+  t: CombatLogTime;
+  hhp: number;
+  fraction: number;
 }
 
 export interface EmptyEventSample {
@@ -53,7 +69,8 @@ export type Sample =
   | HitPointSample
   | HitPointChangeSample
   | EmptyEventSample
-  | AbilityActivationSample;
+  | AbilityActivationSample
+  | HullRepairSample;
 
 export interface Stats {
   min: number;
@@ -103,6 +120,7 @@ export interface ShipStats {
   shpChange: HitPointChangeSample[];
   hhpDepleted: EmptyEventSample[];
   shpDepleted: EmptyEventSample[];
+  hullRepairs: HullRepairSample[];
 
   // Per-weapon stats
   weapons: { [weaponId: number]: DamageSample[] };
@@ -117,6 +135,7 @@ function emptyShipStats(): ShipStats {
     shpChange: [],
     hhpDepleted: [],
     shpDepleted: [],
+    hullRepairs: [],
     weapons: {},
   };
 }
@@ -152,6 +171,27 @@ export function gatherStats(
   const hitPoints: { [shipId: string]: { shp: number; hhp: number } } = {};
 
   battleLog.forEach((round, roundIndex) => {
+    round.hullRepairs.forEach((repair, repairIndex) => {
+      const t: CombatLogTime = {
+        round: roundIndex + 1,
+        subRound: 0,
+        event: repairIndex,
+      };
+      const ship = getShipStats(result, repair.ship);
+      const damageTakenPreviousRound = ship.damageIn.reduce(
+        (acc, x) => (x.t.round === t.round - 1 ? acc + x.hhp : acc),
+        0,
+      );
+      const fraction = repair.hull_repaired / damageTakenPreviousRound;
+      const hullRepairSample: HullRepairSample = {
+        tag: "hull_repair",
+        t,
+        hhp: repair.hull_repaired,
+        fraction: fraction,
+      };
+
+      ship.hullRepairs.push(hullRepairSample);
+    });
     round.subRounds.forEach((subRound, subRoundIndex) => {
       subRound.events.forEach((event, eventIndex) => {
         const t: CombatLogTime = {
@@ -176,27 +216,37 @@ export function gatherStats(
             const damage_total =
               event.damage_taken_hull +
               event.damage_taken_shield +
-              event.damage_mitigated +
+              event.damage_std_mitigated +
               event.damage_iso_mitigated +
               event.damage_apex_mitigated;
-            const mitigation = event.damage_mitigated / damage_total;
+            const damage_iso_total = event.damage_iso_unmitigated + event.damage_iso_mitigated;
+            const damage_std_total = damage_total - damage_iso_total;
+            const damage_before_apex =
+              event.damage_taken_hull + event.damage_taken_shield + event.damage_apex_mitigated;
 
             // Damage
             const damageSample: DamageSample = {
               tag: "damage",
               t,
-              std_damage: damage_total - event.damage_iso_unmitigated - event.damage_iso_mitigated,
-              iso_damage: event.damage_iso_unmitigated + event.damage_iso_mitigated,
-              mitigation,
+              std_damage: damage_std_total,
+              iso_damage: damage_iso_total,
+
               hhp: event.damage_taken_hull,
               shp: event.damage_taken_shield,
               crit: event.crit,
               damageMultiplier: damage_total / ((damage_base_min + damage_base_max) / 2),
-              std_mitigated: event.damage_mitigated,
+              std_mitigated: event.damage_std_mitigated,
+              std_mitigation: event.damage_std_mitigated / damage_std_total,
               iso_mitigated: event.damage_iso_mitigated,
+              iso_mitigation: event.damage_iso_mitigated / damage_iso_total,
               apex_mitigated: event.damage_apex_mitigated,
+              apex_mitigation: event.damage_apex_mitigated / damage_before_apex,
+              all_mitigation:
+                1 - (event.damage_taken_hull + event.damage_taken_shield) / damage_total,
               base_min: damage_base_min,
               base_max: damage_base_max,
+              std_damage_type:
+                weaponComponent !== undefined ? getWeaponDamageType(weaponComponent) : undefined,
             };
 
             attacker.damageOut.push(damageSample);

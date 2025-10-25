@@ -60,7 +60,7 @@ function getAllStats(obj: ShipStats, data: GameData) {
       [prefix + "crit", ss.map((s) => ({ v: s.crit ? 1 : 0, t: s.t })), avg],
       [prefix + "damageMultiplier", ss.map((s) => ({ v: s.damageMultiplier, t: s.t })), avg],
       [prefix + "all_damage", ss.map((s) => ({ v: s.std_damage + s.iso_damage, t: s.t })), sum],
-      [prefix + "all_mitigation", ss.map((s) => ({ v: s.mitigation, t: s.t })), avg],
+      [prefix + "all_mitigation", ss.map((s) => ({ v: s.all_mitigation, t: s.t })), avg],
       [prefix + "std_damage", ss.map((s) => ({ v: s.std_damage, t: s.t })), sum],
       [prefix + "std_mitigated", ss.map((s) => ({ v: s.std_mitigated, t: s.t })), sum],
       [

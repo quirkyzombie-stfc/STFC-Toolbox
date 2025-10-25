@@ -17,6 +17,7 @@ export interface ColumnDefinition {
 
 export interface SimpleTableProps {
   minWidth?: number;
+  size?: "small" | "medium";
   columns: ColumnDefinition[];
   data: {
     cells: string[];
@@ -24,11 +25,11 @@ export interface SimpleTableProps {
 }
 
 export function SimpleTable(props: SimpleTableProps): React.JSX.Element {
-  const { columns, data, minWidth } = props;
+  const { columns, data, minWidth, size } = props;
 
   return (
     <TableContainer>
-      <Table sx={{ minWidth: minWidth ?? 650 }}>
+      <Table sx={{ minWidth: minWidth ?? 650 }} size={size ?? "medium"}>
         <TableHead>
           <TableRow>
             {columns.map((col, i) => (

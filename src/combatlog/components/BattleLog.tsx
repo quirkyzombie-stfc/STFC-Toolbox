@@ -41,7 +41,7 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
               const weapon = lookupComponent(event.weapon, data);
               const weaponData = weapon?.component.data as ShipComponentWeapon | undefined;
               const totalDamage =
-                event.damage_mitigated +
+                event.damage_std_mitigated +
                 event.damage_taken_shield +
                 event.damage_taken_hull +
                 event.damage_iso_mitigated +
@@ -59,7 +59,7 @@ export const BattleLog = ({ parsedData, input, data, csv }: BattleLogProps) => {
                   roundTo2Digits(
                     totalDamage - event.damage_iso_unmitigated - event.damage_iso_mitigated,
                   ),
-                  roundTo2Digits(event.damage_mitigated),
+                  roundTo2Digits(event.damage_std_mitigated),
                   roundTo2Digits(event.damage_iso_unmitigated + event.damage_iso_mitigated),
                   roundTo2Digits(event.damage_iso_mitigated),
                   roundTo2Digits(event.damage_apex_mitigated),
