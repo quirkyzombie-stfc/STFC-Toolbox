@@ -67,6 +67,7 @@ import {
   apexMitigationStats,
   getStats,
   Stats,
+  shieldMitigationTotal,
 } from "../util/combatLogStats";
 import { CombatLogTable } from "./CombatLogTable";
 import { shortNumber } from "../util/format";
@@ -117,7 +118,7 @@ const isFiring = (round: number, warm_up: number, cool_down: number) =>
   round >= warm_up - 1 && (round - warm_up + 1) % cool_down === 0;
 
 const colorShp = "#66BFFF";
-const colorHhp = "#FF69B4";
+const colorHhp = "#C63739";
 const colorEnergy = "rgba(0, 136, 254, 1)";
 const colorKinetic = "#00C49F";
 const colorIsolitic = "#FFBB28";
@@ -348,20 +349,21 @@ const QuickStats = ({ ship, parsedData, csv, input, data }: ContentProps) => {
 };
 
 const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => {
+  // Note: ignoring apex mitigation, as it affects all damage types equally
   const actualDamageEnergy = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageKinetic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageIsolitic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.iso_damage > 0,
-    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.iso_damage - x.iso_mitigated,
   ).sum;
   const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
 
@@ -369,7 +371,8 @@ const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => 
   const damageBonus = damageBonusStats.sum / damageBonusStats.count;
 
   const rEHP = (reduction: number) => {
-    const newActualDamageEnergy = actualDamageEnergy * Math.max(0, damageBonus + reduction) / damageBonus;
+    const newActualDamageEnergy =
+      (actualDamageEnergy * Math.max(0, damageBonus + reduction)) / damageBonus;
     const newActualTotalDamage = newActualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
     const rEHP = actualTotalDamage / newActualTotalDamage;
     return rEHP;
@@ -402,20 +405,21 @@ const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => 
 };
 
 const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) => {
+  // Note: ignoring apex mitigation, as it affects all damage types equally
   const actualDamageEnergy = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageKinetic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageIsolitic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.iso_damage > 0,
-    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.iso_damage - x.iso_mitigated,
   ).sum;
   const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
 
@@ -423,7 +427,8 @@ const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) =>
   const damageBonus = damageBonusStats.sum / damageBonusStats.count;
 
   const rEHP = (reduction: number) => {
-    const newActualDamageKinetic = actualDamageKinetic * Math.max(0, damageBonus + reduction) / damageBonus;
+    const newActualDamageKinetic =
+      (actualDamageKinetic * Math.max(0, damageBonus + reduction)) / damageBonus;
     const newActualTotalDamage = actualDamageEnergy + newActualDamageKinetic + actualDamageIsolitic;
     const rEHP = actualTotalDamage / newActualTotalDamage;
     return rEHP;
@@ -457,31 +462,30 @@ const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) =>
 
 const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: CombatLogShip) => {
   const isoMitigationS = isoMitigationStats(playerShip, parsedData);
-  const isoMitigation = isoMitigationS.sum / isoMitigationS.count;
+  const isoMitigation = average(isoMitigationS);
   const isoDefense = 1 / (1 - isoMitigation) - 1;
 
+  // Note: ignoring apex mitigation, as it affects all damage types equally
   const actualDamageEnergy = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageKinetic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.std_damage - x.std_mitigated,
   ).sum;
   const actualDamageIsolitic = getStats(
     parsedData.stats.ships[ship.shipId].damageOut,
     (x) => x.iso_damage > 0,
-    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+    (x) => x.iso_damage - x.iso_mitigated,
   ).sum;
   const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
 
-  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
-  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
-
   const rEHP = (defense: number) => {
-    const newActualDamageIsolitic = actualDamageIsolitic / (1 - isoMitigation) * (1 / (1 + defense + isoDefense));
+    const newActualDamageIsolitic =
+      (actualDamageIsolitic / (1 - isoMitigation)) * (1 / (1 + defense + isoDefense));
     const newActualTotalDamage = actualDamageEnergy + actualDamageKinetic + newActualDamageIsolitic;
     const rEHP = actualTotalDamage / newActualTotalDamage;
     return rEHP;
@@ -492,8 +496,8 @@ const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: Co
     details: (
       <>
         <p>
-          Assuming you have a isolitic mitigation of {formatPercentage(isoMitigation)} (measured from
-          this combat log), your have a isolitic defense of {formatPercentage(isoDefense)}.
+          Assuming you have a isolitic mitigation of {formatPercentage(isoMitigation)} (measured
+          from this combat log), your have a isolitic defense of {formatPercentage(isoDefense)}.
           Adding more isolitic defense will affect your rEHP as follows:
         </p>
         <SimpleTable
@@ -507,6 +511,411 @@ const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: Co
               cells: [formatPercentage(defense), "TODO", formatNumber(rEHP(defense))],
             };
           })}
+        />
+      </>
+    ),
+  };
+};
+
+const SuggestionStdMitigation = ({ ship, parsedData }: ContentProps, playerShip: CombatLogShip) => {
+  const stdMitigationS = stdMitigationStats(playerShip, parsedData);
+  const stdMitigation = average(stdMitigationS);
+
+  const rawDamageStd = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage > 0,
+    (x) => x.std_damage,
+  ).sum;
+  const actualDamageStd = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage > 0,
+    (x) => x.std_damage - x.std_mitigated,
+  ).sum;
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => x.iso_damage - x.iso_mitigated,
+  ).sum;
+  const actualTotalDamage = actualDamageStd + actualDamageIsolitic;
+
+  const rEHP = (mitigation: number) => {
+    const newActualDamageStd = rawDamageStd * (1 - mitigation);
+    const newActualTotalDamage = newActualDamageStd + actualDamageIsolitic;
+    const rEHP = actualTotalDamage / newActualTotalDamage;
+    return rEHP;
+  };
+
+  return {
+    cells: ["Standard mitigation", "Paris, Moreau", formatNumber(rEHP(0.712))],
+    details: (
+      <>
+        <p>
+          Assuming you have a standard mitigation of {formatPercentage(stdMitigation)} (measured
+          from this combat log), changing your standard mitigation will affect your rEHP as follows:
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "Standard mitigation", align: "left" },
+            { label: "rEHP", align: "right" },
+          ]}
+          data={[0.1616, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.712].map(
+            (mitigation) => {
+              return {
+                cells: [formatPercentage(mitigation), formatNumber(rEHP(mitigation))],
+              };
+            },
+          )}
+        />
+      </>
+    ),
+  };
+};
+
+const SuggestionShieldMitigation = (
+  { ship, parsedData }: ContentProps,
+  playerShip: CombatLogShip,
+) => {
+  const shieldMitigation = shieldMitigationTotal(playerShip, parsedData);
+
+  interface ShieldMitigationBonus {
+    firstRound: number; // KSG Shield Mitigation, Fat Mudd
+    constantBuff: number; // Cerritos
+    constant: number; // SNW Pike, 1of11
+    onAttack: number; // WoK Carol, Janeway
+    description?: string;
+  }
+
+  const baseShieldMitigation =
+    playerShip.components.flatMap((c) =>
+      c?.component.data.tag === "Shield" ? [c.component.data] : [],
+    )[0]?.mitigation ?? 0.8;
+
+  const shipWeaponsBySubround: (
+    | { c: ComponentLookupResult; d: ShipComponentWeapon }
+    | undefined
+  )[] = ship.components
+    .slice(7, 13)
+    .map((c, i) =>
+      c?.component.data.tag === "Weapon" ? { c: c, d: c.component.data } : undefined,
+    );
+
+  const shieldMitigationForBonus = (
+    bonus: ShieldMitigationBonus,
+    endRound: number,
+    endSubround: number,
+  ) => {
+    let shpDamage = 0;
+    let hhpDamage = 0;
+    for (let r = 0; r <= endRound; r++) {
+      let attacks = 0;
+      for (let sr = 0; sr < (r === endRound ? endSubround : shipWeaponsBySubround.length); sr++) {
+        const w = shipWeaponsBySubround[sr];
+        if (w !== undefined && isFiring(r, w.d.warm_up, w.d.cool_down)) {
+          let shieldMitigation = Math.min(
+            1.0,
+            baseShieldMitigation +
+              (r === 0 ? bonus.firstRound : 0) +
+              bonus.constant +
+              bonus.constantBuff +
+              attacks * bonus.onAttack,
+          );
+          const baseDamage = (w.d.shots * (w.d.minimum_damage + w.d.maximum_damage)) / 2;
+          shpDamage += baseDamage * shieldMitigation;
+          hhpDamage += baseDamage * (1 - shieldMitigation);
+
+          attacks += 1;
+        }
+      }
+    }
+    return shpDamage / (shpDamage + hhpDamage);
+  };
+
+  const damageSamples = parsedData.stats.ships[ship.shipId].damageOut;
+  if (damageSamples.length === 0) {
+    return {
+      cells: ["Shield mitigation", "", "N/A"],
+      details: (
+        <>
+          <p>
+            Can't analyze impact of shield mitigation, as the hostile ship did not attack in the
+            combat log.
+          </p>
+        </>
+      ),
+    };
+  }
+
+  const endRound = damageSamples[damageSamples.length - 1].t.round;
+  const endSubround = damageSamples[damageSamples.length - 1].t.subRound;
+
+  const rEHP = (bonus: ShieldMitigationBonus) => {
+    const newShieldMitigation = shieldMitigationForBonus(bonus, endRound, endSubround);
+    const rEHP = (1 - shieldMitigation) / (1 - newShieldMitigation);
+    return rEHP;
+  };
+
+  const firstRoundValues = [0.025];
+  const constantBuffValues = [0, 0.025];
+
+  const bonusValues: ShieldMitigationBonus[] = [];
+  for (const firstRound of firstRoundValues) {
+    for (const constantBuff of constantBuffValues) {
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%)",
+        constant: 0.04,
+        onAttack: 0,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (9%)",
+        constant: 0.09,
+        onAttack: 0,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (11%)",
+        constant: 0.11,
+        onAttack: 0,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (13%)",
+        constant: 0.13,
+        onAttack: 0,
+      });
+
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%) + T1 WoK Carol (5%)",
+        constant: 0.04,
+        onAttack: 0.05,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%) + T2 WoK Carol (7%)",
+        constant: 0.04,
+        onAttack: 0.07,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%) + T3 WoK Carol (10%)",
+        constant: 0.04,
+        onAttack: 0.1,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%) + T4 WoK Carol (15%)",
+        constant: 0.04,
+        onAttack: 0.15,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (4%) + T5 WoK Carol (25%)",
+        constant: 0.04,
+        onAttack: 0.25,
+      });
+
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (13%) + T1 WoK Carol (5%)",
+        constant: 0.13,
+        onAttack: 0.05,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "SNW Pike (13%) + T2 WoK Carol (7%)",
+        constant: 0.13,
+        onAttack: 0.07,
+      });
+
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (6%)",
+        constant: 0.0,
+        onAttack: 0.06,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (13%)",
+        constant: 0.0,
+        onAttack: 0.13,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (20%)",
+        constant: 0.0,
+        onAttack: 0.2,
+      });
+
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (6%) + T1 WoK Carol (5%)",
+        constant: 0.0,
+        onAttack: 0.11,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (6%) + T2 WoK Carol (7%)",
+        constant: 0.0,
+        onAttack: 0.13,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (6%) + T3 WoK Carol (10%)",
+        constant: 0.0,
+        onAttack: 0.16,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "Janeway (6%) + T4 WoK Carol (15%)",
+        constant: 0.0,
+        onAttack: 0.21,
+      });
+
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "T1 WoK Carol (5%)",
+        constant: 0.0,
+        onAttack: 0.05,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "T2 WoK Carol (7%)",
+        constant: 0.0,
+        onAttack: 0.07,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "T3 WoK Carol (10%)",
+        constant: 0.0,
+        onAttack: 0.1,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "T4 WoK Carol (15%)",
+        constant: 0.0,
+        onAttack: 0.15,
+      });
+      bonusValues.push({
+        firstRound,
+        constantBuff,
+        description: "T5 WoK Carol (25%)",
+        constant: 0.0,
+        onAttack: 0.25,
+      });
+    }
+  }
+
+  return {
+    cells: [
+      "Shield mitigation",
+      "SNW Pike, Janeway, WoK Carol",
+      formatNumber(
+        rEHP({ firstRound: 0.025, constantBuff: 0.025, constant: 0.13, onAttack: 0.25 }),
+      ),
+    ],
+    details: (
+      <>
+        <p>
+          Your shield component has a base shield mitigation of{" "}
+          {formatPercentage(baseShieldMitigation)}.<br />
+          In this combat, you had an overall shield mitigation of{" "}
+          {formatPercentage(shieldMitigation)} (across all attacks).
+          <br />
+          Here's how different combinations of shield mitigation bonuses would affect your rEHP.
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "KSG Shield Mitigation", align: "left" },
+            { label: "Cerritos buff", align: "left" },
+            { label: "Officers", align: "left" },
+            { label: "rEHP", align: "right" },
+          ]}
+          data={bonusValues
+            .map((bonus) => {
+              return {
+                cells: [
+                  formatPercentage(bonus.firstRound),
+                  formatPercentage(bonus.constantBuff),
+                  bonus.description ?? "",
+                  formatNumber(rEHP(bonus)),
+                ],
+              };
+            })
+            .sort((a, b) => parseFloat(b.cells[3]) - parseFloat(a.cells[3]))}
+        />
+      </>
+    ),
+  };
+};
+
+const SuggestionDamageIncrease = (
+  { ship, parsedData, csv, input, data }: ContentProps,
+  playerShip: CombatLogShip,
+) => {
+  const damageBonusStats = stdDamageMultiplierStats(playerShip, parsedData, 0.5, false);
+  if (damageBonusStats.count === 0) {
+    return {
+      cells: ["Damage bonus", "", "N/A"],
+      details: (
+        <>
+          <p>
+            Could not determine your current damage bonus from this combat log, as none of the
+            attacks were non-critical hits.
+          </p>
+        </>
+      ),
+    };
+  }
+
+  const damageBonus = average(damageBonusStats);
+  const rDPR = (increase: number) => {
+    const rDPR = (damageBonus + increase) / damageBonus;
+    return rDPR;
+  };
+  return {
+    cells: ["Damage bonus", "", formatNumber(rDPR(1000))],
+    details: (
+      <>
+        <p>
+          Assuming your current damage bonus is {formatPercentage(damageBonus)} (measured from this
+          combat log), increasing your damage bonus will affect your rDPR as follows:
+        </p>
+        <SimpleTable
+          columns={[
+            { label: "Additional damage bonus", align: "left" },
+            { label: "rDPR", align: "right" },
+          ]}
+          data={[0.1, 0.2, 0.5, 1.0, 1.5, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0, 200.0, 500.0].map(
+            (increase) => {
+              return {
+                cells: [formatPercentage(increase), formatNumber(rDPR(increase))],
+              };
+            },
+          )}
         />
       </>
     ),
@@ -688,7 +1097,7 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
         </div>
       </Grid>
       <Grid size={{ xs: 12 }}>
-        <h2>Crew suggestions</h2>
+        <h2>Defensive crew suggestions</h2>
         <Alert severity="warning">
           <AlertTitle>How suggestions are ranked</AlertTitle>
           Suggestions are ranked by the relative change to effective hit points. E.g., if an effect
@@ -705,7 +1114,26 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
             SuggestionEnergyDamageReduction({ ship, parsedData, csv, input, data }),
             SuggestionKineticDamageReduction({ ship, parsedData, csv, input, data }),
             SuggestionIsoDefense({ ship, parsedData, csv, input, data }, playerShip),
+            SuggestionStdMitigation({ ship, parsedData, csv, input, data }, playerShip),
+            SuggestionShieldMitigation({ ship, parsedData, csv, input, data }, playerShip),
           ].sort((a, b) => +b.cells[2] - +a.cells[2])}
+        />
+      </Grid>
+      <Grid size={{ xs: 12 }}>
+        <h2>Offensive crew suggestions</h2>
+        <Alert severity="warning">
+          <AlertTitle>How suggestions are ranked</AlertTitle>
+          Suggestions are ranked by the relative change to damage dealt per round.
+        </Alert>
+        <CollapsibleTable
+          columns={[
+            { label: "Effect", align: "left" },
+            { label: "Example officers", align: "right" },
+            { label: "rDPR", align: "right" },
+          ]}
+          data={[SuggestionDamageIncrease({ ship, parsedData, csv, input, data }, playerShip)].sort(
+            (a, b) => +b.cells[2] - +a.cells[2],
+          )}
         />
       </Grid>
     </>
