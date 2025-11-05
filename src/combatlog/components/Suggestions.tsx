@@ -86,9 +86,12 @@ export interface SuggestionsProps {
 const formatPercentage = (x: number) => (isNaN(x) ? "" : `${(100 * x).toFixed(2)}%`);
 const formatMultiplier = (x: number) => (isNaN(x) ? "" : `${x.toFixed(4)}`);
 const formatNumber = (x: number) => (isNaN(x) ? "" : shortNumber(x));
+const formatREHP = (x: number) =>
+  isNaN(x) ? "" : x >= 1 ? `+${(100 * (x - 1)).toFixed(2)}%` : `-${(100 * (1 - x)).toFixed(2)}%`;
 
 interface ContentProps {
-  ship: CombatLogShip;
+  playerShip: CombatLogShip;
+  targetShip: CombatLogShip;
   parsedData: CombatLogParsedData;
   input: RawCombatLog;
   data: GameData;
@@ -124,7 +127,129 @@ const colorKinetic = "#00C49F";
 const colorIsolitic = "#FFBB28";
 const colorNone = "#ffffff";
 
-const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) => {
+interface ShipContext {
+  ship: CombatLogShip;
+  stats: ShipStats;
+
+  // Some precomputed stats for convenience
+  sRawDamageEnergy: Stats;
+  sRawDamageKinetic: Stats;
+  sRawDamageIsolitic: Stats;
+  sActualDamageEnergy: Stats;
+  sActualDamageKinetic: Stats;
+  sActualDamageIsolitic: Stats;
+  sTotalDamageHhp: Stats;
+  sTotalDamageShp: Stats;
+  sIsoMultiplier: Stats;
+  sShotsIn: Stats;
+  sDamageInRaw: Stats;
+  sDamageInShp: Stats;
+  sDamageInHhp: Stats;
+  sDamageMultiplierStd: Stats;
+  sDamageMultiplierIso: Stats;
+  sMitigationApex: Stats;
+  sMitigationIso: Stats;
+  sMitigationStd: Stats;
+  sHullRepairPercent: Stats;
+}
+
+function createShipContext(ship: CombatLogShip, parsedData: CombatLogParsedData): ShipContext {
+  const rawDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY",
+    (x) => x.std_damage,
+  );
+  const rawDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC",
+    (x) => x.std_damage,
+  );
+  const rawDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.iso_damage,
+  );
+
+  const actualDamageEnergy = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  );
+  const actualDamageKinetic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
+    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
+  );
+  const actualDamageIsolitic = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => x.iso_damage > 0,
+    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
+  );
+
+  const totalDamageHhp = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.hhp,
+  );
+  const totalDamageShp = getStats(
+    parsedData.stats.ships[ship.shipId].damageOut,
+    (x) => true,
+    (x) => x.shp,
+  );
+
+  const shotsIn = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => true,
+    (x) => 1,
+  );
+  const damageInRaw = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => x.std_damage + x.iso_damage > 0,
+    (x) => x.std_damage + x.iso_damage,
+  );
+  const damageInShp = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => x.shp > 0,
+    (x) => x.shp,
+  );
+  const damageInHhp = getStats(
+    parsedData.stats.ships[ship.shipId].damageIn,
+    (x) => x.hhp > 0,
+    (x) => x.hhp,
+  );
+
+  const hullRepairPercent = getStats(
+    parsedData.stats.ships[ship.shipId].hullRepairs,
+    (x) => true,
+    (x) => x.fraction,
+  );
+
+  return {
+    ship: ship,
+    stats: parsedData.stats.ships[ship.shipId],
+    sRawDamageEnergy: rawDamageEnergy,
+    sRawDamageKinetic: rawDamageKinetic,
+    sRawDamageIsolitic: rawDamageIsolitic,
+    sActualDamageEnergy: actualDamageEnergy,
+    sActualDamageKinetic: actualDamageKinetic,
+    sActualDamageIsolitic: actualDamageIsolitic,
+    sTotalDamageHhp: totalDamageHhp,
+    sTotalDamageShp: totalDamageShp,
+    sIsoMultiplier: isoDamageMultiplierStats(ship, parsedData),
+    sShotsIn: shotsIn,
+    sDamageInRaw: damageInRaw,
+    sDamageInShp: damageInShp,
+    sDamageInHhp: damageInHhp,
+    sDamageMultiplierStd: stdDamageMultiplierStats(ship, parsedData, 0.5, false),
+    sDamageMultiplierIso: isoDamageMultiplierStats(ship, parsedData),
+    sMitigationApex: apexMitigationStats(ship, parsedData),
+    sMitigationIso: isoMitigationStats(ship, parsedData),
+    sMitigationStd: stdMitigationStats(ship, parsedData),
+    sHullRepairPercent: hullRepairPercent,
+  };
+}
+
+const DamagePieChart = ({ context }: { context: ShipContext }) => {
   const RADIAN = Math.PI / 180;
   const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
     const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -138,79 +263,20 @@ const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) =>
     );
   };
 
-  const shipWeapons: ShipComponentWeapon[] = ship.components.flatMap((c, i) =>
-    c?.component.data.tag === "Weapon" ? [c.component.data] : [],
-  );
-
-  const avgIsoMultiplier = average(isoDamageMultiplierStats(ship, parsedData));
-
-  const rawDamageEnergy = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "ENERGY",
-    (x) => x.std_damage,
-  ).sum;
-  const rawDamageKinetic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "KINETIC",
-    (x) => x.std_damage,
-  ).sum;
-  const rawDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.iso_damage,
-  ).sum;
-
-  const actualDamageEnergy = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
-  ).sum;
-  const actualDamageKinetic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => (x.std_damage - x.std_mitigated) * (1 - x.apex_mitigation),
-  ).sum;
-  const actualDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.iso_damage > 0,
-    (x) => (x.iso_damage - x.iso_mitigated) * (1 - x.apex_mitigation),
-  ).sum;
-
-  const totalDamageHhp = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.hhp,
-  ).sum;
-  const totalDamageShp = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => true,
-    (x) => x.shp,
-  ).sum;
-
-  /*
-  const energyBaseDamage = shipWeapons
-    .filter((c) => getWeaponDamageType(c) === "ENERGY")
-    .reduce((p, c) => p + (((c.minimum_damage + c.maximum_damage) / 2) * c.shots) / c.cool_down, 0);
-  const kineticBaseDamage = shipWeapons
-    .filter((c) => getWeaponDamageType(c) === "KINETIC")
-    .reduce((p, c) => p + (((c.minimum_damage + c.maximum_damage) / 2) * c.shots) / c.cool_down, 0);
-  const isoBaseDamage = (energyBaseDamage + kineticBaseDamage) * avgIsoMultiplier;
-  */
-
   const dataDamageRaw = [
-    { name: "Energy", value: rawDamageEnergy, fill: colorEnergy },
-    { name: "Kinetic", value: rawDamageKinetic, fill: colorKinetic },
-    { name: "Isolitic", value: rawDamageIsolitic, fill: colorIsolitic },
+    { name: "Energy", value: context.sRawDamageEnergy.sum, fill: colorEnergy },
+    { name: "Kinetic", value: context.sRawDamageKinetic.sum, fill: colorKinetic },
+    { name: "Isolitic", value: context.sRawDamageIsolitic.sum, fill: colorIsolitic },
   ].filter((r) => r.value > 0);
 
   const dataDamageActual = [
-    { name: "Energy", value: actualDamageEnergy, fill: colorEnergy },
-    { name: "Kinetic", value: actualDamageKinetic, fill: colorKinetic },
-    { name: "Isolitic", value: actualDamageIsolitic, fill: colorIsolitic },
+    { name: "Energy", value: context.sActualDamageEnergy.sum, fill: colorEnergy },
+    { name: "Kinetic", value: context.sActualDamageKinetic.sum, fill: colorKinetic },
+    { name: "Isolitic", value: context.sActualDamageIsolitic.sum, fill: colorIsolitic },
   ].filter((r) => r.value > 0);
   const dataDamageShpHhp = [
-    { name: "SHP", value: totalDamageHhp, fill: colorHhp },
-    { name: "HHP", value: totalDamageShp, fill: colorShp },
+    { name: "SHP", value: context.sTotalDamageShp.sum, fill: colorHhp },
+    { name: "HHP", value: context.sTotalDamageHhp.sum, fill: colorShp },
   ].filter((r) => r.value > 0);
 
   return (
@@ -234,7 +300,11 @@ const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) =>
           Raw
         </text>
         <text x={90} y={200} textAnchor="middle" dominantBaseline="middle">
-          {shortNumber(rawDamageEnergy + rawDamageKinetic + rawDamageIsolitic)}
+          {shortNumber(
+            context.sRawDamageEnergy.sum +
+              context.sRawDamageKinetic.sum +
+              context.sRawDamageIsolitic.sum,
+          )}
         </text>
       </Pie>
       <Pie
@@ -256,7 +326,11 @@ const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) =>
           After mitigation
         </text>
         <text x={260} y={200} textAnchor="middle" dominantBaseline="middle">
-          {shortNumber(actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic)}
+          {shortNumber(
+            context.sActualDamageEnergy.sum +
+              context.sActualDamageKinetic.sum +
+              context.sActualDamageIsolitic.sum,
+          )}
         </text>
       </Pie>
       <Pie
@@ -278,14 +352,14 @@ const DamagePieChart = ({ ship, parsedData, csv, input, data }: ContentProps) =>
           Hit points
         </text>
         <text x={430} y={200} textAnchor="middle" dominantBaseline="middle">
-          {shortNumber(totalDamageHhp) + " HHP"}
+          {shortNumber(context.sTotalDamageHhp.sum) + " HHP"}
         </text>
       </Pie>
     </PieChart>
   );
 };
 
-const QuickStats = ({ ship, parsedData, csv, input, data }: ContentProps) => {
+const QuickStats = ({ context }: { context: ShipContext }) => {
   const formatStats = (s: Stats, format: (value: number) => string) =>
     s.count === 0 ? "N/A" : format(s.sum / s.count);
 
@@ -299,48 +373,28 @@ const QuickStats = ({ ship, parsedData, csv, input, data }: ContentProps) => {
       ]}
       data={[
         {
-          cells: [
-            "Damage multiplier",
-            formatStats(stdDamageMultiplierStats(ship, parsedData, 0.5, false), formatNumber),
-          ],
+          cells: ["Damage multiplier", formatStats(context.sDamageMultiplierStd, formatNumber)],
         },
         {
-          cells: [
-            "Iso multiplier",
-            formatStats(isoDamageMultiplierStats(ship, parsedData), formatNumber),
-          ],
+          cells: ["Iso multiplier", formatStats(context.sDamageMultiplierIso, formatNumber)],
         },
 
         {
-          cells: [
-            "Apex mitigation",
-            formatStats(apexMitigationStats(ship, parsedData), formatPercentage),
-          ],
+          cells: ["Apex mitigation", formatStats(context.sMitigationApex, formatPercentage)],
+        },
+        {
+          cells: ["Iso mitigation", formatStats(context.sMitigationIso, formatPercentage)],
+        },
+        {
+          cells: ["Std mitigation", formatStats(context.sMitigationStd, formatPercentage)],
+        },
+        {
+          cells: ["Hull repair", formatStats(context.sHullRepairPercent, formatPercentage)],
         },
         {
           cells: [
-            "Iso mitigation",
-            formatStats(isoMitigationStats(ship, parsedData), formatPercentage),
-          ],
-        },
-        {
-          cells: [
-            "Std mitigation",
-            formatStats(stdMitigationStats(ship, parsedData), formatPercentage),
-          ],
-        },
-
-        {
-          cells: [
-            "Hull repair",
-            formatStats(
-              getStats(
-                parsedData.stats.ships[ship.shipId].hullRepairs,
-                (x) => true,
-                (x) => x.fraction,
-              ),
-              formatNumber,
-            ),
+            "Shield uptime",
+            formatPercentage(context.sDamageInShp.count / context.sDamageInRaw.count),
           ],
         },
       ]}
@@ -348,38 +402,118 @@ const QuickStats = ({ ship, parsedData, csv, input, data }: ContentProps) => {
   );
 };
 
-const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => {
-  // Note: ignoring apex mitigation, as it affects all damage types equally
-  const actualDamageEnergy = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageKinetic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.iso_damage > 0,
-    (x) => x.iso_damage - x.iso_mitigated,
-  ).sum;
-  const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+const FiringPatternChart = ({ context }: { context: ShipContext }) => {
+  interface Point {
+    x: number; // round
+    y: number; // subround
+    z: number; // shp + hhp
+    c: string; // color
+  }
+  const points = Object.values(
+    context.stats.damageOut
+      .filter((d) => d.t.round <= 15)
+      .reduce(
+        (acc, d) => {
+          const key = `${d.t.round}-${d.t.subRound}`;
+          if (!acc[key]) {
+            acc[key] = {
+              x: d.t.round,
+              y: d.t.subRound,
+              z: d.shp + d.hhp,
+              c:
+                d.std_damage_type === "ENERGY"
+                  ? colorEnergy
+                  : d.std_damage_type === "KINETIC"
+                    ? colorKinetic
+                    : colorIsolitic,
+            };
+          } else {
+            acc[key].z += d.shp + d.hhp;
+          }
+          return acc;
+        },
+        {} as { [key: string]: Point },
+      ),
+  );
 
-  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
-  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
+  const zDomain = [
+    0,
+    Math.max.apply(
+      null,
+      points.map((p) => p.z),
+    ),
+  ];
+  const zRange: [number, number] = [10, 500];
+
+  return (
+    <ScatterChart
+      style={{ width: "100%", height: "300px" }}
+      responsive
+      margin={{
+        top: 20,
+        right: 0,
+        bottom: 0,
+        left: 0,
+      }}
+    >
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis
+        type="number"
+        domain={[0, 16]}
+        ticks={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]}
+        name="round"
+        label={{
+          position: "center",
+          value: "Round",
+        }}
+        dataKey="x"
+      />
+      <YAxis
+        type="number"
+        domain={[0, 7]}
+        ticks={[1, 2, 3, 4, 5, 6]}
+        name="subround"
+        label={{
+          angle: 90,
+          position: "center",
+          value: "Subround",
+        }}
+        dataKey="y"
+      />
+      <ZAxis
+        type="number"
+        name="damage"
+        dataKey="z"
+        domain={zDomain}
+        range={zRange}
+        scale="linear"
+      />
+      <Scatter name={`subround`} fill="#8884d8" data={points}>
+        {points.map((p) => (
+          <Cell key={`cell-${p.x}`} fill={p.c} />
+        ))}
+      </Scatter>
+    </ScatterChart>
+  );
+};
+
+const SuggestionEnergyDamageReduction = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const actualDamageEnergy = targetShip.sActualDamageEnergy.sum;
+  const actualDamageKinetic = targetShip.sActualDamageKinetic.sum;
+  const actualDamageIsolitic = targetShip.sActualDamageIsolitic.sum;
+  const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
+  const damageBonus = average(targetShip.sDamageMultiplierStd);
 
   const rEHP = (reduction: number) => {
     const newActualDamageEnergy =
-      (actualDamageEnergy * Math.max(0, damageBonus + reduction)) / damageBonus;
+      (targetShip.sActualDamageEnergy.sum * Math.max(0, damageBonus + reduction)) / damageBonus;
     const newActualTotalDamage = newActualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
     const rEHP = actualTotalDamage / newActualTotalDamage;
     return rEHP;
   };
 
   return {
-    cells: ["Energy damage reduction", "Chen", formatNumber(rEHP(-0.66))],
+    cells: ["Energy damage reduction", "Chen", formatREHP(rEHP(-0.66))],
     details: (
       <>
         <p>
@@ -395,7 +529,7 @@ const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => 
           ]}
           data={[-0.1, -0.2, -0.3, -0.4, -0.5, -0.6, -0.66].map((reduction) => {
             return {
-              cells: [formatNumber(reduction), "TODO", formatNumber(rEHP(reduction))],
+              cells: [formatNumber(reduction), "TODO", formatREHP(rEHP(reduction))],
             };
           })}
         />
@@ -404,27 +538,13 @@ const SuggestionEnergyDamageReduction = ({ ship, parsedData }: ContentProps) => 
   };
 };
 
-const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) => {
-  // Note: ignoring apex mitigation, as it affects all damage types equally
-  const actualDamageEnergy = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageKinetic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.iso_damage > 0,
-    (x) => x.iso_damage - x.iso_mitigated,
-  ).sum;
+const SuggestionKineticDamageReduction = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const actualDamageEnergy = targetShip.sActualDamageEnergy.sum;
+  const actualDamageKinetic = targetShip.sActualDamageKinetic.sum;
+  const actualDamageIsolitic = targetShip.sActualDamageIsolitic.sum;
   const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
 
-  const damageBonusStats = stdDamageMultiplierStats(ship, parsedData, 0.5, false);
-  const damageBonus = damageBonusStats.sum / damageBonusStats.count;
+  const damageBonus = average(targetShip.sDamageMultiplierStd);
 
   const rEHP = (reduction: number) => {
     const newActualDamageKinetic =
@@ -435,7 +555,7 @@ const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) =>
   };
 
   return {
-    cells: ["Kinetic damage reduction", "Cath", formatNumber(rEHP(-0.55))],
+    cells: ["Kinetic damage reduction", "Cath", formatREHP(rEHP(-0.55))],
     details: (
       <>
         <p>
@@ -451,7 +571,7 @@ const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) =>
           ]}
           data={[-0.1, -0.2, -0.3, -0.4, -0.5, -0.55].map((reduction) => {
             return {
-              cells: [formatNumber(reduction), "TODO", formatNumber(rEHP(reduction))],
+              cells: [formatNumber(reduction), "TODO", formatREHP(rEHP(reduction))],
             };
           })}
         />
@@ -460,27 +580,14 @@ const SuggestionKineticDamageReduction = ({ ship, parsedData }: ContentProps) =>
   };
 };
 
-const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: CombatLogShip) => {
-  const isoMitigationS = isoMitigationStats(playerShip, parsedData);
-  const isoMitigation = average(isoMitigationS);
+const SuggestionIsoDefense = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const isoMitigation = average(playerShip.sMitigationIso);
   const isoDefense = 1 / (1 - isoMitigation) - 1;
 
   // Note: ignoring apex mitigation, as it affects all damage types equally
-  const actualDamageEnergy = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "ENERGY" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageKinetic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage_type === "KINETIC" && x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.iso_damage > 0,
-    (x) => x.iso_damage - x.iso_mitigated,
-  ).sum;
+  const actualDamageEnergy = targetShip.sActualDamageEnergy.sum;
+  const actualDamageKinetic = targetShip.sActualDamageKinetic.sum;
+  const actualDamageIsolitic = targetShip.sActualDamageIsolitic.sum;
   const actualTotalDamage = actualDamageEnergy + actualDamageKinetic + actualDamageIsolitic;
 
   const rEHP = (defense: number) => {
@@ -492,7 +599,7 @@ const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: Co
   };
 
   return {
-    cells: ["Isolitic defense", "Joachim", formatNumber(rEHP(100.0))],
+    cells: ["Isolitic defense", "Joachim", formatREHP(rEHP(100.0))],
     details: (
       <>
         <p>
@@ -508,7 +615,7 @@ const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: Co
           ]}
           data={[0.1, 0.2, 0.5, 1.0, 1.5, 2.0, 5.0, 10.0, 20.0, 50.0, 100.0].map((defense) => {
             return {
-              cells: [formatPercentage(defense), "TODO", formatNumber(rEHP(defense))],
+              cells: [formatPercentage(defense), "TODO", formatREHP(rEHP(defense))],
             };
           })}
         />
@@ -517,36 +624,24 @@ const SuggestionIsoDefense = ({ ship, parsedData }: ContentProps, playerShip: Co
   };
 };
 
-const SuggestionStdMitigation = ({ ship, parsedData }: ContentProps, playerShip: CombatLogShip) => {
-  const stdMitigationS = stdMitigationStats(playerShip, parsedData);
-  const stdMitigation = average(stdMitigationS);
+const SuggestionStdMitigation = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const stdMitigation = average(playerShip.sMitigationStd);
+  const apexMitigation = average(playerShip.sMitigationApex);
 
-  const rawDamageStd = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage > 0,
-    (x) => x.std_damage,
-  ).sum;
-  const actualDamageStd = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.std_damage > 0,
-    (x) => x.std_damage - x.std_mitigated,
-  ).sum;
-  const actualDamageIsolitic = getStats(
-    parsedData.stats.ships[ship.shipId].damageOut,
-    (x) => x.iso_damage > 0,
-    (x) => x.iso_damage - x.iso_mitigated,
-  ).sum;
+  const rawDamageStd = targetShip.sRawDamageEnergy.sum + targetShip.sRawDamageKinetic.sum;
+  const actualDamageStd = targetShip.sActualDamageEnergy.sum + targetShip.sActualDamageKinetic.sum;
+  const actualDamageIsolitic = targetShip.sActualDamageIsolitic.sum;
   const actualTotalDamage = actualDamageStd + actualDamageIsolitic;
 
   const rEHP = (mitigation: number) => {
-    const newActualDamageStd = rawDamageStd * (1 - mitigation);
+    const newActualDamageStd = rawDamageStd * (1 - mitigation) * (1 - apexMitigation);
     const newActualTotalDamage = newActualDamageStd + actualDamageIsolitic;
     const rEHP = actualTotalDamage / newActualTotalDamage;
     return rEHP;
   };
 
   return {
-    cells: ["Standard mitigation", "Paris, Moreau", formatNumber(rEHP(0.712))],
+    cells: ["Standard mitigation", "Paris, Moreau", formatREHP(rEHP(0.712))],
     details: (
       <>
         <p>
@@ -561,7 +656,7 @@ const SuggestionStdMitigation = ({ ship, parsedData }: ContentProps, playerShip:
           data={[0.1616, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.712].map(
             (mitigation) => {
               return {
-                cells: [formatPercentage(mitigation), formatNumber(rEHP(mitigation))],
+                cells: [formatPercentage(mitigation), formatREHP(rEHP(mitigation))],
               };
             },
           )}
@@ -571,11 +666,18 @@ const SuggestionStdMitigation = ({ ship, parsedData }: ContentProps, playerShip:
   };
 };
 
-const SuggestionShieldMitigation = (
-  { ship, parsedData }: ContentProps,
-  playerShip: CombatLogShip,
-) => {
-  const shieldMitigation = shieldMitigationTotal(playerShip, parsedData);
+const SuggestionShieldMitigation = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const damageInShpHhp = playerShip.sDamageInShp.sum + playerShip.sDamageInHhp.sum;
+  if (damageInShpHhp === 0) {
+    return {
+      cells: ["Shield mitigation", "", "N/A"],
+      details: (
+        <>
+          <p>Can't analyze impact of shield mitigation, as you didn't take a single hit.</p>
+        </>
+      ),
+    };
+  }
 
   interface ShieldMitigationBonus {
     firstRound: number; // KSG Shield Mitigation, Fat Mudd
@@ -586,70 +688,38 @@ const SuggestionShieldMitigation = (
   }
 
   const baseShieldMitigation =
-    playerShip.components.flatMap((c) =>
+    playerShip.ship.components.flatMap((c) =>
       c?.component.data.tag === "Shield" ? [c.component.data] : [],
     )[0]?.mitigation ?? 0.8;
 
-  const shipWeaponsBySubround: (
-    | { c: ComponentLookupResult; d: ShipComponentWeapon }
-    | undefined
-  )[] = ship.components
-    .slice(7, 13)
-    .map((c, i) =>
-      c?.component.data.tag === "Weapon" ? { c: c, d: c.component.data } : undefined,
-    );
+  const damageInShp = playerShip.sDamageInShp.sum;
+  const shieldMitigation = damageInShp / damageInShpHhp;
 
-  const shieldMitigationForBonus = (
-    bonus: ShieldMitigationBonus,
-    endRound: number,
-    endSubround: number,
-  ) => {
-    let shpDamage = 0;
-    let hhpDamage = 0;
-    for (let r = 0; r <= endRound; r++) {
-      let attacks = 0;
-      for (let sr = 0; sr < (r === endRound ? endSubround : shipWeaponsBySubround.length); sr++) {
-        const w = shipWeaponsBySubround[sr];
-        if (w !== undefined && isFiring(r, w.d.warm_up, w.d.cool_down)) {
-          let shieldMitigation = Math.min(
-            1.0,
-            baseShieldMitigation +
-              (r === 0 ? bonus.firstRound : 0) +
-              bonus.constant +
-              bonus.constantBuff +
-              attacks * bonus.onAttack,
-          );
-          const baseDamage = (w.d.shots * (w.d.minimum_damage + w.d.maximum_damage)) / 2;
-          shpDamage += baseDamage * shieldMitigation;
-          hhpDamage += baseDamage * (1 - shieldMitigation);
-
-          attacks += 1;
-        }
+  const shieldMitigationForBonus = (bonus: ShieldMitigationBonus) => {
+    let newDamageInShp = 0;
+    let lastAttackRound = -1;
+    let attacksThisRound = 0;
+    playerShip.stats.damageIn.forEach((d) => {
+      if (d.t.round != lastAttackRound) {
+        lastAttackRound = d.t.round;
+        attacksThisRound = 0;
       }
-    }
-    return shpDamage / (shpDamage + hhpDamage);
+      let shieldMitigation = Math.min(
+        1.0,
+        baseShieldMitigation +
+          (d.t.round === 0 ? bonus.firstRound : 0) +
+          bonus.constant +
+          bonus.constantBuff +
+          attacksThisRound * bonus.onAttack,
+      );
+      newDamageInShp += (d.shp + d.hhp) * shieldMitigation;
+      attacksThisRound++;
+    });
+    return newDamageInShp / damageInShpHhp;
   };
 
-  const damageSamples = parsedData.stats.ships[ship.shipId].damageOut;
-  if (damageSamples.length === 0) {
-    return {
-      cells: ["Shield mitigation", "", "N/A"],
-      details: (
-        <>
-          <p>
-            Can't analyze impact of shield mitigation, as the hostile ship did not attack in the
-            combat log.
-          </p>
-        </>
-      ),
-    };
-  }
-
-  const endRound = damageSamples[damageSamples.length - 1].t.round;
-  const endSubround = damageSamples[damageSamples.length - 1].t.subRound;
-
   const rEHP = (bonus: ShieldMitigationBonus) => {
-    const newShieldMitigation = shieldMitigationForBonus(bonus, endRound, endSubround);
+    const newShieldMitigation = shieldMitigationForBonus(bonus);
     const rEHP = (1 - shieldMitigation) / (1 - newShieldMitigation);
     return rEHP;
   };
@@ -833,9 +903,7 @@ const SuggestionShieldMitigation = (
     cells: [
       "Shield mitigation",
       "SNW Pike, Janeway, WoK Carol",
-      formatNumber(
-        rEHP({ firstRound: 0.025, constantBuff: 0.025, constant: 0.13, onAttack: 0.25 }),
-      ),
+      formatREHP(rEHP({ firstRound: 0.025, constantBuff: 0.025, constant: 0.13, onAttack: 0.25 })),
     ],
     details: (
       <>
@@ -852,6 +920,7 @@ const SuggestionShieldMitigation = (
             { label: "KSG Shield Mitigation", align: "left" },
             { label: "Cerritos buff", align: "left" },
             { label: "Officers", align: "left" },
+            { label: "Shield mitigation", align: "left" },
             { label: "rEHP", align: "right" },
           ]}
           data={bonusValues
@@ -861,7 +930,8 @@ const SuggestionShieldMitigation = (
                   formatPercentage(bonus.firstRound),
                   formatPercentage(bonus.constantBuff),
                   bonus.description ?? "",
-                  formatNumber(rEHP(bonus)),
+                  formatPercentage(shieldMitigationForBonus(bonus)),
+                  formatREHP(rEHP(bonus)),
                 ],
               };
             })
@@ -872,18 +942,15 @@ const SuggestionShieldMitigation = (
   };
 };
 
-const SuggestionDamageIncrease = (
-  { ship, parsedData, csv, input, data }: ContentProps,
-  playerShip: CombatLogShip,
-) => {
-  const damageBonusStats = stdDamageMultiplierStats(playerShip, parsedData, 0.5, false);
+const SuggestionDamageIncrease = (playerShip: ShipContext, targetShip: ShipContext) => {
+  const damageBonusStats = playerShip.sDamageMultiplierStd;
   if (damageBonusStats.count === 0) {
     return {
       cells: ["Damage bonus", "", "N/A"],
       details: (
         <>
           <p>
-            Could not determine your current damage bonus from this combat log, as none of the
+            Could not determine your current damage bonus from this combat log, as none of your
             attacks were non-critical hits.
           </p>
         </>
@@ -922,62 +989,13 @@ const SuggestionDamageIncrease = (
   };
 };
 
-const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
-  const hostileName = getShipName(ship, input, data);
-  const playerShip = parsedData.allShips.filter((s) => s.fleetId != ship.fleetId)[0];
-  const playerName = playerShip.displayName;
+const Content = ({ playerShip, targetShip, parsedData, csv, input, data }: ContentProps) => {
+  const playerContext = createShipContext(playerShip, parsedData);
+  const targetContext = createShipContext(targetShip, parsedData);
+  const targetName = `${targetShip.displayName} [${getShipName(targetShip, input, data)}]`;
+  const playerName = `${playerShip.displayName} [${getShipName(playerShip, input, data)}]`;
 
-  const shipWeaponsBySubround: (
-    | { c: ComponentLookupResult; d: ShipComponentWeapon }
-    | undefined
-  )[] = ship.components
-    .slice(7, 13)
-    .map((c, i) =>
-      c?.component.data.tag === "Weapon" ? { c: c, d: c.component.data } : undefined,
-    );
-  const damageByRound = shipWeaponsBySubround.flatMap((w, i) =>
-    w === undefined
-      ? []
-      : [
-          {
-            data: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].flatMap((r) =>
-              isFiring(r, w.d.warm_up, w.d.cool_down)
-                ? [
-                    {
-                      x: r,
-                      y: 1,
-                      c: getWeaponDamageType(w.d) === "ENERGY" ? colorEnergy : colorKinetic,
-                      z: Math.pow(
-                        (((w.d.maximum_damage + w.d.maximum_damage) / 2) * w.d.shots) / 1000,
-                        2,
-                      ),
-                    },
-                  ]
-                : [
-                    {
-                      x: r,
-                      y: 1,
-                      c: colorNone,
-                      z: 0,
-                    },
-                  ],
-            ),
-            subround: i,
-            name: `W${i}`,
-          },
-        ],
-  );
-
-  const firingPatternZDomain = [
-    0,
-    Math.max.apply(
-      null,
-      damageByRound.flatMap((s) => s.data.map((r) => r.z)),
-    ),
-  ];
-  const firingPatternZRange: [number, number] = [10, 300];
-
-  const remainingHitPoints = parsedData.stats.ships[playerShip.shipId].hitPoints.map((d, i) => ({
+  const playerRemainingHitPoints = playerContext.stats.hitPoints.map((d, i) => ({
     round: d.t.round,
     i: i,
     hhp: d.hhp,
@@ -988,7 +1006,7 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
     <>
       <Grid size={{ xs: 12 }}>
         <h1>
-          {playerName} vs {hostileName}
+          {playerName} vs {targetName}
         </h1>
       </Grid>
       <Grid size={{ xs: 12 }}>
@@ -1001,76 +1019,24 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
         </Stack>
       </Grid>
       <Grid size={{ xs: 4 }}>
-        <h4>{hostileName} damage</h4>
-        <DamagePieChart ship={ship} parsedData={parsedData} csv={csv} input={input} data={data} />
+        <h4>{targetName} damage</h4>
+        <DamagePieChart context={targetContext} />
       </Grid>
       <Grid size={{ xs: 2 }}>
-        <h4>{hostileName} stats</h4>
-        <QuickStats ship={ship} parsedData={parsedData} csv={csv} input={input} data={data} />
+        <h4>{targetName} stats</h4>
+        <QuickStats context={targetContext} />
       </Grid>
       <Grid size={{ xs: 6 }}>
-        <h4>{hostileName} firing pattern</h4>
-
-        <div style={{ width: "100%" }}>
-          {damageByRound.map((data, i) => (
-            <ScatterChart
-              style={{ width: "100%", height: "80px" }}
-              responsive
-              margin={{
-                top: 20,
-                right: 0,
-                bottom: 0,
-                left: 0,
-              }}
-            >
-              <XAxis
-                type="category"
-                domain={[0, 15]}
-                dataKey="x"
-                interval={0}
-                tick={{ fontSize: 0 }}
-                tickLine={{ transform: "translate(0, -6)" }}
-              />
-              <YAxis
-                type="number"
-                dataKey="y"
-                name={`subround${i}`}
-                height={10}
-                width={80}
-                tick={false}
-                tickLine={false}
-                axisLine={false}
-                label={{ value: data.name, position: "insideRight" }}
-              />
-              <ZAxis
-                type="number"
-                dataKey="z"
-                domain={firingPatternZDomain}
-                range={firingPatternZRange}
-                scale="linear"
-              />
-              <Scatter name={`subround${i}`} fill="#8884d8" data={data.data}>
-                {data.data.map((r) => (
-                  <Cell key={`cell-${r.x}`} fill={r.c} />
-                ))}
-              </Scatter>
-            </ScatterChart>
-          ))}
-        </div>
+        <h4>{targetName} firing pattern - actual damage after mitigation</h4>
+        <FiringPatternChart context={targetContext} />
       </Grid>
       <Grid size={{ xs: 4 }}>
         <h4>{playerName} damage</h4>
-        <DamagePieChart
-          ship={playerShip}
-          parsedData={parsedData}
-          csv={csv}
-          input={input}
-          data={data}
-        />
+        <DamagePieChart context={playerContext} />
       </Grid>
       <Grid size={{ xs: 2 }}>
         <h4>{playerName} stats</h4>
-        <QuickStats ship={playerShip} parsedData={parsedData} csv={csv} input={input} data={data} />
+        <QuickStats context={playerContext} />
       </Grid>
       <Grid size={{ xs: 6 }}>
         <h4>{playerName} hit points over time</h4>
@@ -1079,7 +1045,7 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
           <AreaChart
             style={{ width: "100%", height: "320px" }}
             responsive
-            data={remainingHitPoints}
+            data={playerRemainingHitPoints}
             margin={{
               top: 20,
               right: 0,
@@ -1111,12 +1077,12 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
             { label: "rEHP", align: "right" },
           ]}
           data={[
-            SuggestionEnergyDamageReduction({ ship, parsedData, csv, input, data }),
-            SuggestionKineticDamageReduction({ ship, parsedData, csv, input, data }),
-            SuggestionIsoDefense({ ship, parsedData, csv, input, data }, playerShip),
-            SuggestionStdMitigation({ ship, parsedData, csv, input, data }, playerShip),
-            SuggestionShieldMitigation({ ship, parsedData, csv, input, data }, playerShip),
-          ].sort((a, b) => +b.cells[2] - +a.cells[2])}
+            SuggestionEnergyDamageReduction(playerContext, targetContext),
+            SuggestionKineticDamageReduction(playerContext, targetContext),
+            SuggestionIsoDefense(playerContext, targetContext),
+            SuggestionStdMitigation(playerContext, targetContext),
+            SuggestionShieldMitigation(playerContext, targetContext),
+          ].sort((a, b) => +b.cells[2].replace("%", "") - +a.cells[2].replace("%", ""))}
         />
       </Grid>
       <Grid size={{ xs: 12 }}>
@@ -1131,7 +1097,7 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
             { label: "Example officers", align: "right" },
             { label: "rDPR", align: "right" },
           ]}
-          data={[SuggestionDamageIncrease({ ship, parsedData, csv, input, data }, playerShip)].sort(
+          data={[SuggestionDamageIncrease(playerContext, targetContext)].sort(
             (a, b) => +b.cells[2] - +a.cells[2],
           )}
         />
@@ -1141,20 +1107,25 @@ const Content = ({ ship, parsedData, csv, input, data }: ContentProps) => {
 };
 
 export const Suggestions = ({ parsedData, input, data, csv }: SuggestionsProps) => {
-  const [shipId, setShipId] = useState<number | undefined>(parsedData.allShips[1]?.shipId);
+  const [playerShipId, setPlayerShipId] = useState<number | undefined>(
+    parsedData.allShips[0]?.shipId,
+  );
+  const [targetShipId, setTargetShipId] = useState<number | undefined>(
+    parsedData.allShips[1]?.shipId,
+  );
 
   return (
     <React.Fragment>
       <Grid container spacing={2}>
-        <Grid size={{ xs: 12 }}>
+        <Grid size={{ xs: 6 }}>
           <TextField
             id="select"
-            label="Hostile"
-            placeholder="Select the hostile ship"
+            label="Your ship"
+            placeholder="Select your ship"
             fullWidth
-            value={shipId}
+            value={playerShipId}
             select
-            onChange={(event) => setShipId(+event.target.value)}
+            onChange={(event) => setPlayerShipId(+event.target.value)}
           >
             {Object.keys(parsedData.stats.ships).map((shipId) => (
               <MenuItem value={shipId} key={shipId}>
@@ -1163,15 +1134,33 @@ export const Suggestions = ({ parsedData, input, data, csv }: SuggestionsProps) 
             ))}
           </TextField>
         </Grid>
-        {shipId === undefined ? null : (
+        <Grid size={{ xs: 6 }}>
+          <TextField
+            id="select"
+            label="Target ship"
+            placeholder="Select the target ship"
+            fullWidth
+            value={targetShipId}
+            select
+            onChange={(event) => setTargetShipId(+event.target.value)}
+          >
+            {Object.keys(parsedData.stats.ships).map((shipId) => (
+              <MenuItem value={shipId} key={shipId}>
+                {parsedData.shipById[+shipId].displayName}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        {playerShipId !== undefined && targetShipId !== undefined ? (
           <Content
-            ship={parsedData.shipById[shipId]}
+            playerShip={parsedData.shipById[playerShipId]}
+            targetShip={parsedData.shipById[targetShipId]}
             parsedData={parsedData}
             csv={csv}
             input={input}
             data={data}
           />
-        )}
+        ) : null}
       </Grid>
     </React.Fragment>
   );
